@@ -40,6 +40,12 @@ what actually is public domain:
   the original text — which is itself the editorial point: this is what the book actually
   was before anyone translated, systematized, or believed things about it.
 
+## Time and space
+
+The architecture for rendering the different books across time — hexagram as the
+spatial coordinate, book as the temporal one, aligned by shared item ids — is
+[`docs/TIME-AND-SPACE.md`](docs/TIME-AND-SPACE.md).
+
 ## The plan
 
 The full historical spine (oracle bones → Zhouyi → Ten Wings → Wang Bi/Zhu Xi →
