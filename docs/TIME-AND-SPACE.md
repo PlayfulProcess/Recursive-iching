@@ -65,7 +65,7 @@ The hexagram picker should offer the space's own structures, not an arbitrary gr
 Rules for adding a book: public-domain text only, transcription source credited in
 `_grammar_commons`, same item ids, `book_period` set, gate (`check.py`) green.
 
-## The viewer (next build)
+## The viewer (first build shipped Jul 16 2026: public/viewers/books.html + caster.html)
 
 One static page on the channels.html pattern (no build step): fetch all
 `grammars/*/grammar.json`, group by item id. Layout: **hexagram picker** (the 8×8

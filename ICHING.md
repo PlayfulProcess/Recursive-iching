@@ -46,6 +46,11 @@ The architecture for rendering the different books across time — hexagram as t
 spatial coordinate, book as the temporal one, aligned by shared item ids — is
 [`docs/TIME-AND-SPACE.md`](docs/TIME-AND-SPACE.md).
 
+## Viewers
+
+- **[public/viewers/books.html](public/viewers/books.html)** — time×space reader: 8×8 trigram matrix, book rail, one-line neighbors, deep-linkable (`?hexagram=3&books=zhouyi,ten-wings`).
+- **[public/viewers/caster.html](public/viewers/caster.html)** — the cast as a path: three-coin or yarrow distribution, 本卦 → 之卦 via the moving lines, whose 爻辞 and 小象 are the texts read. Preview locally: `cd public && python3 -m http.server`.
+
 ## The plan
 
 The full historical spine (oracle bones → Zhouyi → Ten Wings → Wang Bi/Zhu Xi →
