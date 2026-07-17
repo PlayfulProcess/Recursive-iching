@@ -1,0 +1,8 @@
+{
+  "_note": "Slug -> recursive.eco grammar UUID for the iching channel. Imported 2026-07-16 via the recursive.eco MCP (import_grammars, from this repo's raw main URLs) as PRIVATE DRAFTS — publish via set_grammar_visibility, then move the slug into _public_now. Preview links (no extra hosting needed): Play = https://flow.recursive.eco/play?id=<id> | Cards = https://recursive.eco/pages/grammar-viewer.html?type=custom&id=<id> | Study = https://recursive.eco/pages/study-viewer.html?type=custom&id=<id> | Tree = https://recursive.eco/pages/tree-viewer.html?type=custom&id=<id>. Mirrors recursive-tarot/tarot/_eco_ids.json and Recursive-astrology/ids.json.",
+  "_public_now": [],
+  "ids": {
+    "zhouyi": "0f8f4088-5360-4a71-9403-a610538f1bb2",
+    "ten-wings": "a172fed6-8531-4b5d-964d-ff38d85e1fa9"
+  }
+}
