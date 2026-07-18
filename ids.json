@@ -3,6 +3,14 @@
   "_public_now": [],
   "ids": {
     "zhouyi": "0f8f4088-5360-4a71-9403-a610538f1bb2",
-    "ten-wings": "a172fed6-8531-4b5d-964d-ff38d85e1fa9"
-  }
+    "ten-wings": "a172fed6-8531-4b5d-964d-ff38d85e1fa9",
+    "emergent-structure": "57b60ca6-34fa-420c-8d68-9a06e2c7e900",
+    "leibniz-binary-tree": "5a09240d-15ac-4666-9cf1-719f8d9df4f4"
+  },
+  "_app_only_not_in_repo": {
+    "_note": "iching grammars present on the recursive.eco deploy but NOT (yet) exported to this repo, found 2026-07-18. Decide per-grammar whether to bring in.",
+    "adefc983-d903-4af9-8fec-c14531ee96db": "易經 · Leibniz Binary Tree of Change (older duplicate, 458 items, 2026-05-12) — superseded by 5a09240d?",
+    "b7a59594-1822-4770-8600-155514f323e0": "The Repair I Ching: A Contemplative Practice (14 items) — a distinct practice grammar"
+  },
+  "_id_scheme_note": "TWO id conventions now coexist: the book-grammars (zhouyi, ten-wings) use hexagram-<kw>-<pinyin> in simplified characters (historical-layers axis, aligned for the time rail); the builder's structural grammars (emergent-structure, leibniz-binary-tree) use hexagram-<n> / trigram-<name> / <x>-line in traditional characters (compositional axis, Lines→Trigrams→Hexagrams via composite_of). These are different axes, not a conflict — but cross-axis viewing needs a king_wen<->id map. RECONCILIATION DECISION PENDING (builder): unify ids, or keep both axes with a bridge on king_wen."
 }

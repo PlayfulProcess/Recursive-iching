@@ -1,0 +1,2967 @@
+{
+  "name": "易經 · Emergent Structure (Lines → Trigrams → Hexagrams)",
+  "description": "The I Ching reorganized to mirror its own cosmological emergence: from the two primordial lines (陰 yin and 陽 yang), through the eight trigrams (八卦 bāguà), to the sixty-four hexagrams (六十四卦). Classical Chinese text throughout, with brief English translations for lines and trigrams. Hexagram text extracted from Project Gutenberg eBook #25501. Trigram descriptions from the 說卦傳 (Shuo Gua Zhuan / Discussion of Trigrams). Line philosophy from the 繫辭傳 (Xi Ci Zhuan / Great Commentary).\n\nSource: Project Gutenberg eBook #25501 (https://www.gutenberg.org/ebooks/25501) [Data note, Jul 17 2026: the trigram_below/trigram_above metadata on all asymmetric hexagrams was historically SWAPPED (top-first decomposition error) and was corrected by a backed-up migration on this date. Backup: _backup_user_documents_20260717_emergent.]",
+  "grammar_type": "iching",
+  "author": "PlayfulProcess",
+  "_exported_from_app": "57b60ca6-34fa-420c-8d68-9a06e2c7e900 on 2026-07-18 (builder's structural grammar; verbatim — Lines→Trigrams→Hexagrams via composite_of, traditional characters)",
+  "items": [
+    {
+      "id": "yang-line",
+      "number": 1,
+      "name": "Yang Line (陽爻)",
+      "symbol": "⚊",
+      "keywords": [
+        "yang",
+        "solid",
+        "firm",
+        "light",
+        "creative",
+        "heaven",
+        "male"
+      ],
+      "category": "line",
+      "sections": {
+        "Nature": "陽 (yáng): 天、剛、動、明、父\nYang: Heaven, firmness, movement, light, the father principle.\n\nThe yang line is solid and unbroken (⚊). It represents the active, creative, initiating force in the cosmos. In a hexagram, yang lines push upward and outward. The first yang was drawn when Fu Xi looked up and observed the patterns of heaven.",
+        "繫辭傳": "天尊地卑，乾坤定矣。卑高以陳，貴賤位矣。動靜有常，剛柔斷矣。一陰一陽之謂道。乾道成男，坤道成女。乾知大始，坤作成物。剛健中正，純粹精也。",
+        "Brief Translation": "Heaven is lofty, Earth is low; thus Qian and Kun are determined. The high and low are displayed, and the noble and humble have their places. Movement and rest have their constancy; the firm and yielding are thus distinguished. The alternation of yin and yang is called the Dao. The way of Qian forms the male; the way of Kun forms the female. Qian knows the great beginning; Kun brings things to completion. Firm, strong, centered, and correct — this is pure essence."
+      },
+      "section_labels": [
+        "Nature",
+        "繫辭傳",
+        "Brief Translation"
+      ],
+      "metadata": {
+        "binary": "1",
+        "pinyin": "yáng yáo",
+        "line_type": "solid",
+        "chinese_name": "陽爻"
+      }
+    },
+    {
+      "id": "yin-line",
+      "number": 2,
+      "name": "Yin Line (陰爻)",
+      "symbol": "⚋",
+      "keywords": [
+        "yin",
+        "broken",
+        "yielding",
+        "dark",
+        "receptive",
+        "earth",
+        "female"
+      ],
+      "category": "line",
+      "sections": {
+        "Nature": "陰 (yīn): 地、柔、靜、暗、母\nYin: Earth, yielding, stillness, darkness, the mother principle.\n\nThe yin line is broken (⚋), split in the middle. It represents the receptive, nurturing, completing force in the cosmos. In a hexagram, yin lines receive, contain, and give form. Where yang initiates, yin brings to completion. The two together generate the ten thousand things.",
+        "繫辭傳": "坤至柔而動也剛，至靜而德方。後得主而有常，含萬物而化光。坤道其順乎，承天而時行。坤厚載物，德合無疆。含弘光大，品物咸亨。",
+        "Brief Translation": "Kun is most soft yet moves with firmness; most still yet its virtue is square. It follows and finds its lord, maintaining constancy. It contains the ten thousand things and transforms with brilliance. How compliant is the way of Kun! It receives heaven and acts in season. Kun is thick and carries all things; its virtue merges with the boundless. Containing, magnifying, illuminating, enlarging — all things flourish through it."
+      },
+      "section_labels": [
+        "Nature",
+        "繫辭傳",
+        "Brief Translation"
+      ],
+      "metadata": {
+        "binary": "0",
+        "pinyin": "yīn yáo",
+        "line_type": "broken",
+        "chinese_name": "陰爻"
+      }
+    },
+    {
+      "id": "trigram-heaven",
+      "number": 3,
+      "name": "Heaven (乾 Qián)",
+      "symbol": "☰",
+      "keywords": [
+        "creative",
+        "strong",
+        "heaven",
+        "father",
+        "initiating",
+        "dragon",
+        "power"
+      ],
+      "category": "trigram",
+      "sections": {
+        "Nature": "天 (Heaven) · 父 (Father) · 西北 (Northwest) · 首 (Head)\n\nThree yang lines rising: pure creative force, undivided strength. Heaven moves ceaselessly — the superior man makes himself strong and untiring. When both trigrams in a hexagram are Heaven, creative power is at its purest (Hexagram 1).",
+        "Structure": "⚊ 陽 yang (top)\n⚊ 陽 yang (middle)\n⚊ 陽 yang (bottom)\n\n三陽 — Three yang lines. Pure, undivided creative force.",
+        "說卦傳": "乾為天、為圜、為君、為父、為玉、為金、為寒、為冰、為大赤、為良馬、為老馬、為瘠馬、為駁馬、為木果。乾，健也。",
+        "Brief Translation": "Qian is heaven, is round, is the ruler, is the father, is jade, is metal, is cold, is ice, is deep red, is a good horse, an old horse, a lean horse, a piebald horse, is tree fruit. Qian means strong, untiring."
+      },
+      "section_labels": [
+        "Nature",
+        "Structure",
+        "說卦傳",
+        "Brief Translation"
+      ],
+      "composite_of": [
+        "yang-line"
+      ],
+      "metadata": {
+        "body": "首 (Head)",
+        "animal": "馬 (Horse)",
+        "binary": "111",
+        "pinyin": "Qián",
+        "element": "天 (Heaven)",
+        "direction": "西北 (Northwest)",
+        "family_role": "父 (Father)",
+        "chinese_name": "乾"
+      }
+    },
+    {
+      "id": "trigram-earth",
+      "number": 4,
+      "name": "Earth (坤 Kūn)",
+      "symbol": "☷",
+      "keywords": [
+        "receptive",
+        "yielding",
+        "earth",
+        "mother",
+        "nourishing",
+        "mare",
+        "devotion"
+      ],
+      "category": "trigram",
+      "sections": {
+        "Nature": "地 (Earth) · 母 (Mother) · 西南 (Southwest) · 腹 (Belly)\n\nThree yin lines: pure receptive force, total openness. Earth's nature is to receive and to carry. When both trigrams are Earth, receptivity is at its deepest (Hexagram 2).",
+        "Structure": "⚋ 陰 yin (top)\n⚋ 陰 yin (middle)\n⚋ 陰 yin (bottom)\n\n三陰 — Three yin lines. Pure, undivided receptive force.",
+        "說卦傳": "坤為地、為母、為布、為釜、為吝嗇、為均、為子母牛、為大輿、為文、為眾、為柄。其於地也，為黑。坤，順也。",
+        "Brief Translation": "Kun is earth, is the mother, is cloth, is a cauldron, is thrift, is levelness, is a cow with calf, is a great cart, is pattern, is the multitude, is a handle. Among soils, it is black. Kun means yielding, devoted."
+      },
+      "section_labels": [
+        "Nature",
+        "Structure",
+        "說卦傳",
+        "Brief Translation"
+      ],
+      "composite_of": [
+        "yin-line"
+      ],
+      "metadata": {
+        "body": "腹 (Belly)",
+        "animal": "牛 (Ox)",
+        "binary": "000",
+        "pinyin": "Kūn",
+        "element": "地 (Earth)",
+        "direction": "西南 (Southwest)",
+        "family_role": "母 (Mother)",
+        "chinese_name": "坤"
+      }
+    },
+    {
+      "id": "trigram-thunder",
+      "number": 5,
+      "name": "Thunder (震 Zhèn)",
+      "symbol": "☳",
+      "keywords": [
+        "arousing",
+        "shock",
+        "thunder",
+        "eldest-son",
+        "movement",
+        "spring",
+        "awakening"
+      ],
+      "category": "trigram",
+      "sections": {
+        "Nature": "雷 (Thunder) · 長男 (Eldest Son) · 東 (East) · 足 (Foot)\n\nOne yang below two yin: yang energy bursts forth from beneath the earth. Thunder shakes and awakens. Spring begins with thunder — the first son moves out from the receptive mother.",
+        "Structure": "⚋ 陰 yin (top)\n⚋ 陰 yin (middle)\n⚊ 陽 yang (bottom)\n\n一陽二陰 — One yang rising beneath two yin. Arousing movement from below.",
+        "說卦傳": "震為雷、為龍、為玄黃、為旉、為大塗、為長子、為決躁、為蒼筤竹、為萑葦。其於馬也，為善鳴、為馵足、為作足、為的顙。其於稼也，為反生。其究為健，為蕃鮮。震，動也。",
+        "Brief Translation": "Zhen is thunder, is the dragon, is dark yellow, is spreading, is a great road, is the eldest son, is decisiveness and restlessness, is green young bamboo, is reeds and rushes. Among horses, it is one that neighs well, has white hind legs, gallops, has a white forehead. Among crops, it is one that grows back. Its ultimate meaning is strength, luxuriant freshness. Zhen means movement, arousal."
+      },
+      "section_labels": [
+        "Nature",
+        "Structure",
+        "說卦傳",
+        "Brief Translation"
+      ],
+      "composite_of": [
+        "yang-line",
+        "yin-line"
+      ],
+      "metadata": {
+        "body": "足 (Foot)",
+        "animal": "龍 (Dragon)",
+        "binary": "100",
+        "pinyin": "Zhèn",
+        "element": "雷 (Thunder)",
+        "direction": "東 (East)",
+        "family_role": "長男 (Eldest Son)",
+        "chinese_name": "震"
+      }
+    },
+    {
+      "id": "trigram-water",
+      "number": 6,
+      "name": "Water (坎 Kǎn)",
+      "symbol": "☵",
+      "keywords": [
+        "abysmal",
+        "danger",
+        "water",
+        "middle-son",
+        "depth",
+        "flow",
+        "pit"
+      ],
+      "category": "trigram",
+      "sections": {
+        "Nature": "水 (Water) · 中男 (Middle Son) · 北 (North) · 耳 (Ear)\n\nYang trapped between two yin: light enclosed in darkness, like water flowing through a ravine. Danger and depth — but also the way that finds its course through any obstacle.",
+        "Structure": "⚋ 陰 yin (top)\n⚊ 陽 yang (middle)\n⚋ 陰 yin (bottom)\n\n一陽陷二陰 — One yang sunk between two yin. Light within darkness, danger within depth.",
+        "說卦傳": "坎為水、為溝瀆、為隱伏、為矯輮、為弓輪。其於人也，為加憂、為心病、為耳痛、為血卦、為赤。其於馬也，為美脊、為亟心、為下首、為薄蹄、為曳。其於輿也，為多眚。為通、為月、為盜。其於木也，為堅多心。坎，陷也。",
+        "Brief Translation": "Kan is water, is ditches and channels, is concealment, is bending and straightening, is the bow and wheel. For people, it is added worry, heart sickness, earache; it is the blood trigram, is red. Among horses, it is one with fine spine, anxious heart, drooping head, thin hooves, that stumbles. Among carts, it has many defects. It is penetration, the moon, the thief. Among trees, it is firm with much pith. Kan means falling in, the pit."
+      },
+      "section_labels": [
+        "Nature",
+        "Structure",
+        "說卦傳",
+        "Brief Translation"
+      ],
+      "composite_of": [
+        "yang-line",
+        "yin-line"
+      ],
+      "metadata": {
+        "body": "耳 (Ear)",
+        "animal": "豕 (Pig)",
+        "binary": "010",
+        "pinyin": "Kǎn",
+        "element": "水 (Water)",
+        "direction": "北 (North)",
+        "family_role": "中男 (Middle Son)",
+        "chinese_name": "坎"
+      }
+    },
+    {
+      "id": "trigram-mountain",
+      "number": 7,
+      "name": "Mountain (艮 Gèn)",
+      "symbol": "☶",
+      "keywords": [
+        "keeping-still",
+        "mountain",
+        "youngest-son",
+        "stopping",
+        "meditation",
+        "boundary",
+        "gate"
+      ],
+      "category": "trigram",
+      "sections": {
+        "Nature": "山 (Mountain) · 少男 (Youngest Son) · 東北 (Northeast) · 手 (Hand)\n\nYang resting atop two yin: movement that has come to rest, like a mountain rising from the earth. Stillness, boundaries, meditation — knowing when to stop is the deepest wisdom.",
+        "Structure": "⚊ 陽 yang (top)\n⚋ 陰 yin (middle)\n⚋ 陰 yin (bottom)\n\n一陽止二陰上 — One yang resting atop two yin. Stillness crowning openness.",
+        "說卦傳": "艮為山、為徑路、為小石、為門闕、為果蓏、為閽寺、為指、為狗、為鼠、為黔喙之屬。其於木也，為堅多節。艮，止也。",
+        "Brief Translation": "Gen is mountain, is a bypath, is small stones, is a gate or watchtower, is fruits and gourds, is a gatekeeper, is the finger, is the dog, is the rat, is black-billed birds. Among trees, it is firm with many knots. Gen means stopping, keeping still."
+      },
+      "section_labels": [
+        "Nature",
+        "Structure",
+        "說卦傳",
+        "Brief Translation"
+      ],
+      "composite_of": [
+        "yang-line",
+        "yin-line"
+      ],
+      "metadata": {
+        "body": "手 (Hand)",
+        "animal": "狗 (Dog)",
+        "binary": "001",
+        "pinyin": "Gèn",
+        "element": "山 (Mountain)",
+        "direction": "東北 (Northeast)",
+        "family_role": "少男 (Youngest Son)",
+        "chinese_name": "艮"
+      }
+    },
+    {
+      "id": "trigram-wind",
+      "number": 8,
+      "name": "Wind (巽 Xùn)",
+      "symbol": "☴",
+      "keywords": [
+        "gentle",
+        "penetrating",
+        "wind",
+        "eldest-daughter",
+        "wood",
+        "gradual",
+        "influence"
+      ],
+      "category": "trigram",
+      "sections": {
+        "Nature": "風/木 (Wind/Wood) · 長女 (Eldest Daughter) · 東南 (Southeast) · 股 (Thigh)\n\nYin yielding beneath two yang: gentle penetration from below, like wind entering everywhere or roots growing into earth. What force cannot break, persistent gentleness penetrates.",
+        "Structure": "⚊ 陽 yang (top)\n⚊ 陽 yang (middle)\n⚋ 陰 yin (bottom)\n\n一陰入二陽下 — One yin entering beneath two yang. Gentle penetration from below.",
+        "說卦傳": "巽為木、為風、為長女、為繩直、為工、為白、為長、為高、為進退、為不果、為臭。其於人也，為寡髮、為廣顙、為多白眼、為近利市三倍。其究為躁卦。巽，入也。",
+        "Brief Translation": "Xun is wood, is wind, is the eldest daughter, is the plumb line, is the carpenter, is white, is long, is high, is advancing and retreating, is indecision, is smell. For people, it is thin hair, wide forehead, much white in the eyes, and profit close to threefold in the market. Its ultimate meaning is the trigram of restlessness. Xun means entering, penetrating gently."
+      },
+      "section_labels": [
+        "Nature",
+        "Structure",
+        "說卦傳",
+        "Brief Translation"
+      ],
+      "composite_of": [
+        "yang-line",
+        "yin-line"
+      ],
+      "metadata": {
+        "body": "股 (Thigh)",
+        "animal": "雞 (Rooster)",
+        "binary": "011",
+        "pinyin": "Xùn",
+        "element": "風/木 (Wind/Wood)",
+        "direction": "東南 (Southeast)",
+        "family_role": "長女 (Eldest Daughter)",
+        "chinese_name": "巽"
+      }
+    },
+    {
+      "id": "trigram-fire",
+      "number": 9,
+      "name": "Fire (離 Lí)",
+      "symbol": "☲",
+      "keywords": [
+        "clinging",
+        "brightness",
+        "fire",
+        "middle-daughter",
+        "clarity",
+        "illumination",
+        "sun"
+      ],
+      "category": "trigram",
+      "sections": {
+        "Nature": "火 (Fire) · 中女 (Middle Daughter) · 南 (South) · 目 (Eye)\n\nYin held between two yang: darkness within brightness, like flame that clings to fuel to shine. Fire illuminates but must depend on what it burns — clarity requires something to illuminate.",
+        "Structure": "⚊ 陽 yang (top)\n⚋ 陰 yin (middle)\n⚊ 陽 yang (bottom)\n\n一陰麗二陽中 — One yin clinging between two yang. Brightness embracing darkness within.",
+        "說卦傳": "離為火、為日、為電、為中女、為甲胄、為戈兵。其於人也，為大腹。為乾卦。為鱉、為蟹、為蠃、為蚌、為龜。其於木也，為科上槁。離，麗也。",
+        "Brief Translation": "Li is fire, is the sun, is lightning, is the middle daughter, is armor and helmets, is spears and weapons. For people, it is a large belly. It is the trigram of dryness. It is the turtle, the crab, the snail, the mussel, the tortoise. Among trees, it is hollow above and dry. Li means clinging, brightness, beauty."
+      },
+      "section_labels": [
+        "Nature",
+        "Structure",
+        "說卦傳",
+        "Brief Translation"
+      ],
+      "composite_of": [
+        "yang-line",
+        "yin-line"
+      ],
+      "metadata": {
+        "body": "目 (Eye)",
+        "animal": "雉 (Pheasant)",
+        "binary": "101",
+        "pinyin": "Lí",
+        "element": "火 (Fire)",
+        "direction": "南 (South)",
+        "family_role": "中女 (Middle Daughter)",
+        "chinese_name": "離"
+      }
+    },
+    {
+      "id": "trigram-lake",
+      "number": 10,
+      "name": "Lake (兌 Duì)",
+      "symbol": "☱",
+      "keywords": [
+        "joyous",
+        "lake",
+        "youngest-daughter",
+        "pleasure",
+        "openness",
+        "mouth",
+        "gathering"
+      ],
+      "category": "trigram",
+      "sections": {
+        "Nature": "澤 (Lake) · 少女 (Youngest Daughter) · 西 (West) · 口 (Mouth)\n\nYin resting atop two yang: openness above strength, like a lake that gathers water in a basin and reflects the sky. Joy, exchange, and the pleasure of gathering together.",
+        "Structure": "⚋ 陰 yin (top)\n⚊ 陽 yang (middle)\n⚊ 陽 yang (bottom)\n\n一陰悅二陽上 — One yin opening above two yang. Joyous openness crowning strength.",
+        "說卦傳": "兌為澤、為少女、為巫、為口舌、為毀折、為附決。其於地也，為剛鹵。為妾、為羊。兌，說也。",
+        "Brief Translation": "Dui is the lake/marsh, is the youngest daughter, is the shaman/sorceress, is the mouth and tongue, is breaking and destroying, is bursting open. Among soils, it is hard and salty. It is the concubine, is the sheep. Dui means joy, delight, speaking."
+      },
+      "section_labels": [
+        "Nature",
+        "Structure",
+        "說卦傳",
+        "Brief Translation"
+      ],
+      "composite_of": [
+        "yang-line",
+        "yin-line"
+      ],
+      "metadata": {
+        "body": "口 (Mouth)",
+        "animal": "羊 (Sheep)",
+        "binary": "110",
+        "pinyin": "Duì",
+        "element": "澤 (Lake/Marsh)",
+        "direction": "西 (West)",
+        "family_role": "少女 (Youngest Daughter)",
+        "chinese_name": "兌"
+      }
+    },
+    {
+      "id": "hexagram-1",
+      "number": 11,
+      "name": "The Creative",
+      "symbol": "䷀",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天行健，君子以自強不息。潛龍勿用，陽在下也。見龍在田，德施普也。終日乾乾，反復道也。或躍在淵，進無咎也。飛龍在天，大人造也。亢龍有悔，盈不可久也。",
+        "Line 1": "潛龍，勿用。",
+        "Line 2": "見龍在田，利見大人。",
+        "Line 3": "君子終日乾乾，夕惕，若厲，無咎。",
+        "Line 4": "或躍在淵，無咎。",
+        "Line 5": "飛龍在天，利見大人。",
+        "Line 6": "亢龍有悔。",
+        "Judgment": "元，亨，利，貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-heaven",
+        "trigram-heaven"
+      ],
+      "metadata": {
+        "binary": "111111",
+        "number": 1,
+        "pinyin": "Qián",
+        "chinese_name": "乾",
+        "trigram_above": "heaven",
+        "trigram_below": "heaven"
+      }
+    },
+    {
+      "id": "hexagram-2",
+      "number": 12,
+      "name": "The Receptive",
+      "symbol": "䷁",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "地勢坤，君子以厚德載物。",
+        "Line 1": "履霜，堅冰至。",
+        "Line 2": "直，方，大，不習無不利。",
+        "Line 3": "含章可貞。或從王事，無成有終。",
+        "Line 4": "括囊；無咎，無譽。",
+        "Line 5": "黃裳，元吉。",
+        "Line 6": "戰龍於野，其血玄黃。",
+        "Judgment": "元，亨，利牝馬之貞。君子有攸往，先迷後得主，利西南得朋，東北喪朋。安貞，吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-earth",
+        "trigram-earth"
+      ],
+      "metadata": {
+        "binary": "000000",
+        "number": 2,
+        "pinyin": "Kūn",
+        "chinese_name": "坤",
+        "trigram_above": "earth",
+        "trigram_below": "earth"
+      }
+    },
+    {
+      "id": "hexagram-3",
+      "number": 13,
+      "name": "Difficulty at the Beginning",
+      "symbol": "䷂",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雲，雷，屯；君子以經綸。",
+        "Line 1": "磐桓；利居貞，利建侯。",
+        "Line 2": "屯如邅如，乘馬班如。匪寇婚媾，女子貞不字，十年乃字。",
+        "Line 3": "既鹿無虞，惟入于林中，君子幾不如舍，往吝。",
+        "Line 4": "乘馬班如，求婚媾，往吉，無不利。",
+        "Line 5": "屯其膏，小貞吉，大貞凶。",
+        "Line 6": "乘馬班如，泣血漣如。",
+        "Judgment": "元，亨，利，貞，勿用，有攸往，利建侯。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-thunder",
+        "trigram-water"
+      ],
+      "metadata": {
+        "binary": "100010",
+        "number": 3,
+        "pinyin": "Zhūn",
+        "chinese_name": "屯",
+        "trigram_above": "water",
+        "trigram_below": "thunder"
+      }
+    },
+    {
+      "id": "hexagram-4",
+      "number": 14,
+      "name": "Youthful Folly",
+      "symbol": "䷃",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山下出泉，蒙；君子以果行育德。",
+        "Line 1": "發蒙，利用刑人，用說桎梏，以往吝。",
+        "Line 2": "包蒙，吉；納婦，吉；子克家。",
+        "Line 3": "勿用娶女；見金夫，不有躬，無攸利。",
+        "Line 4": "困蒙，吝。",
+        "Line 5": "童蒙，吉。",
+        "Line 6": "擊蒙；不利為寇，利御寇。",
+        "Judgment": "亨。匪我求童蒙，童蒙求我。初噬告，再三瀆，瀆則不告。利貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-water",
+        "trigram-mountain"
+      ],
+      "metadata": {
+        "binary": "010001",
+        "number": 4,
+        "pinyin": "Méng",
+        "chinese_name": "蒙",
+        "trigram_above": "mountain",
+        "trigram_below": "water"
+      }
+    },
+    {
+      "id": "hexagram-5",
+      "number": 15,
+      "name": "Waiting",
+      "symbol": "䷄",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雲上於天，需；君子以飲食宴樂。",
+        "Line 1": "需于郊。利用恆，無咎。",
+        "Line 2": "需于沙。小有言，終吉。",
+        "Line 3": "需于泥，致寇至。",
+        "Line 4": "需于血，出自穴。",
+        "Line 5": "需于酒食，貞吉。",
+        "Line 6": "入于穴，有不速之客三人來，敬之終吉。",
+        "Judgment": "有孚，光亨，貞吉。利涉大川。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-heaven",
+        "trigram-water"
+      ],
+      "metadata": {
+        "binary": "111010",
+        "number": 5,
+        "pinyin": "Xū",
+        "chinese_name": "需",
+        "trigram_above": "water",
+        "trigram_below": "heaven"
+      }
+    },
+    {
+      "id": "hexagram-6",
+      "number": 16,
+      "name": "Conflict",
+      "symbol": "䷅",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天與水違行，訟；君子以作事謀始。",
+        "Line 1": "不永所事，小有言，終吉。",
+        "Line 2": "不克訟，歸而逋，其邑人三百戶，無眚。",
+        "Line 3": "食舊德，貞厲，終吉，或從王事，無成。",
+        "Line 4": "不克訟，復即命，渝安貞，吉。",
+        "Line 5": "訟元吉。",
+        "Line 6": "或錫之鞶帶，終朝三褫之。",
+        "Judgment": "有孚，窒。惕中吉。終凶。利見大人，不利涉大川。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-water",
+        "trigram-heaven"
+      ],
+      "metadata": {
+        "binary": "010111",
+        "number": 6,
+        "pinyin": "Sòng",
+        "chinese_name": "訟",
+        "trigram_above": "heaven",
+        "trigram_below": "water"
+      }
+    },
+    {
+      "id": "hexagram-7",
+      "number": 17,
+      "name": "The Army",
+      "symbol": "䷆",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "地中有水，師；君子以容民畜眾。",
+        "Line 1": "師出以律，否臧凶。",
+        "Line 2": "在師中，吉無咎，王三錫命。",
+        "Line 3": "師或輿尸，凶。",
+        "Line 4": "師左次，無咎。",
+        "Line 5": "田有禽，利執言，無咎。長子帥師，弟子輿尸，貞凶。",
+        "Line 6": "大君有命，開國承家，小人勿用。",
+        "Judgment": "貞，丈人，吉無咎。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-water",
+        "trigram-earth"
+      ],
+      "metadata": {
+        "binary": "010000",
+        "number": 7,
+        "pinyin": "Shī",
+        "chinese_name": "師",
+        "trigram_above": "earth",
+        "trigram_below": "water"
+      }
+    },
+    {
+      "id": "hexagram-8",
+      "number": 18,
+      "name": "Holding Together",
+      "symbol": "䷇",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "地上有水，比；先王以建萬國，親諸侯。",
+        "Line 1": "有孚比之，無咎。有孚盈缶，終來有他，吉。",
+        "Line 2": "比之自內，貞吉。",
+        "Line 3": "比之匪人。",
+        "Line 4": "外比之，貞吉。",
+        "Line 5": "顯比，王用三驅，失前禽。邑人不誡，吉。",
+        "Line 6": "比之無首，凶。",
+        "Judgment": "吉。原筮元永貞，無咎。不寧方來，後夫凶。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-earth",
+        "trigram-water"
+      ],
+      "metadata": {
+        "binary": "000010",
+        "number": 8,
+        "pinyin": "Bǐ",
+        "chinese_name": "比",
+        "trigram_above": "water",
+        "trigram_below": "earth"
+      }
+    },
+    {
+      "id": "hexagram-9",
+      "number": 19,
+      "name": "Small Taming",
+      "symbol": "䷈",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "風行天上，小畜；君子以懿文德。",
+        "Line 1": "復自道，何其咎，吉。",
+        "Line 2": "牽復，吉。",
+        "Line 3": "輿說輻，夫妻反目。",
+        "Line 4": "有孚，血去。惕出，無咎。",
+        "Line 5": "有孚攣如，富以其鄰。",
+        "Line 6": "既雨既處，尚德載婦，貞厲。月幾望，君子征凶。",
+        "Judgment": "亨。密雲不雨，自我西郊。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-heaven",
+        "trigram-wind"
+      ],
+      "metadata": {
+        "binary": "111011",
+        "number": 9,
+        "pinyin": "Xiǎo Chù",
+        "chinese_name": "小畜",
+        "trigram_above": "wind",
+        "trigram_below": "heaven"
+      }
+    },
+    {
+      "id": "hexagram-10",
+      "number": 20,
+      "name": "Treading",
+      "symbol": "䷉",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "上天下澤，履；君子以辯上下，定民志。",
+        "Line 1": "素履，往無咎。",
+        "Line 2": "履道坦坦，幽人貞吉。",
+        "Line 3": "眇能視，跛能履，履虎尾，咥人，凶。武人為于大君。",
+        "Line 4": "履虎尾，愬愬，終吉。",
+        "Line 5": "夬履，貞厲。",
+        "Line 6": "視履考祥，其旋元吉。",
+        "Judgment": "履虎尾，不咥人，亨。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-lake",
+        "trigram-heaven"
+      ],
+      "metadata": {
+        "binary": "110111",
+        "number": 10,
+        "pinyin": "Lǚ",
+        "chinese_name": "履",
+        "trigram_above": "heaven",
+        "trigram_below": "lake"
+      }
+    },
+    {
+      "id": "hexagram-11",
+      "number": 21,
+      "name": "Peace",
+      "symbol": "䷊",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天地交泰，后以財成天地之道，輔相天地之宜，以左右民。",
+        "Line 1": "拔茅茹，以其彙，征吉。",
+        "Line 2": "包荒，用馮河，不遐遺，朋亡，得尚于中行。",
+        "Line 3": "無平不陂，無往不復，艱貞無咎。勿恤其孚，于食有福。",
+        "Line 4": "翩翩不富，以其鄰，不戒以孚。",
+        "Line 5": "帝乙歸妹，以祉元吉。",
+        "Line 6": "城復于隍，勿用師。自邑告命，貞吝。",
+        "Judgment": "小往大來，吉亨。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-heaven",
+        "trigram-earth"
+      ],
+      "metadata": {
+        "binary": "111000",
+        "number": 11,
+        "pinyin": "Tài",
+        "chinese_name": "泰",
+        "trigram_above": "earth",
+        "trigram_below": "heaven"
+      }
+    },
+    {
+      "id": "hexagram-12",
+      "number": 22,
+      "name": "Standstill",
+      "symbol": "䷋",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天地不交，否；君子以儉德辟難，不可榮以祿。",
+        "Line 1": "拔茅茹，以其彙，貞吉亨。",
+        "Line 2": "包承。小人吉，大人否亨。",
+        "Line 3": "包羞。",
+        "Line 4": "有命無咎，疇離祉。",
+        "Line 5": "休否，大人吉。其亡其亡，繫于苞桑。",
+        "Line 6": "傾否，先否後喜。",
+        "Judgment": "否之匪人，不利君子貞，大往小來。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-earth",
+        "trigram-heaven"
+      ],
+      "metadata": {
+        "binary": "000111",
+        "number": 12,
+        "pinyin": "Pǐ",
+        "chinese_name": "否",
+        "trigram_above": "heaven",
+        "trigram_below": "earth"
+      }
+    },
+    {
+      "id": "hexagram-13",
+      "number": 23,
+      "name": "Fellowship",
+      "symbol": "䷌",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天與火，同人；君子以類族辨物。",
+        "Line 1": "同人于門，無咎。",
+        "Line 2": "同人于宗，吝。",
+        "Line 3": "伏戎于莽，升其高陵，三歲不興。",
+        "Line 4": "乘其墉，弗克攻，吉。",
+        "Line 5": "同人，先號咷而後笑。大師克相遇。",
+        "Line 6": "同人于郊，無悔。",
+        "Judgment": "同人于野，亨。利涉大川，利君子貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-fire",
+        "trigram-heaven"
+      ],
+      "metadata": {
+        "binary": "101111",
+        "number": 13,
+        "pinyin": "Tóng Rén",
+        "chinese_name": "同人",
+        "trigram_above": "heaven",
+        "trigram_below": "fire"
+      }
+    },
+    {
+      "id": "hexagram-14",
+      "number": 24,
+      "name": "Great Possession",
+      "symbol": "䷍",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "火在天上，大有；君子以遏惡揚善，順天休命。",
+        "Line 1": "無交害，匪咎，艱則無咎。",
+        "Line 2": "大車以載，有攸往，無咎。",
+        "Line 3": "公用亨于天子，小人弗克。",
+        "Line 4": "匪其彭，無咎。",
+        "Line 5": "厥孚交如，威如；吉。",
+        "Line 6": "自天佑之，吉無不利。",
+        "Judgment": "元亨。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-heaven",
+        "trigram-fire"
+      ],
+      "metadata": {
+        "binary": "111101",
+        "number": 14,
+        "pinyin": "Dà Yǒu",
+        "chinese_name": "大有",
+        "trigram_above": "fire",
+        "trigram_below": "heaven"
+      }
+    },
+    {
+      "id": "hexagram-15",
+      "number": 25,
+      "name": "Modesty",
+      "symbol": "䷎",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "地中有山，謙；君子以裒多益寡，稱物平施。",
+        "Line 1": "謙謙君子，用涉大川，吉。",
+        "Line 2": "鳴謙，貞吉。",
+        "Line 3": "勞謙君子，有終吉。",
+        "Line 4": "無不利，撝謙。",
+        "Line 5": "不富，以其鄰，利用侵伐，無不利。",
+        "Line 6": "鳴謙，利用行師，征邑國。",
+        "Judgment": "亨，君子有終。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-mountain",
+        "trigram-earth"
+      ],
+      "metadata": {
+        "binary": "001000",
+        "number": 15,
+        "pinyin": "Qiān",
+        "chinese_name": "謙",
+        "trigram_above": "earth",
+        "trigram_below": "mountain"
+      }
+    },
+    {
+      "id": "hexagram-16",
+      "number": 26,
+      "name": "Enthusiasm",
+      "symbol": "䷏",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雷出地奮，豫。先王以作樂崇德，殷薦之上帝，以配祖考。",
+        "Line 1": "鳴豫，凶。",
+        "Line 2": "介于石，不終日，貞吉。",
+        "Line 3": "盱豫，悔。遲有悔。",
+        "Line 4": "由豫，大有得。勿疑。朋盍簪。",
+        "Line 5": "貞疾，恆不死。",
+        "Line 6": "冥豫，成有渝，無咎。",
+        "Judgment": "利建侯行師。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-earth",
+        "trigram-thunder"
+      ],
+      "metadata": {
+        "binary": "000100",
+        "number": 16,
+        "pinyin": "Yù",
+        "chinese_name": "豫",
+        "trigram_above": "thunder",
+        "trigram_below": "earth"
+      }
+    },
+    {
+      "id": "hexagram-17",
+      "number": 27,
+      "name": "Following",
+      "symbol": "䷐",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤中有雷，隨；君子以嚮晦入宴息。",
+        "Line 1": "官有渝，貞吉。出門交有功。",
+        "Line 2": "係小子，失丈夫。",
+        "Line 3": "係丈夫，失小子。隨有求得，利居貞。",
+        "Line 4": "隨有獲，貞凶。有孚在道，以明，何咎。",
+        "Line 5": "孚于嘉，吉。",
+        "Line 6": "拘系之，乃從維之。王用亨于西山。",
+        "Judgment": "元亨利貞，無咎。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-thunder",
+        "trigram-lake"
+      ],
+      "metadata": {
+        "binary": "100110",
+        "number": 17,
+        "pinyin": "Suí",
+        "chinese_name": "隨",
+        "trigram_above": "lake",
+        "trigram_below": "thunder"
+      }
+    },
+    {
+      "id": "hexagram-18",
+      "number": 28,
+      "name": "Work on the Decayed",
+      "symbol": "䷑",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山下有風，蠱；君子以振民育德。",
+        "Line 1": "幹父之蠱，有子，考無咎，厲終吉。",
+        "Line 2": "幹母之蠱，不可貞。",
+        "Line 3": "幹父小有晦，無大咎。",
+        "Line 4": "裕父之蠱，往見吝。",
+        "Line 5": "幹父之蠱，用譽。",
+        "Line 6": "不事王侯，高尚其事。",
+        "Judgment": "元亨，利涉大川。先甲三日，後甲三日。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-wind",
+        "trigram-mountain"
+      ],
+      "metadata": {
+        "binary": "011001",
+        "number": 18,
+        "pinyin": "Gǔ",
+        "chinese_name": "蠱",
+        "trigram_above": "mountain",
+        "trigram_below": "wind"
+      }
+    },
+    {
+      "id": "hexagram-19",
+      "number": 29,
+      "name": "Approach",
+      "symbol": "䷒",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤上有地，臨；君子以教思無窮，容保民無疆。",
+        "Line 1": "咸臨，貞吉。",
+        "Line 2": "咸臨，吉無不利。",
+        "Line 3": "甘臨，無攸利。既憂之，無咎。",
+        "Line 4": "至臨，無咎。",
+        "Line 5": "知臨，大君之宜，吉。",
+        "Line 6": "敦臨，吉無咎。",
+        "Judgment": "元，亨，利，貞。至于八月有凶。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-lake",
+        "trigram-earth"
+      ],
+      "metadata": {
+        "binary": "110000",
+        "number": 19,
+        "pinyin": "Lín",
+        "chinese_name": "臨",
+        "trigram_above": "earth",
+        "trigram_below": "lake"
+      }
+    },
+    {
+      "id": "hexagram-20",
+      "number": 30,
+      "name": "Contemplation",
+      "symbol": "䷓",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "風行地上，觀；先王以省方，觀民設教。",
+        "Line 1": "童觀，小人無咎，君子吝。",
+        "Line 2": "窺觀，利女貞。",
+        "Line 3": "觀我生，進退。",
+        "Line 4": "觀國之光，利用賓于王。",
+        "Line 5": "觀我生，君子無咎。",
+        "Line 6": "觀其生，君子無咎。",
+        "Judgment": "盥而不薦，有孚顒若。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-earth",
+        "trigram-wind"
+      ],
+      "metadata": {
+        "binary": "000011",
+        "number": 20,
+        "pinyin": "Guān",
+        "chinese_name": "觀",
+        "trigram_above": "wind",
+        "trigram_below": "earth"
+      }
+    },
+    {
+      "id": "hexagram-21",
+      "number": 31,
+      "name": "Biting Through",
+      "symbol": "䷔",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雷電噬嗑；先王以明罰敕法。",
+        "Line 1": "履校滅趾，無咎。",
+        "Line 2": "噬膚滅鼻，無咎。",
+        "Line 3": "噬臘肉，遇毒；小吝，無咎。",
+        "Line 4": "噬乾胏，得金矢，利艱貞，吉。",
+        "Line 5": "噬乾肉，得黃金，貞厲，無咎。",
+        "Line 6": "何校滅耳，凶。",
+        "Judgment": "亨。利用獄。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-thunder",
+        "trigram-fire"
+      ],
+      "metadata": {
+        "binary": "100101",
+        "number": 21,
+        "pinyin": "Shì Kè",
+        "chinese_name": "噬嗑",
+        "trigram_above": "fire",
+        "trigram_below": "thunder"
+      }
+    },
+    {
+      "id": "hexagram-22",
+      "number": 32,
+      "name": "Grace",
+      "symbol": "䷕",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山下有火，賁；君子以明庶政，無敢折獄。",
+        "Line 1": "賁其趾，舍車而徒。",
+        "Line 2": "賁其須。",
+        "Line 3": "賁如濡如，永貞吉。",
+        "Line 4": "賁如皤如，白馬翰如，匪寇婚媾。",
+        "Line 5": "賁于丘園，束帛戔戔，吝，終吉。",
+        "Line 6": "白賁，無咎。",
+        "Judgment": "亨。小利有所往。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-fire",
+        "trigram-mountain"
+      ],
+      "metadata": {
+        "binary": "101001",
+        "number": 22,
+        "pinyin": "Bì",
+        "chinese_name": "賁",
+        "trigram_above": "mountain",
+        "trigram_below": "fire"
+      }
+    },
+    {
+      "id": "hexagram-23",
+      "number": 33,
+      "name": "Splitting Apart",
+      "symbol": "䷖",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山附于地，剝；上以厚下，安宅。",
+        "Line 1": "剝床以足，蔑貞凶。",
+        "Line 2": "剝床以辨，蔑貞凶。",
+        "Line 3": "剝之，無咎。",
+        "Line 4": "剝床以膚，凶。",
+        "Line 5": "貫魚，以宮人寵，無不利。",
+        "Line 6": "碩果不食，君子得輿，小人剝廬。",
+        "Judgment": "不利有攸往。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-earth",
+        "trigram-mountain"
+      ],
+      "metadata": {
+        "binary": "000001",
+        "number": 23,
+        "pinyin": "Bō",
+        "chinese_name": "剝",
+        "trigram_above": "mountain",
+        "trigram_below": "earth"
+      }
+    },
+    {
+      "id": "hexagram-24",
+      "number": 34,
+      "name": "Return",
+      "symbol": "䷗",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雷在地中，復；先王以至日閉關，商旅不行，后不省方。",
+        "Line 1": "不復遠，無祗悔，元吉。",
+        "Line 2": "休復，吉。",
+        "Line 3": "頻復厲，無咎。",
+        "Line 4": "中行獨復。",
+        "Line 5": "敦復，無悔。",
+        "Line 6": "迷復，凶，有災眚。用行師，終有大敗，以其國君，凶；至于十年，不克征。",
+        "Judgment": "亨。出入無疾，朋來無咎。反復其道，七日來復，利有攸往。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-thunder",
+        "trigram-earth"
+      ],
+      "metadata": {
+        "binary": "100000",
+        "number": 24,
+        "pinyin": "Fù",
+        "chinese_name": "復",
+        "trigram_above": "earth",
+        "trigram_below": "thunder"
+      }
+    },
+    {
+      "id": "hexagram-25",
+      "number": 35,
+      "name": "Innocence",
+      "symbol": "䷘",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天下雷行，物與無妄；先王以茂對時，育萬物。",
+        "Line 1": "無妄，往吉。",
+        "Line 2": "不耕獲，不菑畬，則利有攸往。",
+        "Line 3": "無妄之災，或繫之牛，行人之得，邑人之災。",
+        "Line 4": "可貞，無咎。",
+        "Line 5": "無妄之疾，勿藥有喜。",
+        "Line 6": "無妄，行有眚，無攸利。",
+        "Judgment": "元，亨，利，貞。其匪正有眚，不利有攸往。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-thunder",
+        "trigram-heaven"
+      ],
+      "metadata": {
+        "binary": "100111",
+        "number": 25,
+        "pinyin": "Wú Wàng",
+        "chinese_name": "無妄",
+        "trigram_above": "heaven",
+        "trigram_below": "thunder"
+      }
+    },
+    {
+      "id": "hexagram-26",
+      "number": 36,
+      "name": "Great Taming",
+      "symbol": "䷙",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天在山中，大畜；君子以多識前言往行，以畜其德。",
+        "Line 1": "有厲利已。",
+        "Line 2": "輿說輻。",
+        "Line 3": "良馬逐，利艱貞。日閑輿衛，利有攸往。",
+        "Line 4": "童牛之牿，元吉。",
+        "Line 5": "豶豕之牙，吉。",
+        "Line 6": "何天之衢，亨。",
+        "Judgment": "利貞，不家食吉，利涉大川。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-heaven",
+        "trigram-mountain"
+      ],
+      "metadata": {
+        "binary": "111001",
+        "number": 26,
+        "pinyin": "Dà Chù",
+        "chinese_name": "大畜",
+        "trigram_above": "mountain",
+        "trigram_below": "heaven"
+      }
+    },
+    {
+      "id": "hexagram-27",
+      "number": 37,
+      "name": "Nourishment",
+      "symbol": "䷚",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山下有雷，頤；君子以慎言語，節飲食。",
+        "Line 1": "舍爾靈龜，觀我朵頤，凶。",
+        "Line 2": "顛頤，拂經于丘頤，征凶。",
+        "Line 3": "拂頤，貞凶，十年勿用，無攸利。",
+        "Line 4": "顛頤吉，虎視眈眈，其欲逐逐，無咎。",
+        "Line 5": "拂經，居貞吉，不可涉大川。",
+        "Line 6": "由頤，厲吉，利涉大川。",
+        "Judgment": "貞吉。觀頤，自求口實。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-thunder",
+        "trigram-mountain"
+      ],
+      "metadata": {
+        "binary": "100001",
+        "number": 27,
+        "pinyin": "Yí",
+        "chinese_name": "頤",
+        "trigram_above": "mountain",
+        "trigram_below": "thunder"
+      }
+    },
+    {
+      "id": "hexagram-28",
+      "number": 38,
+      "name": "Great Excess",
+      "symbol": "䷛",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤滅木，大過；君子以獨立不懼，遯世無悶。",
+        "Line 1": "藉用白茅，無咎。",
+        "Line 2": "枯楊生稊，老夫得其女妻，無不利。",
+        "Line 3": "棟橈，凶。",
+        "Line 4": "棟隆，吉；有它吝。",
+        "Line 5": "枯楊生華，老婦得士夫，無咎無譽。",
+        "Line 6": "過涉滅頂，凶，無咎。",
+        "Judgment": "棟橈，利有攸往，亨。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-wind",
+        "trigram-lake"
+      ],
+      "metadata": {
+        "binary": "011110",
+        "number": 28,
+        "pinyin": "Dà Guò",
+        "chinese_name": "大過",
+        "trigram_above": "lake",
+        "trigram_below": "wind"
+      }
+    },
+    {
+      "id": "hexagram-29",
+      "number": 39,
+      "name": "The Abysmal",
+      "symbol": "䷜",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "水洊至，習坎；君子以常德行，習教事。",
+        "Line 1": "習坎，入于坎窞，凶。",
+        "Line 2": "坎有險，求小得。",
+        "Line 3": "來之坎坎，險且枕，入于坎窞，勿用。",
+        "Line 4": "樽酒簋貳，用缶，納約自牖，終無咎。",
+        "Line 5": "坎不盈，祗既平，無咎。",
+        "Line 6": "係用徽纆，寘于叢棘，三歲不得，凶。",
+        "Judgment": "習坎，有孚，維心亨，行有尚。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-water",
+        "trigram-water"
+      ],
+      "metadata": {
+        "binary": "010010",
+        "number": 29,
+        "pinyin": "Kǎn",
+        "chinese_name": "坎",
+        "trigram_above": "water",
+        "trigram_below": "water"
+      }
+    },
+    {
+      "id": "hexagram-30",
+      "number": 40,
+      "name": "The Clinging",
+      "symbol": "䷝",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "明兩作離，大人以繼明照于四方。",
+        "Line 1": "履錯然，敬之無咎。",
+        "Line 2": "黃離，元吉。",
+        "Line 3": "日昃之離，不鼓缶而歌，則大耋之嗟，凶。",
+        "Line 4": "突如其來如，焚如，死如，棄如。",
+        "Line 5": "出涕沱若，戚嗟若，吉。",
+        "Line 6": "王用出征，有嘉折首，獲匪其醜，無咎。",
+        "Judgment": "利貞，亨。畜牝牛，吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-fire",
+        "trigram-fire"
+      ],
+      "metadata": {
+        "binary": "101101",
+        "number": 30,
+        "pinyin": "Lí",
+        "chinese_name": "離",
+        "trigram_above": "fire",
+        "trigram_below": "fire"
+      }
+    },
+    {
+      "id": "hexagram-31",
+      "number": 41,
+      "name": "Influence",
+      "symbol": "䷞",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山上有澤，咸；君子以虛受人。",
+        "Line 1": "咸其拇。",
+        "Line 2": "咸其腓，凶，居吉。",
+        "Line 3": "咸其股，執其隨，往吝。",
+        "Line 4": "貞吉悔亡，憧憧往來，朋從爾思。",
+        "Line 5": "咸其脢，無悔。",
+        "Line 6": "咸其輔，頰，舌。",
+        "Judgment": "亨，利貞，取女吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-mountain",
+        "trigram-lake"
+      ],
+      "metadata": {
+        "binary": "001110",
+        "number": 31,
+        "pinyin": "Xián",
+        "chinese_name": "咸",
+        "trigram_above": "lake",
+        "trigram_below": "mountain"
+      }
+    },
+    {
+      "id": "hexagram-32",
+      "number": 42,
+      "name": "Duration",
+      "symbol": "䷟",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雷風，恆；君子以立不易方。",
+        "Line 1": "浚恆，貞凶，無攸利。",
+        "Line 2": "悔亡。",
+        "Line 3": "不恆其德，或承之羞，貞吝。",
+        "Line 4": "田無禽。",
+        "Line 5": "恆其德，貞，婦人吉，夫子凶。",
+        "Line 6": "振恆，凶。",
+        "Judgment": "亨，無咎，利貞，利有攸往。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-wind",
+        "trigram-thunder"
+      ],
+      "metadata": {
+        "binary": "011100",
+        "number": 32,
+        "pinyin": "Héng",
+        "chinese_name": "恆",
+        "trigram_above": "thunder",
+        "trigram_below": "wind"
+      }
+    },
+    {
+      "id": "hexagram-33",
+      "number": 43,
+      "name": "Retreat",
+      "symbol": "䷠",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天下有山，遯；君子以遠小人，不惡而嚴。",
+        "Line 1": "遯尾，厲，勿用有攸往。",
+        "Line 2": "執之用黃牛之革，莫之勝說。",
+        "Line 3": "係遯，有疾厲，畜臣妾吉。",
+        "Line 4": "好遯君子吉，小人否。",
+        "Line 5": "嘉遯，貞吉。",
+        "Line 6": "肥遯，無不利。",
+        "Judgment": "亨，小利貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-mountain",
+        "trigram-heaven"
+      ],
+      "metadata": {
+        "binary": "001111",
+        "number": 33,
+        "pinyin": "Dùn",
+        "chinese_name": "遯",
+        "trigram_above": "heaven",
+        "trigram_below": "mountain"
+      }
+    },
+    {
+      "id": "hexagram-34",
+      "number": 44,
+      "name": "Great Power",
+      "symbol": "䷡",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雷在天上，大壯；君子以非禮弗履。",
+        "Line 1": "壯于趾，征凶，有孚。",
+        "Line 2": "貞吉。",
+        "Line 3": "小人用壯，君子用罔，貞厲。羝羊觸藩，羸其角。",
+        "Line 4": "貞吉悔亡，藩決不羸，壯于大輿之輹。",
+        "Line 5": "喪羊于易，無悔。",
+        "Line 6": "羝羊觸藩，不能退，不能遂，無攸利，艱則吉。",
+        "Judgment": "利貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-heaven",
+        "trigram-thunder"
+      ],
+      "metadata": {
+        "binary": "111100",
+        "number": 34,
+        "pinyin": "Dà Zhuàng",
+        "chinese_name": "大壯",
+        "trigram_above": "thunder",
+        "trigram_below": "heaven"
+      }
+    },
+    {
+      "id": "hexagram-35",
+      "number": 45,
+      "name": "Progress",
+      "symbol": "䷢",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "明出地上，晉；君子以自昭明德。",
+        "Line 1": "晉如，摧如，貞吉。罔孚，裕無咎。",
+        "Line 2": "晉如，愁如，貞吉。受茲介福，于其王母。",
+        "Line 3": "眾允，悔亡。",
+        "Line 4": "晉如鼫鼠，貞厲。",
+        "Line 5": "悔亡，失得勿恤，往吉無不利。",
+        "Line 6": "晉其角，維用伐邑，厲吉無咎，貞吝。",
+        "Judgment": "康侯用錫馬蕃庶，晝日三接。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-earth",
+        "trigram-fire"
+      ],
+      "metadata": {
+        "binary": "000101",
+        "number": 35,
+        "pinyin": "Jìn",
+        "chinese_name": "晉",
+        "trigram_above": "fire",
+        "trigram_below": "earth"
+      }
+    },
+    {
+      "id": "hexagram-36",
+      "number": 46,
+      "name": "Darkening of the Light",
+      "symbol": "䷣",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "明入地中，明夷；君子以蒞眾，用晦而明。",
+        "Line 1": "明夷于飛，垂其翼。君子于行，三日不食，有攸往，主人有言。",
+        "Line 2": "明夷，夷于左股，用拯馬壯，吉。",
+        "Line 3": "明夷于南狩，得其大首，不可疾貞。",
+        "Line 4": "入于左腹，獲明夷之心，于出門庭。",
+        "Line 5": "箕子之明夷，利貞。",
+        "Line 6": "不明晦，初登于天，後入于地。",
+        "Judgment": "利艱貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-fire",
+        "trigram-earth"
+      ],
+      "metadata": {
+        "binary": "101000",
+        "number": 36,
+        "pinyin": "Míng Yí",
+        "chinese_name": "明夷",
+        "trigram_above": "earth",
+        "trigram_below": "fire"
+      }
+    },
+    {
+      "id": "hexagram-37",
+      "number": 47,
+      "name": "The Family",
+      "symbol": "䷤",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "風自火出，家人；君子以言有物，而行有恆。",
+        "Line 1": "閑有家，悔亡。",
+        "Line 2": "無攸遂，在中饋，貞吉。",
+        "Line 3": "家人嗃嗃，悔厲吉；婦子嘻嘻，終吝。",
+        "Line 4": "富家，大吉。",
+        "Line 5": "王假有家，勿恤吉。",
+        "Line 6": "有孚威如，終吉。",
+        "Judgment": "利女貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-fire",
+        "trigram-wind"
+      ],
+      "metadata": {
+        "binary": "101011",
+        "number": 37,
+        "pinyin": "Jiā Rén",
+        "chinese_name": "家人",
+        "trigram_above": "wind",
+        "trigram_below": "fire"
+      }
+    },
+    {
+      "id": "hexagram-38",
+      "number": 48,
+      "name": "Opposition",
+      "symbol": "䷥",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "上火下澤，睽；君子以同而異。",
+        "Line 1": "悔亡，喪馬勿逐，自復；見惡人無咎。",
+        "Line 2": "遇主于巷，無咎。",
+        "Line 3": "見輿曳，其牛掣，其人天且劓，無初有終。",
+        "Line 4": "睽孤，遇元夫，交孚，厲無咎。",
+        "Line 5": "悔亡，厥宗噬膚，往何咎。",
+        "Line 6": "睽孤，見豕負塗，載鬼一車，先張之弧，後說之弧，匪寇婚媾，往遇雨則吉。",
+        "Judgment": "小事吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-lake",
+        "trigram-fire"
+      ],
+      "metadata": {
+        "binary": "110101",
+        "number": 38,
+        "pinyin": "Kuí",
+        "chinese_name": "睽",
+        "trigram_above": "fire",
+        "trigram_below": "lake"
+      }
+    },
+    {
+      "id": "hexagram-39",
+      "number": 49,
+      "name": "Obstruction",
+      "symbol": "䷦",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山上有水，蹇；君子以反身修德。",
+        "Line 1": "往蹇，來譽。",
+        "Line 2": "王臣蹇蹇，匪躬之故。",
+        "Line 3": "往蹇來反。",
+        "Line 4": "往蹇來連。",
+        "Line 5": "大蹇朋來。",
+        "Line 6": "往蹇來碩，吉；利見大人。",
+        "Judgment": "利西南，不利東北；利見大人，貞吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-mountain",
+        "trigram-water"
+      ],
+      "metadata": {
+        "binary": "001010",
+        "number": 39,
+        "pinyin": "Jiǎn",
+        "chinese_name": "蹇",
+        "trigram_above": "water",
+        "trigram_below": "mountain"
+      }
+    },
+    {
+      "id": "hexagram-40",
+      "number": 50,
+      "name": "Deliverance",
+      "symbol": "䷧",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雷雨作，解；君子以赦過宥罪。",
+        "Line 1": "無咎。",
+        "Line 2": "田獲三狐，得黃矢，貞吉。",
+        "Line 3": "負且乘，致寇至，貞吝。",
+        "Line 4": "解而拇，朋至斯孚。",
+        "Line 5": "君子維有解，吉；有孚于小人。",
+        "Line 6": "公用射隼，于高墉之上，獲之，無不利。",
+        "Judgment": "利西南，無所往，其來復吉。有攸往，夙吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-water",
+        "trigram-thunder"
+      ],
+      "metadata": {
+        "binary": "010100",
+        "number": 40,
+        "pinyin": "Xiè",
+        "chinese_name": "解",
+        "trigram_above": "thunder",
+        "trigram_below": "water"
+      }
+    },
+    {
+      "id": "hexagram-41",
+      "number": 51,
+      "name": "Decrease",
+      "symbol": "䷨",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山下有澤，損；君子以懲忿窒欲。",
+        "Line 1": "已事遄往，無咎，酌損之。",
+        "Line 2": "利貞，征凶，弗損益之。",
+        "Line 3": "三人行，則損一人；一人行，則得其友。",
+        "Line 4": "損其疾，使遄有喜，無咎。",
+        "Line 5": "或益之，十朋之龜弗克違，元吉。",
+        "Line 6": "弗損益之，無咎，貞吉，利有攸往，得臣無家。",
+        "Judgment": "有孚，元吉，無咎，可貞，利有攸往？曷之用，二簋可用享。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-lake",
+        "trigram-mountain"
+      ],
+      "metadata": {
+        "binary": "110001",
+        "number": 41,
+        "pinyin": "Sǔn",
+        "chinese_name": "損",
+        "trigram_above": "mountain",
+        "trigram_below": "lake"
+      }
+    },
+    {
+      "id": "hexagram-42",
+      "number": 52,
+      "name": "Increase",
+      "symbol": "䷩",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "風雷，益；君子以見善則遷，有過則改。",
+        "Line 1": "利用為大作，元吉，無咎。",
+        "Line 2": "或益之，十朋之龜弗克違，永貞吉。王用享于帝，吉。",
+        "Line 3": "益之用凶事，無咎。有孚中行，告公用圭。",
+        "Line 4": "中行，告公從。利用為依遷國。",
+        "Line 5": "有孚惠心，勿問元吉。有孚惠我德。",
+        "Line 6": "莫益之，或擊之，立心勿恆，凶。",
+        "Judgment": "利有攸往，利涉大川。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-thunder",
+        "trigram-wind"
+      ],
+      "metadata": {
+        "binary": "100011",
+        "number": 42,
+        "pinyin": "Yì",
+        "chinese_name": "益",
+        "trigram_above": "wind",
+        "trigram_below": "thunder"
+      }
+    },
+    {
+      "id": "hexagram-43",
+      "number": 53,
+      "name": "Breakthrough",
+      "symbol": "䷪",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤上于天，夬；君子以施祿及下，居德則忌。",
+        "Line 1": "壯于前趾，往不勝為吝。",
+        "Line 2": "惕號，莫夜有戎，勿恤。",
+        "Line 3": "壯于頄，有凶。君子夬夬，獨行遇雨，若濡有慍，無咎。",
+        "Line 4": "臀無膚，其行次且。牽羊悔亡，聞言不信。",
+        "Line 5": "莧陸夬夬，中行無咎。",
+        "Line 6": "無號，終有凶。",
+        "Judgment": "揚于王庭，孚號，有厲，告自邑，不利即戎，利有攸往。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-heaven",
+        "trigram-lake"
+      ],
+      "metadata": {
+        "binary": "111110",
+        "number": 43,
+        "pinyin": "Guài",
+        "chinese_name": "夬",
+        "trigram_above": "lake",
+        "trigram_below": "heaven"
+      }
+    },
+    {
+      "id": "hexagram-44",
+      "number": 54,
+      "name": "Coming to Meet",
+      "symbol": "䷫",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "天下有風，姤；后以施命誥四方。",
+        "Line 1": "繫于金柅，貞吉，有攸往，見凶，羸豕孚蹢躅。",
+        "Line 2": "包有魚，無咎，不利賓。",
+        "Line 3": "臀無膚，其行次且，厲，無大咎。",
+        "Line 4": "包無魚，起凶。",
+        "Line 5": "以杞包瓜，含章，有隕自天。",
+        "Line 6": "姤其角，吝，無咎。",
+        "Judgment": "女壯，勿用取女。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-wind",
+        "trigram-heaven"
+      ],
+      "metadata": {
+        "binary": "011111",
+        "number": 44,
+        "pinyin": "Gòu",
+        "chinese_name": "姤",
+        "trigram_above": "heaven",
+        "trigram_below": "wind"
+      }
+    },
+    {
+      "id": "hexagram-45",
+      "number": 55,
+      "name": "Gathering Together",
+      "symbol": "䷬",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤上於地，萃；君子以除戎器，戒不虞。",
+        "Line 1": "有孚不終，乃亂乃萃，若號一握為笑，勿恤，往無咎。",
+        "Line 2": "引吉，無咎，孚乃利用禴。",
+        "Line 3": "萃如，嗟如，無攸利，往無咎，小吝。",
+        "Line 4": "大吉，無咎。",
+        "Line 5": "萃有位，無咎。匪孚，元永貞，悔亡。",
+        "Line 6": "齎咨涕洟，無咎。",
+        "Judgment": "亨。王假有廟，利見大人，亨，利貞。用大牲吉，利有攸往。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-earth",
+        "trigram-lake"
+      ],
+      "metadata": {
+        "binary": "000110",
+        "number": 45,
+        "pinyin": "Cuì",
+        "chinese_name": "萃",
+        "trigram_above": "lake",
+        "trigram_below": "earth"
+      }
+    },
+    {
+      "id": "hexagram-46",
+      "number": 56,
+      "name": "Pushing Upward",
+      "symbol": "䷭",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "地中生木，升；君子以順德，積小以高大。",
+        "Line 1": "允升，大吉。",
+        "Line 2": "孚乃利用禴，無咎。",
+        "Line 3": "升虛邑。",
+        "Line 4": "王用亨于岐山，吉無咎。",
+        "Line 5": "貞吉，升階。",
+        "Line 6": "冥升，利于不息之貞。",
+        "Judgment": "元亨，用見大人，勿恤，南征吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-wind",
+        "trigram-earth"
+      ],
+      "metadata": {
+        "binary": "011000",
+        "number": 46,
+        "pinyin": "Shēng",
+        "chinese_name": "升",
+        "trigram_above": "earth",
+        "trigram_below": "wind"
+      }
+    },
+    {
+      "id": "hexagram-47",
+      "number": 57,
+      "name": "Oppression",
+      "symbol": "䷮",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤無水，困；君子以致命遂志。",
+        "Line 1": "臀困于株木，入于幽谷，三歲不覿。",
+        "Line 2": "困于酒食，朱紱方來，利用亨祀，征凶，無咎。",
+        "Line 3": "困于石，據于蒺藜，入于其宮，不見其妻，凶。",
+        "Line 4": "來徐徐，困于金車，吝，有終。",
+        "Line 5": "劓刖，困于赤紱，乃徐有說，利用祭祀。",
+        "Line 6": "困于葛藟，于臲卼，曰動悔。有悔，征吉。",
+        "Judgment": "亨，貞，大人吉，無咎，有言不信。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-water",
+        "trigram-lake"
+      ],
+      "metadata": {
+        "binary": "010110",
+        "number": 47,
+        "pinyin": "Kùn",
+        "chinese_name": "困",
+        "trigram_above": "lake",
+        "trigram_below": "water"
+      }
+    },
+    {
+      "id": "hexagram-48",
+      "number": 58,
+      "name": "The Well",
+      "symbol": "䷯",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "木上有水，井；君子以勞民勸相。",
+        "Line 1": "井泥不食，舊井無禽。",
+        "Line 2": "井谷射鮒，甕敝漏。",
+        "Line 3": "井渫不食，為我民惻，可用汲，王明，並受其福。",
+        "Line 4": "井甃，無咎。",
+        "Line 5": "井冽，寒泉食。",
+        "Line 6": "井收勿幕，有孚無吉。",
+        "Judgment": "改邑不改井，無喪無得，往來井井。汔至，亦未繘井，羸其瓶，凶。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-wind",
+        "trigram-water"
+      ],
+      "metadata": {
+        "binary": "011010",
+        "number": 48,
+        "pinyin": "Jǐng",
+        "chinese_name": "井",
+        "trigram_above": "water",
+        "trigram_below": "wind"
+      }
+    },
+    {
+      "id": "hexagram-49",
+      "number": 59,
+      "name": "Revolution",
+      "symbol": "䷰",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤中有火，革；君子以治歷明時。",
+        "Line 1": "鞏用黃牛之革。",
+        "Line 2": "己日乃革之，征吉，無咎。",
+        "Line 3": "征凶，貞厲，革言三就，有孚。",
+        "Line 4": "悔亡，有孚改命，吉。",
+        "Line 5": "大人虎變，未占有孚。",
+        "Line 6": "君子豹變，小人革面，征凶，居貞吉。",
+        "Judgment": "己日乃孚，元亨利貞，悔亡。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-fire",
+        "trigram-lake"
+      ],
+      "metadata": {
+        "binary": "101110",
+        "number": 49,
+        "pinyin": "Gé",
+        "chinese_name": "革",
+        "trigram_above": "lake",
+        "trigram_below": "fire"
+      }
+    },
+    {
+      "id": "hexagram-50",
+      "number": 60,
+      "name": "The Cauldron",
+      "symbol": "䷱",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "木上有火，鼎；君子以正位凝命。",
+        "Line 1": "鼎顛趾，利出否，得妾以其子，無咎。",
+        "Line 2": "鼎有實，我仇有疾，不我能即，吉。",
+        "Line 3": "鼎耳革，其行塞，雉膏不食，方雨虧悔，終吉。",
+        "Line 4": "鼎折足，覆公餗，其形渥，凶。",
+        "Line 5": "鼎黃耳金鉉，利貞。",
+        "Line 6": "鼎玉鉉，大吉，無不利。",
+        "Judgment": "元吉，亨。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-wind",
+        "trigram-fire"
+      ],
+      "metadata": {
+        "binary": "011101",
+        "number": 50,
+        "pinyin": "Dǐng",
+        "chinese_name": "鼎",
+        "trigram_above": "fire",
+        "trigram_below": "wind"
+      }
+    },
+    {
+      "id": "hexagram-51",
+      "number": 61,
+      "name": "The Arousing",
+      "symbol": "䷲",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "洊雷，震；君子以恐懼修身。",
+        "Line 1": "震來虩虩，後笑言啞啞，吉。",
+        "Line 2": "震來厲，億喪貝，躋于九陵，勿逐，七日得。",
+        "Line 3": "震蘇蘇，震行無眚。",
+        "Line 4": "震遂泥。",
+        "Line 5": "震往來厲，億無喪，有事。",
+        "Line 6": "震索索，視矍矍，征凶。震不于其躬，于其鄰，無咎。婚媾有言。",
+        "Judgment": "亨。震來虩虩，笑言啞啞。震驚百里，不喪匕鬯。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-thunder",
+        "trigram-thunder"
+      ],
+      "metadata": {
+        "binary": "100100",
+        "number": 51,
+        "pinyin": "Zhèn",
+        "chinese_name": "震",
+        "trigram_above": "thunder",
+        "trigram_below": "thunder"
+      }
+    },
+    {
+      "id": "hexagram-52",
+      "number": 62,
+      "name": "Keeping Still",
+      "symbol": "䷳",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "兼山，艮；君子以思不出其位。",
+        "Line 1": "艮其趾，無咎，利永貞。",
+        "Line 2": "艮其腓，不拯其隨，其心不快。",
+        "Line 3": "艮其限，列其夤，厲薰心。",
+        "Line 4": "艮其身，無咎。",
+        "Line 5": "艮其輔，言有序，悔亡。",
+        "Line 6": "敦艮，吉。",
+        "Judgment": "艮其背，不獲其身，行其庭，不見其人，無咎。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-mountain",
+        "trigram-mountain"
+      ],
+      "metadata": {
+        "binary": "001001",
+        "number": 52,
+        "pinyin": "Gèn",
+        "chinese_name": "艮",
+        "trigram_above": "mountain",
+        "trigram_below": "mountain"
+      }
+    },
+    {
+      "id": "hexagram-53",
+      "number": 63,
+      "name": "Development",
+      "symbol": "䷴",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山上有木，漸；君子以居賢德，善俗。",
+        "Line 1": "鴻漸于干，小子厲，有言，無咎。",
+        "Line 2": "鴻漸于磐，飲食衎衎，吉。",
+        "Line 3": "鴻漸于陸，夫征不復，婦孕不育，凶；利御寇。",
+        "Line 4": "鴻漸于木，或得其桷，無咎。",
+        "Line 5": "鴻漸于陵，婦三歲不孕，終莫之勝，吉。",
+        "Line 6": "鴻漸于逵，其羽可用為儀，吉。",
+        "Judgment": "女歸吉，利貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-mountain",
+        "trigram-wind"
+      ],
+      "metadata": {
+        "binary": "001011",
+        "number": 53,
+        "pinyin": "Jiàn",
+        "chinese_name": "漸",
+        "trigram_above": "wind",
+        "trigram_below": "mountain"
+      }
+    },
+    {
+      "id": "hexagram-54",
+      "number": 64,
+      "name": "The Marrying Maiden",
+      "symbol": "䷵",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤上有雷，歸妹；君子以永終知敝。",
+        "Line 1": "歸妹以娣，跛能履，征吉。",
+        "Line 2": "眇能視，利幽人之貞。",
+        "Line 3": "歸妹以須，反歸以娣。",
+        "Line 4": "歸妹愆期，遲歸有時。",
+        "Line 5": "帝乙歸妹，其君之袂，不如其娣之袂良，月幾望，吉。",
+        "Line 6": "女承筐無實，士刲羊無血，無攸利。",
+        "Judgment": "征凶，無攸利。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-lake",
+        "trigram-thunder"
+      ],
+      "metadata": {
+        "binary": "110100",
+        "number": 54,
+        "pinyin": "Guī Mèi",
+        "chinese_name": "歸妹",
+        "trigram_above": "thunder",
+        "trigram_below": "lake"
+      }
+    },
+    {
+      "id": "hexagram-55",
+      "number": 65,
+      "name": "Abundance",
+      "symbol": "䷶",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "雷電皆至，豐；君子以折獄致刑。",
+        "Line 1": "遇其配主，雖旬無咎，往有尚。",
+        "Line 2": "豐其蔀，日中見斗，往得疑疾，有孚發若，吉。",
+        "Line 3": "豐其沛，日中見沫，折其右肱，無咎。",
+        "Line 4": "豐其蔀，日中見斗，遇其夷主，吉。",
+        "Line 5": "來章，有慶譽，吉。",
+        "Line 6": "豐其屋，蔀其家，窺其戶，闃其無人，三歲不覿，凶。",
+        "Judgment": "亨，王假之，勿憂，宜日中。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-fire",
+        "trigram-thunder"
+      ],
+      "metadata": {
+        "binary": "101100",
+        "number": 55,
+        "pinyin": "Fēng",
+        "chinese_name": "豐",
+        "trigram_above": "thunder",
+        "trigram_below": "fire"
+      }
+    },
+    {
+      "id": "hexagram-56",
+      "number": 66,
+      "name": "The Wanderer",
+      "symbol": "䷷",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山上有火，旅；君子以明慎用刑，而不留獄。",
+        "Line 1": "旅瑣瑣，斯其所取災。",
+        "Line 2": "旅即次，懷其資，得童僕貞。",
+        "Line 3": "旅焚其次，喪其童僕，貞厲。",
+        "Line 4": "旅于處，得其資斧，我心不快。",
+        "Line 5": "射雉一矢亡，終以譽命。",
+        "Line 6": "鳥焚其巢，旅人先笑後號咷。喪牛于易，凶。",
+        "Judgment": "小亨，旅貞吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-mountain",
+        "trigram-fire"
+      ],
+      "metadata": {
+        "binary": "001101",
+        "number": 56,
+        "pinyin": "Lǚ",
+        "chinese_name": "旅",
+        "trigram_above": "fire",
+        "trigram_below": "mountain"
+      }
+    },
+    {
+      "id": "hexagram-57",
+      "number": 67,
+      "name": "The Gentle",
+      "symbol": "䷸",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "隨風，巽；君子以申命行事。",
+        "Line 1": "進退，利武人之貞。",
+        "Line 2": "巽在床下，用史巫紛若，吉無咎。",
+        "Line 3": "頻巽，吝。",
+        "Line 4": "悔亡，田獲三品。",
+        "Line 5": "貞吉悔亡，無不利。無初有終，先庚三日，後庚三日，吉。",
+        "Line 6": "巽在床下，喪其資斧，貞凶。",
+        "Judgment": "小亨，利攸往，利見大人。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-wind",
+        "trigram-wind"
+      ],
+      "metadata": {
+        "binary": "011011",
+        "number": 57,
+        "pinyin": "Xùn",
+        "chinese_name": "巽",
+        "trigram_above": "wind",
+        "trigram_below": "wind"
+      }
+    },
+    {
+      "id": "hexagram-58",
+      "number": 68,
+      "name": "The Joyous",
+      "symbol": "䷹",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "麗澤，兌；君子以朋友講習。",
+        "Line 1": "和兌，吉。",
+        "Line 2": "孚兌，吉，悔亡。",
+        "Line 3": "來兌，凶。",
+        "Line 4": "商兌，未寧，介疾有喜。",
+        "Line 5": "孚于剝，有厲。",
+        "Line 6": "引兌。",
+        "Judgment": "亨，利貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-lake",
+        "trigram-lake"
+      ],
+      "metadata": {
+        "binary": "110110",
+        "number": 58,
+        "pinyin": "Duì",
+        "chinese_name": "兌",
+        "trigram_above": "lake",
+        "trigram_below": "lake"
+      }
+    },
+    {
+      "id": "hexagram-59",
+      "number": 69,
+      "name": "Dispersion",
+      "symbol": "䷺",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "風行水上，渙；先王以享于帝立廟。",
+        "Line 1": "用拯馬壯，吉。",
+        "Line 2": "渙奔其機，悔亡。",
+        "Line 3": "渙其躬，無悔。",
+        "Line 4": "渙其群，元吉。渙有丘，匪夷所思。",
+        "Line 5": "渙汗其大號，渙王居，無咎。",
+        "Line 6": "渙其血，去逖出，無咎。",
+        "Judgment": "亨。王假有廟，利涉大川，利貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-water",
+        "trigram-wind"
+      ],
+      "metadata": {
+        "binary": "010011",
+        "number": 59,
+        "pinyin": "Huàn",
+        "chinese_name": "渙",
+        "trigram_above": "wind",
+        "trigram_below": "water"
+      }
+    },
+    {
+      "id": "hexagram-60",
+      "number": 70,
+      "name": "Limitation",
+      "symbol": "䷻",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤上有水，節；君子以制數度，議德行。",
+        "Line 1": "不出戶庭，無咎。",
+        "Line 2": "不出門庭，凶。",
+        "Line 3": "不節若，則嗟若，無咎。",
+        "Line 4": "安節，亨。",
+        "Line 5": "甘節，吉；往有尚。",
+        "Line 6": "苦節，貞凶，悔亡。",
+        "Judgment": "亨。苦節不可貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-lake",
+        "trigram-water"
+      ],
+      "metadata": {
+        "binary": "110010",
+        "number": 60,
+        "pinyin": "Jié",
+        "chinese_name": "節",
+        "trigram_above": "water",
+        "trigram_below": "lake"
+      }
+    },
+    {
+      "id": "hexagram-61",
+      "number": 71,
+      "name": "Inner Truth",
+      "symbol": "䷼",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "澤上有風，中孚；君子以議獄緩死。",
+        "Line 1": "虞吉，有他不燕。",
+        "Line 2": "鳴鶴在陰，其子和之，我有好爵，吾與爾靡之。",
+        "Line 3": "得敵，或鼓或罷，或泣或歌。",
+        "Line 4": "月幾望，馬匹亡，無咎。",
+        "Line 5": "有孚攣如，無咎。",
+        "Line 6": "翰音登于天，貞凶。",
+        "Judgment": "豚魚，吉，利涉大川，利貞。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-lake",
+        "trigram-wind"
+      ],
+      "metadata": {
+        "binary": "110011",
+        "number": 61,
+        "pinyin": "Zhōng Fú",
+        "chinese_name": "中孚",
+        "trigram_above": "wind",
+        "trigram_below": "lake"
+      }
+    },
+    {
+      "id": "hexagram-62",
+      "number": 72,
+      "name": "Small Exceeding",
+      "symbol": "䷽",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "山上有雷，小過；君子以行過乎恭，喪過乎哀，用過乎儉。",
+        "Line 1": "飛鳥以凶。",
+        "Line 2": "過其祖，遇其妣；不及其君，遇其臣；無咎。",
+        "Line 3": "弗過防之，從或戕之，凶。",
+        "Line 4": "無咎，弗過遇之。往厲必戒，勿用永貞。",
+        "Line 5": "密雲不雨，自我西郊，公弋取彼在穴。",
+        "Line 6": "弗遇過之，飛鳥離之，凶，是謂災眚。",
+        "Judgment": "亨，利貞，可小事，不可大事。飛鳥遺之音，不宜上宜下，大吉。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-mountain",
+        "trigram-thunder"
+      ],
+      "metadata": {
+        "binary": "001100",
+        "number": 62,
+        "pinyin": "Xiǎo Guò",
+        "chinese_name": "小過",
+        "trigram_above": "thunder",
+        "trigram_below": "mountain"
+      }
+    },
+    {
+      "id": "hexagram-63",
+      "number": 73,
+      "name": "After Completion",
+      "symbol": "䷾",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "水在火上，既濟；君子以思患而預防之。",
+        "Line 1": "曳其輪，濡其尾，無咎。",
+        "Line 2": "婦喪其茀，勿逐，七日得。",
+        "Line 3": "高宗伐鬼方，三年克之，小人勿用。",
+        "Line 4": "繻有衣袽，終日戒。",
+        "Line 5": "東鄰殺牛，不如西鄰之禴祭，實受其福。",
+        "Line 6": "濡其首，厲。",
+        "Judgment": "亨，小利貞，初吉終亂。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-fire",
+        "trigram-water"
+      ],
+      "metadata": {
+        "binary": "101010",
+        "number": 63,
+        "pinyin": "Jì Jì",
+        "chinese_name": "既濟",
+        "trigram_above": "water",
+        "trigram_below": "fire"
+      }
+    },
+    {
+      "id": "hexagram-64",
+      "number": 74,
+      "name": "Before Completion",
+      "symbol": "䷿",
+      "keywords": [],
+      "category": "hexagram",
+      "sections": {
+        "Image": "火在水上，未濟；君子以慎辨物居方。",
+        "Line 1": "濡其尾，吝。",
+        "Line 2": "曳其輪，貞吉。",
+        "Line 3": "未濟，征凶，利涉大川。",
+        "Line 4": "貞吉，悔亡，震用伐鬼方，三年有賞于大國。",
+        "Line 5": "貞吉，無悔，君子之光，有孚，吉。",
+        "Line 6": "有孚于飲酒，無咎，濡其首，有孚失是。",
+        "Judgment": "亨，小狐汔濟，濡其尾，無攸利。"
+      },
+      "section_labels": [
+        "Image",
+        "Line 1",
+        "Line 2",
+        "Line 3",
+        "Line 4",
+        "Line 5",
+        "Line 6",
+        "Judgment"
+      ],
+      "composite_of": [
+        "trigram-water",
+        "trigram-fire"
+      ],
+      "metadata": {
+        "binary": "010101",
+        "number": 64,
+        "pinyin": "Wèi Jì",
+        "chinese_name": "未濟",
+        "trigram_above": "fire",
+        "trigram_below": "water"
+      }
+    }
+  ]
+}
