@@ -76,3 +76,21 @@ toggles books through time. Deep-linkable: `?hexagram=03&books=zhouyi,ten-wings`
 
 The same grammar data serves the recursive.eco app unchanged — book-grammars are
 ordinary grammars there, and the channel (`/library/channels/iching`) simply lists them.
+
+## The epistemic frame (added Jul 18 2026, from the builder's books)
+
+The book rail is not a progress bar. No book on it is "the true one" — not the terse
+Western Zhou omen text, not the moralizing Ten Wings, not Wilhelm, not whatever science
+says about randomness. Each book is a **grammar**: a finite, coherent set of elements
+generating an infinite range of appropriate responses, judged not by "is it true?" but
+by the builder's three-filter test — *is it useful, does it fit the data, is it
+compassionate.* Falsifiable claims (does casting predict events? — no one has shown it)
+and relational claims (does sustained practice within this grammar produce coherence,
+meaning, relationship? — observably, for three thousand years) are different kinds of
+claim, not a ranking. The viewer's unranked co-presence of the books — oldest first,
+none privileged — is this frame, rendered. Relate to the hexagram; never obey it.
+
+**Pending (Phase A):** the builder corrected errors in the app-side copies of the two
+book-grammars (recursive.eco library). Those corrections must be exported back into
+grammars/ (the two-way-sync move: get_grammar → diff → repo, then re-run the gate and
+sync_public) so the repo stays canon. Do this before adding any new book.
