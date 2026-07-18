@@ -80,7 +80,12 @@ def main():
             },
         })
 
-    missing_tuan = [i + 1 for i in range(64) if not tuan.get(f"iching__{i+1}")]
+    fixed = apply_corrections(items, "ten-wings")
+    if fixed: print(f"applied {fixed} correction(s) from corrections.json")
+
+    # what still lacks a 彖 after the corrections overlay (source gaps that remain open)
+    missing_tuan = [it["metadata"]["king_wen"] for it in items
+                    if "彖传 · Tuan (on the judgment)" not in it["sections"]]
     grammar = {
         "name": "十翼 — The Ten Wings (per-hexagram commentary)",
         "description": (
@@ -116,6 +121,29 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(grammar, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"wrote {OUT.relative_to(ROOT)} — {len(items)} hexagrams; tuan missing: {missing_tuan or 'none'}")
+
+
+
+
+def apply_corrections(items, grammar_slug):
+    """Overlay research/sources/corrections.json onto built items (reproducible fixes —
+    see that file's _note). Matches by item id or king_wen; replaces the named section."""
+    import json as _json
+    p = RAW.parent / "corrections.json"
+    if not p.exists():
+        return 0
+    data = _json.loads(p.read_text(encoding="utf-8"))
+    n = 0
+    for c in data.get("corrections", []):
+        if c.get("grammar") != grammar_slug:
+            continue
+        for it in items:
+            if it["id"] == c.get("item_id") or it["metadata"].get("king_wen") == c.get("king_wen"):
+                it["sections"][c["section"]] = c["text"]
+                note = it["sections"].get("Research note", "")
+                it["sections"]["Research note"] = (note + " [corrected: " + c["section"] + " — " + c.get("source", "see corrections.json") + "]").strip()
+                n += 1
+    return n
 
 
 if __name__ == "__main__":

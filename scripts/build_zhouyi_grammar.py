@@ -90,6 +90,9 @@ def main():
             },
         })
 
+    fixed = apply_corrections(items, "zhouyi")
+    if fixed: print(f"applied {fixed} correction(s) from corrections.json")
+
     grammar = {
         "name": "周易 — The Zhouyi (original text)",
         "description": (
@@ -133,6 +136,29 @@ def pinyin_slug(p):
     # qián → qian; strip tone marks for a stable ascii id
     import unicodedata
     return "".join(c for c in unicodedata.normalize("NFD", p) if not unicodedata.combining(c)).replace(" ", "-").lower()
+
+
+
+
+def apply_corrections(items, grammar_slug):
+    """Overlay research/sources/corrections.json onto built items (reproducible fixes —
+    see that file's _note). Matches by item id or king_wen; replaces the named section."""
+    import json as _json
+    p = RAW.parent / "corrections.json"
+    if not p.exists():
+        return 0
+    data = _json.loads(p.read_text(encoding="utf-8"))
+    n = 0
+    for c in data.get("corrections", []):
+        if c.get("grammar") != grammar_slug:
+            continue
+        for it in items:
+            if it["id"] == c.get("item_id") or it["metadata"].get("king_wen") == c.get("king_wen"):
+                it["sections"][c["section"]] = c["text"]
+                note = it["sections"].get("Research note", "")
+                it["sections"]["Research note"] = (note + " [corrected: " + c["section"] + " — " + c.get("source", "see corrections.json") + "]").strip()
+                n += 1
+    return n
 
 
 if __name__ == "__main__":
