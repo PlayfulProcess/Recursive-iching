@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { BOOKS, DEFAULT_BOOK_SLUGS, hexagram, bookItem, neighbors, mdBoldHtml } from "@/lib/iching";
 import { HexagramMatrix } from "@/components/iching/HexagramMatrix";
 import { LineDiagram } from "@/components/iching/LineDiagram";
+import { Composition } from "@/components/iching/Composition";
 
 /* The time×space reader as 64 real pages (docs/TIME-AND-SPACE.md):
    the matrix moves you through space; the book rail toggles the centuries.
@@ -69,6 +70,7 @@ export default async function HexagramPage({ params, searchParams }: {
               A moving line in a cast walks exactly one of these steps — <Link href="/cast" className="underline">cast a path</Link>.
             </p>
           </div>
+          <Composition kw={kw} />
         </aside>
 
         <section>

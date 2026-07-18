@@ -156,3 +156,43 @@ export function mdBoldHtml(text: string): string {
   const esc = text.replace(/[&<>]/g, (c) => (({ "&": "&amp;", "<": "&lt;", ">": "&gt;" } as Record<string, string>)[c]!));
   return esc.replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
 }
+
+// ---- the compositional axis: the builder's Emergent Structure grammar ----
+// (grammars/emergent-structure — 2 lines → 8 trigrams → 64 hexagrams via
+// composite_of; traditional characters; the builder's own Brief Translations.
+// Different id scheme than the book-grammars ON PURPOSE: this is the
+// compositional axis, bridged to the historical axis on King Wen number.)
+import emergentGrammar from "@/grammars/emergent-structure/grammar.json";
+
+export interface EmergentItem {
+  id: string;
+  name: string;
+  symbol?: string;
+  category: "line" | "trigram" | "hexagram";
+  sections: Record<string, string>;
+  composite_of?: string[];
+  metadata?: Record<string, unknown>;
+}
+
+const emergentItems = (emergentGrammar as unknown as { items: EmergentItem[] }).items;
+const emergentById = new Map(emergentItems.map((i) => [i.id, i]));
+
+export const LINES: EmergentItem[] = emergentItems.filter((i) => i.category === "line");
+export const EMERGENT_TRIGRAMS: EmergentItem[] = emergentItems.filter((i) => i.category === "trigram");
+
+export interface HexagramStructure {
+  hexagram: EmergentItem;
+  lower: EmergentItem | undefined;   // composite_of[0] = trigram below
+  upper: EmergentItem | undefined;   // composite_of[1] = trigram above
+  linesOf: (t: EmergentItem) => EmergentItem[];
+}
+
+/** The compositional decomposition of a hexagram, bridged on King Wen number. */
+export function structureOf(kw: number): HexagramStructure | null {
+  const h = emergentById.get(`hexagram-${kw}`);
+  if (!h) return null;
+  const [lowerId, upperId] = h.composite_of ?? [];
+  const linesOf = (t: EmergentItem) =>
+    (t.composite_of ?? []).map((id) => emergentById.get(id)).filter(Boolean) as EmergentItem[];
+  return { hexagram: h, lower: emergentById.get(lowerId), upper: emergentById.get(upperId), linesOf };
+}
