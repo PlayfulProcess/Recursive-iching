@@ -32,6 +32,36 @@ TRIGRAMS = {  # simplified & traditional → (glyph, pinyin, image)
     "艮": ("☶", "gèn", "山 mountain"), "兑": ("☱", "duì", "澤 lake"), "兌": ("☱", "duì", "澤 lake"),
 }
 
+# Canonical English trigram names — the exact strings recursive.eco's converter
+# (iching-conversion.ts TRIGRAM_LOOKUP) resolves. Jul 18 2026: the app reads
+# metadata.trigram_above/below by these names; the scholarly chars stay in
+# trigram_lower/upper alongside.
+FLOW_TRIGRAM = {
+    "乾": "heaven", "坤": "earth", "震": "thunder", "巽": "wind",
+    "坎": "water", "离": "fire", "離": "fire", "艮": "mountain",
+    "兑": "lake", "兌": "lake",
+}
+
+
+def add_canonical_sections(items):
+    """Jul 18 2026 — canonical-format alignment with recursive.eco (the flow app).
+
+    The app's converter reads ONLY canonical keys: sections `Judgment` /
+    `Line 1`..`Line 6`, metadata `number`/`binary`/`chinese_name`/
+    `trigram_above`/`trigram_below`. Our scholarly section names (卦辞/爻辞)
+    are the book's identity and STAY; this adds canonical duplicates so the
+    same grammar renders fully in the app. Runs AFTER apply_corrections so
+    corrected text flows into the canonical copies too. setdefault: a
+    correction that already wrote a canonical key is never clobbered."""
+    for it in items:
+        s = it["sections"]
+        if "卦辞 · Judgment (original)" in s:
+            s.setdefault("Judgment", s["卦辞 · Judgment (original)"])
+        blob = s.get("爻辞 · Lines (original)", "")
+        line_entries = [ln for ln in blob.split("\n") if ln.strip()]
+        for i, ln in enumerate(line_entries[:6], start=1):
+            s.setdefault(f"Line {i}", ln)
+
 
 def main():
     oi = json.loads((RAW / "open-iching-iching.json").read_text(encoding="utf-8"))
@@ -87,11 +117,20 @@ def main():
                 "binary_bottom_first": binary_bottom_first,
                 "trigram_lower": lower,
                 "trigram_upper": upper,
+                # Canonical keys the recursive.eco converter reads (Jul 18 2026
+                # alignment — see add_canonical_sections). The app's binary is
+                # bottom-line-first too (index 0 = line 1), so it's a verbatim copy.
+                "number": n,
+                "binary": binary_bottom_first,
+                "chinese_name": trad,
+                "trigram_below": FLOW_TRIGRAM[lower],
+                "trigram_above": FLOW_TRIGRAM[upper],
             },
         })
 
     fixed = apply_corrections(items, "zhouyi")
     if fixed: print(f"applied {fixed} correction(s) from corrections.json")
+    add_canonical_sections(items)
 
     grammar = {
         "name": "周易 — The Zhouyi (original text)",

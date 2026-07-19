@@ -24,6 +24,35 @@ def pinyin_slug(p):
     return "".join(c for c in unicodedata.normalize("NFD", p) if not unicodedata.combining(c)).replace(" ", "-").lower()
 
 
+# Canonical English trigram names — the exact strings recursive.eco's converter
+# (iching-conversion.ts TRIGRAM_LOOKUP) resolves. Same map as build_zhouyi_grammar.py.
+FLOW_TRIGRAM = {
+    "乾": "heaven", "坤": "earth", "震": "thunder", "巽": "wind",
+    "坎": "water", "离": "fire", "離": "fire", "艮": "mountain",
+    "兑": "lake", "兌": "lake",
+}
+
+
+def add_canonical_sections(items):
+    """Jul 18 2026 — canonical-format alignment with recursive.eco (the flow app).
+
+    The app's converter reads ONLY canonical keys: sections `Judgment`/`Image`/
+    `Line 1`..`Line 6`. Our scholarly section names (彖传/大象/小象) are the
+    book's identity and STAY; this adds canonical duplicates so the same grammar
+    renders fully in the app. Runs AFTER apply_corrections so corrected text
+    flows into the canonical copies. setdefault: never clobbers."""
+    for it in items:
+        s = it["sections"]
+        if "彖传 · Tuan (on the judgment)" in s:
+            s.setdefault("Judgment", s["彖传 · Tuan (on the judgment)"])
+        if "大象 · Great Image" in s:
+            s.setdefault("Image", s["大象 · Great Image"])
+        blob = s.get("小象 · Small Images (per line)", "")
+        line_entries = [ln for ln in blob.split("\n") if ln.strip()]
+        for i, ln in enumerate(line_entries[:6], start=1):
+            s.setdefault(f"Line {i}", ln)
+
+
 def main():
     oi = json.loads((RAW / "open-iching-iching.json").read_text(encoding="utf-8"))
     wd = json.loads(re.sub(r"^export default ", "",
@@ -77,11 +106,20 @@ def main():
                 "unicode": g["symbol"],
                 "book": "ten-wings",
                 "book_period": "c. 4th–2nd century BCE (Warring States–Han)",
+                # Canonical keys the recursive.eco converter reads (Jul 18 2026
+                # alignment — see add_canonical_sections). open-iching `array` is
+                # bottom-line-first, same as the app's convention: verbatim copy.
+                "number": n,
+                "binary": "".join(str(b) for b in g["array"]),
+                "chinese_name": trad,
+                "trigram_below": FLOW_TRIGRAM[g["combination"][0]],
+                "trigram_above": FLOW_TRIGRAM[g["combination"][1]],
             },
         })
 
     fixed = apply_corrections(items, "ten-wings")
     if fixed: print(f"applied {fixed} correction(s) from corrections.json")
+    add_canonical_sections(items)
 
     # what still lacks a 彖 after the corrections overlay (source gaps that remain open)
     missing_tuan = [it["metadata"]["king_wen"] for it in items
