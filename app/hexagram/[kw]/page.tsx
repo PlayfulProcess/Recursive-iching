@@ -25,6 +25,16 @@ function parseBooks(search: Search): string[] {
 const booksQuery = (slugs: string[]) =>
   slugs.length === DEFAULT_BOOK_SLUGS.length ? "" : `?books=${slugs.join(",")}`;
 
+// The July 2026 canonical-format alignment (commit 17016a3) added English-labeled
+// section aliases (Judgment / Image / Line 1-6) so the grammars render in
+// recursive.eco's card viewer. The time-rail reading pane shows the curated
+// bilingual-labeled originals (卦辞·/彖传·/…) instead, so these aliases are hidden
+// here to avoid showing every text twice.
+const HIDDEN_SECTIONS = new Set([
+  "Research note", "Judgment", "Image",
+  "Line 1", "Line 2", "Line 3", "Line 4", "Line 5", "Line 6",
+]);
+
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const kw = Number((await params).kw);
   const it = hexagram(kw);
@@ -114,7 +124,7 @@ export default async function HexagramPage({ params, searchParams }: {
                   <p className="italic text-gray-400">This book has no text for this hexagram.</p>
                 ) : (
                   Object.entries(bi.sections)
-                    .filter(([sec]) => sec !== "Research note")
+                    .filter(([sec]) => !HIDDEN_SECTIONS.has(sec))
                     .map(([sec, text]) => (
                       <div key={sec} className="mb-3">
                         <h3 className="mb-1 text-sm font-medium tracking-wide text-amber-700">{sec}</h3>

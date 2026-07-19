@@ -25,3 +25,16 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Family link color — brown (#9a7322), matching recursive-tarot / Recursive-astrology
+   themes, never browser blue. Bare-element specificity (0,0,1), so explicit Tailwind
+   utility classes on the starter's auth pages still win; this only catches otherwise
+   unstyled links, e.g. inside grammar prose rendered via dangerouslySetInnerHTML. */
+a:not([class]) {
+  color: #9a7322;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+a:not([class]):hover {
+  color: #6f521a;
+}
