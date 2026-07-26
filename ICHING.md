@@ -52,6 +52,7 @@ The app routes are now the canonical viewers: **/hexagram/[kw]** (64 static page
 
 - **[public/viewers/books.html](public/viewers/books.html)** — time×space reader: 8×8 trigram matrix, book rail, one-line neighbors, deep-linkable (`?hexagram=3&books=zhouyi,ten-wings`).
 - **[public/viewers/caster.html](public/viewers/caster.html)** — the cast as a path: three-coin or yarrow distribution, 本卦 → 之卦 via the moving lines, whose 爻辞 and 小象 are the texts read. Preview locally: `cd public && python3 -m http.server`.
+- **[public/viewers/binary-ladder.html](public/viewers/binary-ladder.html)** — the dimensional ladder: one bit (yin/yang) → three bits (the 8 trigrams, 2×4) → six bits (the 64 hexagrams, 8×8, Fu Xi/binary order visible as the grid position itself). Selecting a line or trigram highlights the smaller world it's the *trace* of in the larger one. Includes a King Wen ↔ Fu Xi toggle (same grid, the numbers permute) and a sourced Leibniz/Bouvet history panel, with the Hoffman "trace" framing clearly labeled as a modern teaching analogy, not doctrine.
 
 ## The plan
 

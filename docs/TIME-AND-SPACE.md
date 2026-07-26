@@ -45,7 +45,9 @@ The hexagram picker should offer the space's own structures, not an arbitrary gr
   (`metadata.trigram_lower/upper` are already on every zhouyi item).
 - **King Wen sequence** — the received order (`metadata.king_wen`), which is itself a
   historical artifact worth seeing; the 序卦 section narrates why each follows the last.
-- **Binary/Fuxi order** — from `metadata.binary_bottom_first`, the ordering Leibniz saw.
+- **Binary/Fuxi order** — from `metadata.binary_bottom_first`, the ordering Leibniz saw. Walked explicitly,
+  bit by bit, in `public/viewers/binary-ladder.html` (yin/yang → trigrams → hexagrams, King Wen shown as a
+  permutation over the same grid).
 - **One-line neighbors** — each hexagram touches six others by changing a single line;
   this is how a *reading* moves through the space (changing lines), so the viewer should
   eventually move that way too.
@@ -65,7 +67,7 @@ The hexagram picker should offer the space's own structures, not an arbitrary gr
 Rules for adding a book: public-domain text only, transcription source credited in
 `_grammar_commons`, same item ids, `book_period` set, gate (`check.py`) green.
 
-## The viewer (first build shipped Jul 16 2026: public/viewers/books.html + caster.html)
+## The viewer (first build shipped Jul 16 2026: public/viewers/books.html + caster.html; binary-ladder.html added Jul 26 2026)
 
 One static page on the channels.html pattern (no build step): fetch all
 `grammars/*/grammar.json`, group by item id. Layout: **hexagram picker** (the 8×8
