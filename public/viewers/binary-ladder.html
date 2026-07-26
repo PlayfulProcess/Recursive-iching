@@ -94,6 +94,15 @@
   .badge.speculative{background:#f3eaf9;border-color:#9b6dc9;color:#7a4fae}
   .sources{font-size:.78rem;color:var(--mut,#7a7060);margin-top:10px}
   .sources a{color:inherit}
+
+  /* ---- historical plates (public domain; provenance in docs/IMAGES.md) ---- */
+  .plates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 4px}
+  @media(max-width:640px){.plates{grid-template-columns:1fr}}
+  .plates figure{margin:0;border:1px solid var(--line-soft,#e3dccc);border-radius:12px;overflow:hidden;
+    background:var(--panel2,#faf8f3)}
+  .plates img{display:block;width:100%;height:230px;object-fit:contain;background:#fff}
+  .plates figcaption{padding:8px 12px;font-size:.74rem;line-height:1.45;color:var(--mut,#7a7060)}
+  .plates figcaption a{color:inherit}
   .clear-btn{border:1px solid var(--line-soft,#e3dccc);background:transparent;border-radius:999px;padding:4px 12px;
     cursor:pointer;font-family:inherit;font-size:.8rem;color:var(--mut,#7a7060)}
   footer{max-width:980px;margin:0 auto 40px;padding:0 18px;color:var(--mut,#7a7060);font-size:.85rem}
@@ -169,6 +178,34 @@
        reading each hexagram's six lines bottom-to-top as a binary number does put the 64 hexagrams in exact
        numerical sequence 0–63, which is exactly what Level 3's "Fu Xi order" toggle shows — but no ancient
        Chinese text treats the hexagrams as arithmetic; that's a much later reading laid over an older object.</p>
+
+    <!-- The two primary documents, hotlinked from Wikimedia Commons. Both public domain,
+         both verified against their file pages on 2026-07-26; provenance registry:
+         docs/IMAGES.md. Do not add an image here whose licence you have not read. -->
+    <div class="plates">
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Diagram_of_I_Ching_hexagrams_owned_by_Gottfried_Wilhelm_Leibniz,_1701.jpg?width=800"
+             alt="A 1701 Chinese woodcut diagram of the 64 hexagrams in Fu Xi order — a square grid set inside a circle — with Arabic numerals added in Leibniz's hand."
+             decoding="async">
+        <figcaption>The diagram Bouvet sent, 1701 — the Fu Xi (Shao Yong) arrangement:
+          the same 64 hexagrams as Level 3 above, the square grid inside the ring. The
+          Arabic numerals are Leibniz's own additions. Unknown Chinese engraver, 1701.
+          Public domain (PD-old; pre-1930 publication) —
+          <a href="https://commons.wikimedia.org/wiki/File:Diagram_of_I_Ching_hexagrams_owned_by_Gottfried_Wilhelm_Leibniz,_1701.jpg">Wikimedia Commons file page</a>.
+        </figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Leibniz_binary_system_1703.png?width=727"
+             alt="Leibniz's printed 1703 table of the numbers 0 to 32 written in binary."
+             decoding="async">
+        <figcaption>Leibniz's own table, 1703 — the numbers 0–32 in binary, from
+          <i>Explication de l'arithmétique binaire</i>. Level 1's claim, broken = 0 and
+          solid = 1, is his and starts here. Gottfried Wilhelm Leibniz (1646–1716), 1703.
+          Public domain (PD-old; author d. 1716) —
+          <a href="https://commons.wikimedia.org/wiki/File:Leibniz_binary_system_1703.png">Wikimedia Commons file page</a>.
+        </figcaption>
+      </figure>
+    </div>
 
     <span class="badge">Documented history</span>
     <h3>Fu Xi order vs. King Wen order — a permutation, not a discovery</h3>

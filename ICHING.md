@@ -34,6 +34,15 @@ what actually is public domain:
   (MIT). Its **Wilhelm–Baynes English prose was deliberately not used**: the 1950
   English translation is *not* public domain (the claim that it entered PD in 2020
   confuses it with Wilhelm's 1924 German original) and stays out of this repo until 2046.
+- **Images follow the same rule as text: public domain only, and *verified*.** Every
+  picture in this repo has had its Wikimedia Commons file page opened and its licence tag
+  read; each one is registered in [`docs/IMAGES.md`](docs/IMAGES.md) with creator, date,
+  file page and PD basis, and carried inside its grammar as `_image_provenance`
+  (shape: [`GRAMMAR_FORMAT.md`](GRAMMAR_FORMAT.md#image-provenance--a-recursive-i-ching-extension)).
+  CC-BY and CC-BY-SA are not public domain and stay out — several near-perfect candidates
+  were rejected on exactly that ground, and are listed so nobody re-proposes them. One apt
+  image per grammar: `python check.py` fails if two grammars share a cover, because a
+  library where three books wear the same stock photograph is telling you nothing.
 - **English translation slots are intentionally empty.** The plan: James Legge's 1899
   rendering (Sacred Books of the East vol. XVI — genuinely public domain) once a clean
   digital source is processed, and/or the builder's own translation. Interim readers get
@@ -52,7 +61,7 @@ The app routes are now the canonical viewers: **/hexagram/[kw]** (64 static page
 
 - **[public/viewers/books.html](public/viewers/books.html)** — time×space reader: 8×8 trigram matrix, book rail, one-line neighbors, deep-linkable (`?hexagram=3&books=zhouyi,ten-wings`).
 - **[public/viewers/caster.html](public/viewers/caster.html)** — the cast as a path: three-coin or yarrow distribution, 本卦 → 之卦 via the moving lines, whose 爻辞 and 小象 are the texts read. Preview locally: `cd public && python3 -m http.server`.
-- **[public/viewers/binary-ladder.html](public/viewers/binary-ladder.html)** — the dimensional ladder: one bit (yin/yang) → three bits (the 8 trigrams, 2×4) → six bits (the 64 hexagrams, 8×8, Fu Xi/binary order visible as the grid position itself). Selecting a line or trigram highlights the smaller world it's the *trace* of in the larger one. Includes a King Wen ↔ Fu Xi toggle (same grid, the numbers permute) and a sourced Leibniz/Bouvet history panel, with the Hoffman "trace" framing clearly labeled as a modern teaching analogy, not doctrine.
+- **[public/viewers/binary-ladder.html](public/viewers/binary-ladder.html)** — the dimensional ladder: one bit (yin/yang) → three bits (the 8 trigrams, 2×4) → six bits (the 64 hexagrams, 8×8, Fu Xi/binary order visible as the grid position itself). Selecting a line or trigram highlights the smaller world it's the *trace* of in the larger one. Includes a King Wen ↔ Fu Xi toggle (same grid, the numbers permute) and a sourced Leibniz/Bouvet history panel — now with the two primary documents themselves as captioned public-domain figures: the 1701 woodcut Bouvet sent (the Fu Xi arrangement the grid re-draws) and Leibniz's own 1703 binary table. The Hoffman "trace" framing stays clearly labeled as a modern teaching analogy, not doctrine.
 
 ## The plan
 
