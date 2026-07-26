@@ -475,8 +475,57 @@ If you write a more thorough validator and submit it as
 
 ---
 
+## Image provenance — a Recursive I Ching extension
+
+> **Repo-local addition (2026-07-26).** Everything above is the family's shared
+> contract; this section is this repo's own rule, mirroring the public-domain-only
+> stance the sibling astrology repo adopted. It is enforced by `check.py`, and the
+> repo-wide registry of every image is [`docs/IMAGES.md`](docs/IMAGES.md).
+
+**Public domain in, public domain out — for pictures too.** The texts in this repo are
+ancient and unencumbered; the images have to be held to the same standard, and the
+standard has to be *checked*, not assumed. Two rules:
+
+1. **Verify before you use.** Open the image's Wikimedia Commons (or archive.org) FILE
+   PAGE and read the licence tag. "It looks old" is not a basis. CC-BY and CC-BY-SA are
+   *not* public domain and do not belong here, however convenient the picture is.
+2. **One apt image per thing.** A cover has to say something true about *that* grammar.
+   Re-using one generic picture across several grammars is worse than no picture at all;
+   `check.py` fails the build if two grammars share a `cover_image_url`.
+
+Any grammar that carries `cover_image_url`, `thumbnail_url`, or an item `image_url` must
+also carry a top-level `_image_provenance` array — one entry per distinct image URL:
+
+```jsonc
+"_image_provenance": [
+  {
+    "used_as": ["cover_image_url", "thumbnail_url"],   // REQUIRED — which fields point here
+    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/File_Name.jpg?width=800",
+    "title": "What the image is",                      // REQUIRED
+    "creator": "Artist / author, with dates",          // REQUIRED — "Unknown ..." is fine
+    "date": "When it was made",                        // REQUIRED
+    "file_page": "https://commons.wikimedia.org/wiki/File:File_Name.jpg",  // REQUIRED
+    "pd_basis": "Why this is public domain — PD-old / author d. 70+ yrs / PD-US pre-1930",
+    "verified_on": "2026-07-26",                       // the date the file page was read
+    "why_this_image": "Why it is apt to THIS grammar and no other"
+  }
+]
+```
+
+**URL form.** Use `https://commons.wikimedia.org/wiki/Special:FilePath/<File_Name>?width=N`
+(same convention as the astrology repo). It is a stable redirect to the current file, the
+file page is derivable from it, and `width` keeps the payload sane — keep `N` at or below
+the original width so Commons serves a real thumbnail rather than refusing to upscale.
+
+**An honest gap beats a wrong picture.** If a grammar has no image whose licence you have
+personally verified, leave it without one and say so in `docs/IMAGES.md`.
+
+---
+
 ## See also
 
+- [`docs/IMAGES.md`](docs/IMAGES.md) — the image registry: every picture in this repo,
+  its file page, and its public-domain basis
 - [`README.md`](README.md) — repo overview and how to copy / fork / share grammars
 - [`QUICKSTART.md`](QUICKSTART.md) — fastest path to your first grammar
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution workflow and git identity setup
