@@ -27,6 +27,9 @@
   .method button.on{background:var(--gold,#9a7322);color:#fff}
 
   .table{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:start;margin:6px 0 18px}
+  /* `display:grid` above out-specifies the UA's [hidden]{display:none}, so without this
+     the two empty hexagram cards show as blank boxes before the first cast. */
+  .table[hidden]{display:none}
   @media(max-width:680px){.table{grid-template-columns:1fr}}
   .hexcard{background:var(--surface,#fff);border:1px solid var(--line-soft,#e3dccc);border-radius:12px;padding:16px;text-align:center}
   .hexcard h2{margin:6px 0 0;font-size:1.1rem}
