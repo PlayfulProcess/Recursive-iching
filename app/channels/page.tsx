@@ -3,6 +3,8 @@ import Link from "next/link";
 import { BOOKS } from "@/lib/iching";
 import emergentGrammar from "@/grammars/emergent-structure/grammar.json";
 import leibnizGrammar from "@/grammars/leibniz-binary-tree/grammar.json";
+import zhouyiGrammar from "@/grammars/zhouyi/grammar.json";
+import tenWingsGrammar from "@/grammars/ten-wings/grammar.json";
 import idsFile from "@/ids.json";
 
 /* The Channels — this repo's grammars as channel cards, plus the family.
@@ -15,6 +17,40 @@ export const metadata: Metadata = {
 };
 
 const APP_CHANNEL = "https://flow.recursive.eco/library/channels/iching";
+
+/* Covers. Each grammar carries its own public-domain image plus the provenance that
+   licenses it (see GRAMMAR_FORMAT.md "Image provenance" and docs/IMAGES.md); the index
+   just reads what the data already says. Deliberately four DIFFERENT pictures — one
+   repeated stock photo across a library is the thing this replaced. Plain <img>, not
+   next/image: these are hotlinked Wikimedia Commons files and the point is that they
+   load from the source of record. `check.py` refuses a build where two grammars share
+   a cover, or where any image lacks provenance. */
+interface ImageProvenance {
+  url: string;
+  title: string;
+  creator: string;
+  date: string;
+  file_page: string;
+  pd_basis: string;
+}
+interface CoveredGrammar {
+  cover_image_url?: string;
+  _image_provenance?: ImageProvenance[];
+}
+
+function coverOf(g: unknown): { url: string; prov?: ImageProvenance } | null {
+  const grammar = g as CoveredGrammar;
+  const url = grammar.cover_image_url;
+  if (!url) return null;
+  return { url, prov: (grammar._image_provenance ?? []).find((p) => p.url === url) };
+}
+
+const COVERS: Record<string, ReturnType<typeof coverOf>> = {
+  zhouyi: coverOf(zhouyiGrammar),
+  "ten-wings": coverOf(tenWingsGrammar),
+  "emergent-structure": coverOf(emergentGrammar),
+  "leibniz-binary-tree": coverOf(leibnizGrammar),
+};
 
 export default function ChannelsPage() {
   const ids = (idsFile as { ids: Record<string, string>; _public_now?: string[] }).ids;
@@ -58,8 +94,35 @@ export default function ChannelsPage() {
       </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
-        {cards.map((c) => (
-          <div key={c.slug + c.name} className="flex flex-col rounded-xl border border-gray-200 bg-white p-5">
+        {cards.map((c) => {
+          const cover = COVERS[c.slug];
+          return (
+          <div key={c.slug + c.name} className="flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white">
+            {cover ? (
+              <figure className="m-0 border-b border-gray-100 bg-gray-50">
+                <img
+                  src={cover.url}
+                  alt={cover.prov?.title ?? c.name}
+                  decoding="async"
+                  className="h-44 w-full bg-white object-contain"
+                />
+                {cover.prov ? (
+                  <figcaption className="px-5 py-2 text-[11px] leading-snug text-gray-400">
+                    {cover.prov.title} — {cover.prov.creator}, {cover.prov.date}.{" "}
+                    <a
+                      href={cover.prov.file_page}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline decoration-dotted hover:text-amber-700"
+                    >
+                      Public domain
+                    </a>
+                    .
+                  </figcaption>
+                ) : null}
+              </figure>
+            ) : null}
+            <div className="flex flex-1 flex-col p-5">
             <h2 className="text-base font-semibold leading-snug">{c.name}</h2>
             <p className="mt-1 text-xs text-gray-500">{c.axis}</p>
             <div className="mt-2 text-xs text-gray-400">{c.items} items</div>
@@ -74,9 +137,17 @@ export default function ChannelsPage() {
                 <span className="ml-auto text-xs italic text-gray-400">not yet published</span>
               )}
             </div>
+            </div>
           </div>
-        ))}
+          );
+        })}
       </div>
+      <p className="mx-auto mt-4 max-w-2xl text-center text-xs text-gray-400">
+        Every image here is public domain and was checked against its Wikimedia Commons file
+        page before use — one apt picture per book, never one picture for all of them. The
+        full registry, including the candidates rejected for being CC-licensed rather than
+        public domain, is in <code>docs/IMAGES.md</code>.
+      </p>
 
       <h2 className="mb-3 mt-10 text-lg font-semibold">The family</h2>
       <div className="grid gap-4 sm:grid-cols-3">
