@@ -2,7 +2,25 @@
   "name": "易經 · Leibniz Binary Tree of Change (Lines → Trigrams → Hexagrams)",
   "description": "The I Ching mapped as a 6-dimensional binary hypercube, following the insight Gottfried Wilhelm Leibniz had in 1703 when he recognized the Fu Xi/Shao Yong hexagram sequence as binary counting from 0 (坤 Kun, all yin) to 63 (乾 Qian, all yang). 384 individual lines serve as transformation edges — when a line changes, it flips one bit and transforms one hexagram into another. The 64 hexagrams are vertices of the hypercube, connected by their 6 lines to 6 neighboring hexagrams. 8 trigrams represent the 3-bit building blocks. Each hexagram carries 7 historical relationship systems in its metadata: 綜卦 (inverse), 錯卦 (complement), 互卦 (nuclear), 序卦 (King Wen pair), 京房八宮 (Jing Fang's Eight Palaces), 馬王堆 (Mawangdui sequence), and 雜卦傳 (Miscellaneous Notes pairings). All hexagram text is classical Chinese from Project Gutenberg eBook #25501.\n\nSource: Project Gutenberg eBook #25501 (https://www.gutenberg.org/ebooks/25501)\n\nPUBLIC DOMAIN ILLUSTRATION REFERENCES: The Leibniz-Bouvet diagram (1703) showing the 64 hexagrams arranged in binary order, housed at the Niedersächsische Landesbibliothek, Hanover. Shao Yong's Xiantian circular arrangement from various Song dynasty editions. [Data note, Jul 17 2026: this grammar is a DUPLICATE of adefc983-d903-4af9-8fec-c14531ee96db (identical items; only the hexagram level field differs — this copy uses level 2, the other the more sensible level 3).]",
   "grammar_type": "iching",
+  "cover_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Leibniz_Fu_Hsi_1703.png?width=743",
+  "thumbnail_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Leibniz_Fu_Hsi_1703.png?width=743",
   "author": "PlayfulProcess",
+  "_image_provenance": [
+    {
+      "used_as": [
+        "cover_image_url",
+        "thumbnail_url"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Leibniz_Fu_Hsi_1703.png?width=743",
+      "title": "Page of \"Explication de l'arithmétique binaire\" carrying the \"characters of Fu Hsi\"",
+      "creator": "Gottfried Wilhelm Leibniz (1646–1716)",
+      "date": "1703 (plate as printed 1703/1705, Mémoires de l'Académie Royale des Sciences)",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Leibniz_Fu_Hsi_1703.png",
+      "pd_basis": "PD-old — Leibniz died in 1716, so the work is public domain worldwide, and the paper was published in 1703, long before 1 Jan 1930 (PD-US). Commons licence tag on the file page: Public domain.",
+      "verified_on": "2026-07-26",
+      "why_this_image": "This grammar IS Leibniz's reading of the hexagrams. The honest cover is the actual printed page in which he set the Fu Xi figures beside binary numerals — the primary document, not an illustration of it."
+    }
+  ],
   "items": [
     {
       "id": "yang-line",
@@ -16285,5 +16303,5 @@
       }
     }
   ],
-  "_exported_from_app": "5a09240d-15ac-4666-9cf1-719f8d9df4f4 on 2026-07-18 (builder's structural grammar; verbatim)"
+  "_exported_from_app": "5a09240d-15ac-4666-9cf1-719f8d9df4f4 on 2026-07-18 (builder's structural grammar; verbatim). Jul 26 2026: cover_image_url / thumbnail_url / _image_provenance added in-repo (see docs/IMAGES.md) — re-export from the app must not drop them."
 }

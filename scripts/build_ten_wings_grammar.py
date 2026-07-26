@@ -18,6 +18,15 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "research" / "sources" / "raw"
 OUT = ROOT / "grammars" / "ten-wings" / "grammar.json"
 
+# Public-domain cover, verified 2026-07-26 against its Wikimedia Commons file page.
+# The Wings are the layer traditionally (and, scholars agree, wrongly) ascribed to
+# Confucius — so the apt picture is the ascription itself, in its oldest surviving
+# pictorial form. Full provenance below in _image_provenance; registry: docs/IMAGES.md.
+COVER_URL = (
+    "https://commons.wikimedia.org/wiki/Special:FilePath/"
+    "Confucius_Tang_Dynasty.jpg?width=350"
+)
+
 
 def pinyin_slug(p):
     import unicodedata
@@ -135,9 +144,24 @@ def main():
             "English translation slots deliberately empty pending a public-domain rendering."
         ),
         "grammar_type": "iching",
+        "cover_image_url": COVER_URL,
+        "thumbnail_url": COVER_URL,
         "author": "PlayfulProcess",
         "source": "https://github.com/PlayfulProcess/Recursive-iching",
         "license": "Public domain text (Ten Wings, Warring States–Han); compilation CC0",
+        "_image_provenance": [
+            {
+                "used_as": ["cover_image_url", "thumbnail_url"],
+                "url": COVER_URL,
+                "title": "The teaching Confucius",
+                "creator": "Attributed to Wu Daozi 吳道子 (c. 685–758), Tang dynasty",
+                "date": "8th century (Commons dates the work c. 750)",
+                "file_page": "https://commons.wikimedia.org/wiki/File:Confucius_Tang_Dynasty.jpg",
+                "pd_basis": "PD-old — the artist died in the 8th century, so the work is public domain worldwide (life + 100 years and then some), and it was published long before 1 Jan 1930 (PD-US). Commons licence tag on the file page: Public domain.",
+                "verified_on": "2026-07-26",
+                "why_this_image": "The Ten Wings are the commentarial stratum traditionally ascribed to Confucius — an ascription modern scholarship rejects but which is exactly what this layer of the book meant to its readers for two thousand years. The portrait illustrates the claim, not a fact.",
+            },
+        ],
         "items": items,
         "_generated": True,
         "_do_not_hand_edit": True,

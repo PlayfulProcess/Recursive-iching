@@ -2,9 +2,27 @@
   "name": "周易 — The Zhouyi (original text)",
   "description": "The 64 hexagrams of the Zhouyi — the core text of the Book of Changes — in the original language: each hexagram's 卦辞 (judgment) and 爻辞 (line statements), with structural metadata (King Wen number, trigrams, pinyin, Unicode). The oldest layer only, presented as what it historically was: a working diviner's manual of the Western Zhou, before the Ten Wings made it a classic. English translation slots are deliberately empty pending a public-domain rendering. Read to know yourself, not to be told your fate; relate to the hexagram, never obey it.",
   "grammar_type": "iching",
+  "cover_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/I_Ching_Song_Dynasty_print.jpg?width=800",
+  "thumbnail_url": "https://commons.wikimedia.org/wiki/Special:FilePath/I_Ching_Song_Dynasty_print.jpg?width=800",
   "author": "PlayfulProcess",
   "source": "https://github.com/PlayfulProcess/recursive-iching",
   "license": "Public domain text (Zhouyi, Western Zhou); compilation CC0",
+  "_image_provenance": [
+    {
+      "used_as": [
+        "cover_image_url",
+        "thumbnail_url"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/I_Ching_Song_Dynasty_print.jpg?width=800",
+      "title": "A page from a Song Dynasty printed edition of the Yijing",
+      "creator": "Unknown Song-era print artist",
+      "date": "Song dynasty, 960–1279",
+      "file_page": "https://commons.wikimedia.org/wiki/File:I_Ching_Song_Dynasty_print.jpg",
+      "pd_basis": "PD-old — anonymous woodblock print from the Song dynasty; far beyond any copyright term, and published long before 1 Jan 1930 (PD-US). Commons licence tag on the file page: Public domain.",
+      "verified_on": "2026-07-26",
+      "why_this_image": "The Zhouyi grammar is the core text; the apt picture is the text as an actual printed book of its own tradition — the oldest surviving print layer, not a modern photograph of an unrelated volume."
+    }
+  ],
   "items": [
     {
       "id": "hexagram-01-qian",

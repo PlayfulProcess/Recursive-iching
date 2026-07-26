@@ -2,9 +2,27 @@
   "name": "十翼 — The Ten Wings (per-hexagram commentary)",
   "description": "The per-hexagram layers of the canonical commentaries in the original language: 彖传 (on each judgment), 大象/小象 (the images, whole and per line), and 序卦 (the sequence). This is the stratum — Warring States to Han — that turned the Zhouyi diviner's manual into a philosophical classic. Item ids align one-to-one with the zhouyi grammar so the two books can be read side by side, or paged through time. English translation slots deliberately empty pending a public-domain rendering.",
   "grammar_type": "iching",
+  "cover_image_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Confucius_Tang_Dynasty.jpg?width=350",
+  "thumbnail_url": "https://commons.wikimedia.org/wiki/Special:FilePath/Confucius_Tang_Dynasty.jpg?width=350",
   "author": "PlayfulProcess",
   "source": "https://github.com/PlayfulProcess/Recursive-iching",
   "license": "Public domain text (Ten Wings, Warring States–Han); compilation CC0",
+  "_image_provenance": [
+    {
+      "used_as": [
+        "cover_image_url",
+        "thumbnail_url"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Confucius_Tang_Dynasty.jpg?width=350",
+      "title": "The teaching Confucius",
+      "creator": "Attributed to Wu Daozi 吳道子 (c. 685–758), Tang dynasty",
+      "date": "8th century (Commons dates the work c. 750)",
+      "file_page": "https://commons.wikimedia.org/wiki/File:Confucius_Tang_Dynasty.jpg",
+      "pd_basis": "PD-old — the artist died in the 8th century, so the work is public domain worldwide (life + 100 years and then some), and it was published long before 1 Jan 1930 (PD-US). Commons licence tag on the file page: Public domain.",
+      "verified_on": "2026-07-26",
+      "why_this_image": "The Ten Wings are the commentarial stratum traditionally ascribed to Confucius — an ascription modern scholarship rejects but which is exactly what this layer of the book meant to its readers for two thousand years. The portrait illustrates the claim, not a fact."
+    }
+  ],
   "items": [
     {
       "id": "hexagram-01-qian",

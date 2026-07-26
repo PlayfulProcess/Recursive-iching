@@ -25,6 +25,15 @@ ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "research" / "sources" / "raw"
 OUT = ROOT / "grammars" / "zhouyi" / "grammar.json"
 
+# Public-domain cover, verified 2026-07-26 against its Wikimedia Commons file page.
+# Full provenance travels inside the grammar as _image_provenance (below) and is
+# registered once, repo-wide, in docs/IMAGES.md. PD ONLY — never add an image whose
+# file page you have not opened and read.
+COVER_URL = (
+    "https://commons.wikimedia.org/wiki/Special:FilePath/"
+    "I_Ching_Song_Dynasty_print.jpg?width=800"
+)
+
 TRIGRAMS = {  # simplified & traditional → (glyph, pinyin, image)
     "乾": ("☰", "qián", "天 heaven"), "坤": ("☷", "kūn", "地 earth"),
     "震": ("☳", "zhèn", "雷 thunder"), "巽": ("☴", "xùn", "風 wind/wood"),
@@ -144,9 +153,27 @@ def main():
             "be told your fate; relate to the hexagram, never obey it."
         ),
         "grammar_type": "iching",
+        # Cover: a page of the book itself, not a mood photograph. See
+        # docs/IMAGES.md for the repo's public-domain-only image policy and the
+        # _image_provenance shape (GRAMMAR_FORMAT.md, "Image provenance").
+        "cover_image_url": COVER_URL,
+        "thumbnail_url": COVER_URL,
         "author": "PlayfulProcess",
         "source": "https://github.com/PlayfulProcess/recursive-iching",
         "license": "Public domain text (Zhouyi, Western Zhou); compilation CC0",
+        "_image_provenance": [
+            {
+                "used_as": ["cover_image_url", "thumbnail_url"],
+                "url": COVER_URL,
+                "title": "A page from a Song Dynasty printed edition of the Yijing",
+                "creator": "Unknown Song-era print artist",
+                "date": "Song dynasty, 960–1279",
+                "file_page": "https://commons.wikimedia.org/wiki/File:I_Ching_Song_Dynasty_print.jpg",
+                "pd_basis": "PD-old — anonymous woodblock print from the Song dynasty; far beyond any copyright term, and published long before 1 Jan 1930 (PD-US). Commons licence tag on the file page: Public domain.",
+                "verified_on": "2026-07-26",
+                "why_this_image": "The Zhouyi grammar is the core text; the apt picture is the text as an actual printed book of its own tradition — the oldest surviving print layer, not a modern photograph of an unrelated volume.",
+            },
+        ],
         "items": items,
         "_generated": True,
         "_do_not_hand_edit": True,
