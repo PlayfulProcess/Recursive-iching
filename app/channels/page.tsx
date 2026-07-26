@@ -21,10 +21,13 @@ const APP_CHANNEL = "https://flow.recursive.eco/library/channels/iching";
 /* Covers. Each grammar carries its own public-domain image plus the provenance that
    licenses it (see GRAMMAR_FORMAT.md "Image provenance" and docs/IMAGES.md); the index
    just reads what the data already says. Deliberately four DIFFERENT pictures — one
-   repeated stock photo across a library is the thing this replaced. Plain <img>, not
-   next/image: these are hotlinked Wikimedia Commons files and the point is that they
-   load from the source of record. `check.py` refuses a build where two grammars share
-   a cover, or where any image lacks provenance. */
+   repeated stock photo across a library is the thing this replaced.
+   The box is h-64 on purpose: two of the four covers are full printed pages, and at the
+   h-44 we started with, the Leibniz page shrank to ~110px wide and read as a blank white
+   rectangle — a picture nobody can see is the same defect as a picture that failed to load.
+   Plain <img>, not next/image: these are hotlinked Wikimedia Commons files and the point
+   is that they load from the source of record. `check.py` refuses a build where two
+   grammars share a cover, or where any image lacks provenance. */
 interface ImageProvenance {
   url: string;
   title: string;
@@ -104,7 +107,7 @@ export default function ChannelsPage() {
                   src={cover.url}
                   alt={cover.prov?.title ?? c.name}
                   decoding="async"
-                  className="h-44 w-full bg-white object-contain"
+                  className="h-64 w-full bg-white object-contain"
                 />
                 {cover.prov ? (
                   <figcaption className="px-5 py-2 text-[11px] leading-snug text-gray-400">

@@ -100,7 +100,9 @@
   @media(max-width:640px){.plates{grid-template-columns:1fr}}
   .plates figure{margin:0;border:1px solid var(--line-soft,#e3dccc);border-radius:12px;overflow:hidden;
     background:var(--panel2,#faf8f3)}
-  .plates img{display:block;width:100%;height:230px;object-fit:contain;background:#fff}
+  /* Both plates are tall printed pages; at 230px the 1703 table shrank to ~170px wide
+     and read as a blank sheet. 300px is the point where the figures are visible. */
+  .plates img{display:block;width:100%;height:300px;object-fit:contain;background:#fff}
   .plates figcaption{padding:8px 12px;font-size:.74rem;line-height:1.45;color:var(--mut,#7a7060)}
   .plates figcaption a{color:inherit}
   .clear-btn{border:1px solid var(--line-soft,#e3dccc);background:transparent;border-radius:999px;padding:4px 12px;
