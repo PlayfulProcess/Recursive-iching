@@ -120,6 +120,11 @@
 
   const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 
+  const HIDDEN_SECTIONS = new Set([
+    'Research note', 'Judgment', 'Image',
+    'Line 1', 'Line 2', 'Line 3', 'Line 4', 'Line 5', 'Line 6',
+  ]);
+
   function renderMatrix() {
     const m = document.getElementById('matrix');
     let html = '<span class="lab">下↓ 上→</span>' + TRI.map(t => '<span class="lab">' + t[1] + '</span>').join('');
@@ -178,7 +183,12 @@
       html += '<article class="book"><h3>' + esc(b.label) + '</h3><p class="era">' + esc(b.era) + '</p>';
       if (!bi) { html += '<p class="missing">This book has no text for this hexagram.</p></article>'; continue; }
       for (const [sec, text] of Object.entries(bi.sections)) {
-        if (sec === 'Research note') continue; // provenance lives in the grammar; keep the reading clean
+        // 'Research note': provenance lives in the grammar; keep the reading clean.
+        // The rest are the English-labeled aliases the canonical-format alignment added so the
+        // grammars render in recursive.eco's card viewer — they repeat, word for word, the
+        // bilingual originals above (卦辞·/爻辞·/彖传·…). Showing both prints every text twice.
+        // Same list as HIDDEN_SECTIONS in app/hexagram/[kw]/page.tsx — keep them in step.
+        if (HIDDEN_SECTIONS.has(sec)) continue;
         html += '<h4>' + esc(sec) + '</h4><p>' + text.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/&(?!amp;)/g,'&amp;') + '</p>';
       }
       html += '</article>';
