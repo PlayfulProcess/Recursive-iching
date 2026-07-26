@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Binary Ladder — Recursive I Ching</title>
+<meta name="description" content="One bit, then three, then six: yin/yang, the eight trigrams, and the sixty-four hexagrams as a dimensional ladder — with the real Leibniz history and a clearly-labeled modern 'trace' analogy from consciousness research.">
+<link rel="stylesheet" href="../theme.css">
+<style>
+  /* binary-ladder.html — the dimensional ladder (docs/TIME-AND-SPACE.md's "binary/Fuxi
+     order" made explicit and walkable). Level 1: one bit, yin/yang. Level 2: three bits,
+     the eight trigrams, 2x4. Level 3: six bits, the sixty-four hexagrams, 8x8 — Fu Xi's
+     native coordinates (row = lower trigram, column = upper trigram), with a toggle to
+     see the King Wen number as a permutation laid over the same grid. Static, no build
+     step; fetches ../grammars/zhouyi/grammar.json, same convention as books.html. */
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg,#faf8f3);color:var(--ink,#2b2620);font-family:Georgia,'Times New Roman',serif;line-height:1.6}
+  header{padding:22px 18px 6px;text-align:center}
+  header h1{margin:0;font-size:clamp(24px,5vw,38px);font-weight:600}
+  header h1 .gold{color:var(--gold,#9a7322)}
+  header p{max-width:60ch;margin:10px auto 0;color:var(--mut,#7a7060);font-style:italic;font-size:.95rem}
+  main{max-width:980px;margin:14px auto 60px;padding:0 18px}
+
+  section.level{background:var(--surface,#fff);border:1px solid var(--line-soft,#e3dccc);border-radius:12px;
+    padding:16px 18px;margin:0 0 22px}
+  section.level h2{margin:0 0 4px;font-size:1.15rem}
+  section.level h2 .n{color:var(--gold,#9a7322);font-variant-numeric:tabular-nums}
+  section.level > p.lede{margin:0 0 14px;color:var(--mut,#7a7060);font-size:.9rem}
+
+  /* ---- Level 1: one bit ---- */
+  .pos-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 14px}
+  .pos-row button{border:1px solid var(--line-soft,#e3dccc);background:var(--panel2,#faf8f3);border-radius:999px;
+    padding:6px 14px;cursor:pointer;font-family:inherit;font-size:.85rem;color:var(--ink,#2b2620)}
+  .pos-row button.on{background:var(--gold,#9a7322);border-color:var(--gold,#9a7322);color:#fff}
+  .bit-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .bit-btn{display:flex;flex-direction:column;align-items:center;gap:6px;border:2px solid var(--line-soft,#e3dccc);
+    background:var(--panel2,#faf8f3);border-radius:14px;padding:16px 26px;cursor:pointer;font-family:inherit}
+  .bit-btn:hover{border-color:var(--gold,#9a7322)}
+  .bit-btn.on{border-color:var(--gold,#9a7322);background:var(--chip,#faf3e6)}
+  .bit-btn .glyph{font-size:2.6rem;line-height:1;color:var(--ink,#2b2620)}
+  .bit-btn .lab{font-size:.85rem;color:var(--mut,#7a7060)}
+  .bit-btn .val{font-weight:600}
+  .lvl1-note{text-align:center;font-size:.82rem;color:var(--mut,#7a7060);margin:12px 0 0}
+
+  /* ---- Level 2: eight trigrams, 2x4 ---- */
+  .tri-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+  @media(max-width:640px){.tri-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .tri-card{border:2px solid var(--line-soft,#e3dccc);border-radius:12px;background:var(--panel2,#faf8f3);
+    padding:12px 8px;text-align:center;cursor:pointer;transition:border-color .12s,background .12s,opacity .12s}
+  .tri-card:hover{border-color:var(--gold,#9a7322)}
+  .tri-card.selected{border-color:var(--gold,#9a7322);background:var(--chip,#faf3e6)}
+  .tri-card.hi{border-color:var(--gold,#9a7322)}
+  .tri-card.dim{opacity:.35}
+  .tri-card .glyph{font-size:1.9rem;line-height:1}
+  .tri-lines{display:flex;flex-direction:column-reverse;gap:4px;align-items:center;margin:8px auto}
+  .tri-lines .ln{width:52px;height:8px;display:flex;gap:6px}
+  .tri-lines .ln .bar{background:var(--ink,#2b2620);flex:1;border-radius:2px}
+  .tri-lines .ln.bit-hi .bar{background:var(--gold,#9a7322)}
+  .tri-card .nm{font-size:.92rem;margin-top:4px}
+  .tri-card .py{font-size:.72rem;color:var(--mut,#7a7060)}
+  .tri-card .dec{font-size:.72rem;color:var(--mut,#7a7060);font-variant-numeric:tabular-nums}
+  .tri-detail{margin-top:12px;font-size:.85rem;color:var(--mut,#7a7060);text-align:center;min-height:1.4em}
+  .tri-detail b{color:var(--ink,#2b2620)}
+
+  /* ---- Level 3: 64 hexagrams, 8x8 ---- */
+  .method{display:inline-flex;border:1px solid var(--line-soft,#e3dccc);border-radius:999px;overflow:hidden;background:var(--surface,#fff)}
+  .method button{border:none;background:transparent;padding:7px 14px;cursor:pointer;font-family:inherit;font-size:.85rem;color:var(--ink,#2b2620)}
+  .method button.on{background:var(--gold,#9a7322);color:#fff}
+  .toggle-row{display:flex;justify-content:center;margin:0 0 14px}
+  .matrix-wrap{overflow-x:auto}
+  .matrix{display:grid;grid-template-columns:auto repeat(8,minmax(38px,1fr));gap:3px;background:var(--surface,#fff);
+    border:1px solid var(--line-soft,#e3dccc);border-radius:12px;padding:12px;min-width:460px}
+  .matrix .lab{display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--mut,#7a7060)}
+  .matrix button{border:1px solid transparent;background:transparent;border-radius:8px;font-size:.78rem;
+    line-height:1.3;padding:6px 2px;cursor:pointer;color:var(--ink,#2b2620);transition:background .12s,border-color .12s;
+    font-variant-numeric:tabular-nums}
+  .matrix button:hover{background:var(--panel2,#faf8f3);border-color:var(--gold,#9a7322)}
+  .matrix button.row-hi,.matrix button.col-hi{background:var(--chip,#faf3e6);border-color:var(--gold,#9a7322)}
+  .matrix button.both-hi{background:var(--gold,#9a7322);color:#fff}
+  .matrix button .g{display:block;font-size:1.15rem}
+  .matrix-note{font-size:.78rem;color:var(--mut,#7a7060);margin:8px 2px 0}
+  .hex-detail{margin-top:14px;background:var(--panel2,#faf8f3);border:1px solid var(--line-soft,#e3dccc);border-radius:12px;
+    padding:12px 16px;font-size:.9rem;min-height:1.4em}
+  .hex-detail .glyph{font-size:2rem;vertical-align:middle;margin-right:8px}
+  .hex-detail a{color:var(--gold,#9a7322)}
+
+  /* ---- explainer ---- */
+  .explainer h3{margin:18px 0 6px;font-size:1rem;color:var(--gold,#9a7322)}
+  .explainer h3:first-child{margin-top:0}
+  .explainer p{margin:.4em 0;font-size:.92rem}
+  .badge{display:inline-block;font-size:.68rem;letter-spacing:.5px;text-transform:uppercase;font-family:var(--sans,Georgia);
+    background:var(--chip,#faf3e6);color:var(--gold,#9a7322);border:1px solid var(--gold,#9a7322);border-radius:999px;
+    padding:2px 9px;margin:0 0 8px}
+  .badge.speculative{background:#f3eaf9;border-color:#9b6dc9;color:#7a4fae}
+  .sources{font-size:.78rem;color:var(--mut,#7a7060);margin-top:10px}
+  .sources a{color:inherit}
+  .clear-btn{border:1px solid var(--line-soft,#e3dccc);background:transparent;border-radius:999px;padding:4px 12px;
+    cursor:pointer;font-family:inherit;font-size:.8rem;color:var(--mut,#7a7060)}
+  footer{max-width:980px;margin:0 auto 40px;padding:0 18px;color:var(--mut,#7a7060);font-size:.85rem}
+  footer a{color:inherit}
+</style>
+</head>
+<body>
+<header>
+  <h1>The Binary <span class="gold">Ladder</span></h1>
+  <p>One bit becomes three becomes six. Yin and yang, then the eight trigrams, then the sixty-four hexagrams —
+     each smaller world is what you see of the larger one when you can only observe a few of its lines.
+     Read to know yourself, not to be told your fate — relate to the hexagram, never obey it.</p>
+</header>
+
+<main>
+
+  <!-- LEVEL 1 -->
+  <section class="level" id="level1">
+    <h2><span class="n">Level 1</span> — One bit: yin and yang</h2>
+    <p class="lede">A single line is either broken or solid — the whole 1-dimensional world. Leibniz read broken
+       as 0 and solid as 1. Pick a line position, then a value, and watch which trigrams below share it.</p>
+    <div class="pos-row" id="pos-row"></div>
+    <div class="bit-row" id="bit-row"></div>
+    <p class="lvl1-note" id="lvl1-note">Tap a value above — it highlights every trigram in Level 2 whose line at
+       this position agrees. That highlighted set <em>is</em> the 1-bit world's view of the 3-bit world: everything
+       else about the trigram is invisible from here.</p>
+  </section>
+
+  <!-- LEVEL 2 -->
+  <section class="level" id="level2">
+    <h2><span class="n">Level 2</span> — Three bits: the eight trigrams</h2>
+    <p class="lede">Three lines, bottom to top, give 2³ = 8 combinations — the trigrams (八卦), arranged here 2×4
+       in Fu Xi's binary order (乾 111 = 7 down to 坤 000 = 0). Click one to see its three lines isolated, and to
+       highlight its row and column in the hexagram matrix below.</p>
+    <div class="tri-grid" id="tri-grid"></div>
+    <div class="tri-detail" id="tri-detail">Click a trigram to see its three lines named individually.</div>
+  </section>
+
+  <!-- LEVEL 3 -->
+  <section class="level" id="level3">
+    <h2><span class="n">Level 3</span> — Six bits: the sixty-four hexagrams</h2>
+    <p class="lede">Two trigrams stacked give 2⁶ = 64 hexagrams. Rows are the lower trigram, columns the upper —
+       the space's native, binary coordinates. A hexagram's grid <em>position</em> never moves; what changes below
+       is only which <em>number</em> is written in each cell.</p>
+    <div class="toggle-row">
+      <span class="method" id="numMode">
+        <button data-m="fuxi" class="on" title="the 6-bit vector read as a binary numeral, bottom line = most-significant digit (Shao Yong's bottom-up doubling method)">Fu Xi order (binary 0–63)</button>
+        <button data-m="kw" title="the traditional received sequence">King Wen number</button>
+      </span>
+    </div>
+    <div class="matrix-wrap"><div class="matrix" id="matrix"></div></div>
+    <p class="matrix-note">A trigram is the <em>trace</em> of this 64-hexagram world restricted to three lines:
+       select one in Level 2 and its row (as lower trigram) and column (as upper trigram) light up — every hexagram
+       that shares those three lines with it, the rest of the six lines left free.</p>
+    <div class="hex-detail" id="hex-detail">Click a cell to open the hexagram (both numbers, its binary vector, and its two trigrams).</div>
+  </section>
+
+  <!-- EXPLAINER -->
+  <section class="level explainer" id="explainer">
+    <h2><span class="n">History &amp; framing</span></h2>
+
+    <span class="badge">Documented history</span>
+    <h3>What Leibniz actually saw, and when</h3>
+    <p>Gottfried Leibniz worked out binary arithmetic on his own starting around 1679 — base-2 rules, no contact
+       with China yet. In 1701 the Jesuit missionary Joachim Bouvet, writing from the Kangxi court in Beijing,
+       sent him a woodcut of the Fu Xi hexagram arrangement (in fact devised by the 11th-century philosopher
+       Shao Yong) and suggested reading solid lines as 1, broken as 0. The letter took over a year to arrive;
+       Leibniz received it in early 1703 and, delighted, published a note that same year in Paris arguing the
+       ancient Chinese had anticipated his own binary system by four thousand years.</p>
+    <p><b>The one-liner worth keeping:</b> his binary arithmetic predates seeing the diagram by roughly two
+       decades. He didn't learn binary from the <i>I Ching</i> — he recognized (and, most historians now think,
+       over-read) his own already-finished idea inside Shao Yong's ordering. That ordering is real and elegant —
+       reading each hexagram's six lines bottom-to-top as a binary number does put the 64 hexagrams in exact
+       numerical sequence 0–63, which is exactly what Level 3's "Fu Xi order" toggle shows — but no ancient
+       Chinese text treats the hexagrams as arithmetic; that's a much later reading laid over an older object.</p>
+
+    <span class="badge">Documented history</span>
+    <h3>Fu Xi order vs. King Wen order — a permutation, not a discovery</h3>
+    <p>The King Wen sequence (the traditional 1–64 numbering used in most printed books, including this repo's
+       own <a href="books.html">Books</a> viewer) groups hexagrams by paired relationships — inversion and
+       alternation — with no binary logic of its own. Toggle Level 3 to "King Wen number" and watch the numbers
+       scatter across the same fixed grid: same 64 objects, same 64 positions, just a different one-to-one
+       relabeling. That relabeling — a bijection from one ordering onto another — is what a mathematician means
+       by a <i>permutation</i>, and this is a clean, honest place to see one.</p>
+
+    <span class="badge speculative">Modern analogy — not ancient doctrine</span>
+    <h3>"Trace": a teaching analogy borrowed from current consciousness research</h3>
+    <p>Cognitive scientist Donald Hoffman (UC Irvine) and coauthors have a speculative, math-heavy research
+       program — published mostly in <i>Frontiers in Psychology</i> and <i>Entropy</i>, with a 2024 piece still
+       only a preprint — that models reality's substrate as networks of interacting Markov chains and defines a
+       precise operation they call a <b>trace</b>: restrict a large chain to the states one observer can actually
+       reach, and there's a unique smaller "trace chain" describing the dynamics as seen from inside that
+       restriction. Their own further claim — that this asymptotically reproduces relativity, quantum theory, and
+       the Standard Model — is explicitly a conjecture awaiting a proposed empirical test, not a result, and their
+       broader claim that consciousness (not spacetime) is reality's base layer is a minority position even within
+       this research area.</p>
+    <p>What this page borrows is only the <i>shape</i> of that idea, not Hoffman's actual mathematics: a trigram,
+       observed as a restriction of the six-line hexagram world to three lines, and a single line, observed as a
+       restriction of the trigram world to one — "what a smaller world looks like from inside a bigger one" — is
+       structurally the same move as Hoffman's trace (big object → restrict to what's observable → get a smaller,
+       well-defined object), using ordinary bit vectors instead of his Markov chains. It's offered here as a
+       thinking tool for noticing that structure, in keeping with this project's own stance: a mirror for
+       understanding, never a claim about how reality actually works.</p>
+
+    <p class="sources">Sources: Leibniz's 1703 paper (<a href="https://www.leibniz-translations.com/binary.htm">English translation</a>) ·
+      <a href="https://archive.swarthmore.edu/leibniz-bouvet/">Leibniz–Bouvet correspondence</a> (Swarthmore, letters H &amp; I) ·
+      <a href="https://ichingai.info/en/learn/leibniz-i-ching/">plain-language history overview</a> ·
+      <a href="https://www.historyofinformation.com/detail.php?id=395">bibliographic entry</a> ·
+      Hoffman &amp; Prakash, <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2014.00577/full">"Objects of Consciousness"</a> (2014, peer-reviewed) ·
+      <a href="https://sciety.org/articles/activity/10.20944/preprints202410.1305.v1">"Traces of Consciousness"</a> (2024 preprint — not confirmed peer-reviewed) ·
+      <a href="https://qri.org/blog/reflections-on-fusions-of-consciousness">an independent, sympathetic-but-critical review</a> ·
+      <a href="https://traceinstitute.org/research/">Trace Institute</a>.</p>
+  </section>
+
+</main>
+
+<footer>
+  Data: <a href="../grammars/zhouyi/grammar.json">grammars/zhouyi</a> (King Wen number, trigrams, and the
+  bottom-first binary vector this page's math runs on). Cast a path through this same space in
+  <a href="caster.html">the Caster</a>, or read every hexagram across the centuries in
+  <a href="books.html">the Books</a>. The compositional walk-through (lines → trigrams → hexagrams, with full
+  texts) lives at <a href="/structure">/structure</a>.
+</footer>
+
+<script>
+(async function () {
+  const TRI = [ // Fu Xi bagua order — matches books.html's matrix axes exactly
+    ['乾','☰','qián','Heaven'], ['兑','☱','duì','Lake'], ['离','☲','lí','Fire'], ['震','☳','zhèn','Thunder'],
+    ['巽','☴','xùn','Wind'], ['坎','☵','kǎn','Water'], ['艮','☶','gèn','Mountain'], ['坤','☷','kūn','Earth'],
+  ];
+  const norm = t => ({'離':'离','兌':'兑'}[t] || t);
+  const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+  let base;
+  try { base = (await (await fetch('../grammars/zhouyi/grammar.json')).json()).items; }
+  catch (e) {
+    document.getElementById('matrix').innerHTML = '<p class="note">Could not load grammar data.</p>';
+    return;
+  }
+
+  // indexes, same convention as books.html / caster.html
+  const byKw = {}, byPair = {};
+  for (const it of base) {
+    const m = it.metadata;
+    byKw[m.king_wen] = it;
+    byPair[norm(m.trigram_lower) + '|' + norm(m.trigram_upper)] = it;
+  }
+
+  // Fu Xi/Shao Yong decimal: read binary_bottom_first straight as a binary numeral —
+  // the bottom line (first char) is the MOST significant digit, the top line (last char)
+  // the least. This is Shao Yong's generative "doubling method" (加一倍法): the bottom
+  // line is added first and is the coarsest division, each line above it a finer one —
+  // and it's the reading Leibniz and Bouvet proposed in 1701-03. Cross-checked here
+  // against this repo's grammars/leibniz-binary-tree (metadata.leibniz_number) for all
+  // 64 hexagrams before shipping: parseInt(bin, 2) matches it exactly; treating the
+  // bottom line as least-significant (the more "obvious" guess) does not.
+  function fuxiDecimal(bin) {
+    return parseInt(bin, 2);
+  }
+
+  // derive each trigram's own 3-bit vector (bottom-first) from the 8 "pure" hexagrams
+  // (lower === upper), rather than hardcoding it a second time.
+  const triBits = {}; // e.g. triBits['乾'] = '111'
+  for (const it of base) {
+    const m = it.metadata;
+    if (norm(m.trigram_lower) === norm(m.trigram_upper)) triBits[norm(m.trigram_lower)] = m.binary_bottom_first.slice(0, 3);
+  }
+
+  // ============ LEVEL 1 — one bit ============
+  const POS_LABELS = ['Line 1 (bottom)', 'Line 2 (middle)', 'Line 3 (top)'];
+  let selPos = 0, selVal = null; // selVal: null | 0 | 1
+
+  function renderPosRow() {
+    const el = document.getElementById('pos-row');
+    el.innerHTML = POS_LABELS.map((l, i) => '<button data-p="' + i + '" class="' + (i === selPos ? 'on' : '') + '">' + l + '</button>').join('');
+    el.querySelectorAll('button').forEach(b => b.onclick = () => { selPos = parseInt(b.dataset.p, 10); render(); });
+  }
+
+  function renderBitRow() {
+    const el = document.getElementById('bit-row');
+    el.innerHTML =
+      '<button class="bit-btn' + (selVal === 1 ? ' on' : '') + '" data-v="1">' +
+        '<span class="glyph">⚊</span><span class="lab">yang · <span class="val">1</span></span></button>' +
+      '<button class="bit-btn' + (selVal === 0 ? ' on' : '') + '" data-v="0">' +
+        '<span class="glyph">⚋</span><span class="lab">yin · <span class="val">0</span></span></button>';
+    el.querySelectorAll('button').forEach(b => b.onclick = () => {
+      const v = parseInt(b.dataset.v, 10);
+      selVal = (selVal === v) ? null : v;
+      render();
+    });
+  }
+
+  // ============ LEVEL 2 — eight trigrams ============
+  let selTri = null; // currently selected trigram character (norm'd), or null
+
+  function renderTriGrid() {
+    const el = document.getElementById('tri-grid');
+    el.innerHTML = TRI.map(([ch, glyph, py, en]) => {
+      const bits = triBits[ch] || '???';
+      const dec = /^[01]{3}$/.test(bits) ? parseInt(bits, 2) : '?';
+      const linesHtml = bits.split('').map((b, i) => {
+        const bitHi = selVal !== null && b === String(selVal) && ((i === selPos));
+        const bars = b === '1'
+          ? '<span class="bar" style="max-width:52px"></span>'
+          : '<span class="bar" style="max-width:20px"></span><span class="bar" style="visibility:hidden;max-width:12px"></span><span class="bar" style="max-width:20px"></span>';
+        return '<span class="ln' + (bitHi ? ' bit-hi' : '') + '">' + bars + '</span>';
+      }).join('');
+      const cls = ['tri-card'];
+      if (selTri === ch) cls.push('selected');
+      if (selVal !== null) {
+        if (bits[selPos] === String(selVal)) cls.push('hi'); else cls.push('dim');
+      }
+      return '<div class="' + cls.join(' ') + '" data-ch="' + ch + '">' +
+        '<div class="glyph">' + glyph + '</div>' +
+        '<div class="tri-lines">' + linesHtml + '</div>' +
+        '<div class="nm">' + ch + ' ' + en + '</div>' +
+        '<div class="py">' + py + '</div>' +
+        '<div class="dec">binary ' + bits + ' = ' + dec + '</div>' +
+        '</div>';
+    }).join('');
+    el.querySelectorAll('.tri-card').forEach(c => c.onclick = () => {
+      const ch = c.dataset.ch;
+      selTri = (selTri === ch) ? null : ch;
+      render();
+    });
+  }
+
+  function renderTriDetail() {
+    const el = document.getElementById('tri-detail');
+    if (!selTri) { el.textContent = 'Click a trigram to see its three lines named individually.'; return; }
+    const bits = triBits[selTri];
+    const en = TRI.find(t => t[0] === selTri);
+    const rows = ['bottom', 'middle', 'top'].map((lab, i) =>
+      lab + ' = ' + (bits[i] === '1' ? 'yang (1)' : 'yin (0)'));
+    el.innerHTML = '<b>' + selTri + ' ' + en[3] + '</b> isolated — ' + rows.join(' · ') +
+      '. Its row and column are lit up in the hexagram matrix below.';
+  }
+
+  // ============ LEVEL 3 — sixty-four hexagrams ============
+  let numMode = 'fuxi'; // 'fuxi' | 'kw'
+  let selHex = null;
+
+  function renderNumMode() {
+    document.querySelectorAll('#numMode button').forEach(b => b.classList.toggle('on', b.dataset.m === numMode));
+  }
+
+  function renderMatrix() {
+    const m = document.getElementById('matrix');
+    let html = '<span class="lab">下↓ 上→</span>' + TRI.map(t => '<span class="lab">' + t[1] + '</span>').join('');
+    for (const [lowerCh] of TRI) {
+      html += '<span class="lab">' + TRI.find(t => t[0] === lowerCh)[1] + '</span>';
+      for (const [upperCh] of TRI) {
+        const it = byPair[lowerCh + '|' + upperCh];
+        const kw = it.metadata.king_wen;
+        const n = numMode === 'fuxi' ? fuxiDecimal(it.metadata.binary_bottom_first) : kw;
+        const rowHi = selTri === lowerCh, colHi = selTri === upperCh;
+        let cls = 'lab-btn';
+        if (rowHi && colHi) cls = 'both-hi'; else if (rowHi) cls = 'row-hi'; else if (colHi) cls = 'col-hi';
+        html += '<button data-kw="' + kw + '" class="' + cls + '" title="' + esc(it.name) + '">' +
+          '<span class="g">' + it.metadata.unicode + '</span>' + n + '</button>';
+      }
+    }
+    m.innerHTML = html;
+    m.querySelectorAll('button[data-kw]').forEach(b => b.onclick = () => {
+      selHex = parseInt(b.dataset.kw, 10);
+      render();
+    });
+  }
+
+  function renderHexDetail() {
+    const el = document.getElementById('hex-detail');
+    if (!selHex) { el.textContent = 'Click a cell to open the hexagram (both numbers, its binary vector, and its two trigrams).'; return; }
+    const it = byKw[selHex], m = it.metadata;
+    const fx = fuxiDecimal(m.binary_bottom_first);
+    el.innerHTML = '<span class="glyph">' + m.unicode + '</span>' +
+      '<b>' + esc(it.name) + '</b> — King Wen ' + m.king_wen + ' · Fu Xi/binary ' + fx +
+      ' <span style="font-variant-numeric:tabular-nums">(' + m.binary_bottom_first + ', bottom line first)</span> · ' +
+      esc(m.trigram_lower) + ' below, ' + esc(m.trigram_upper) + ' above. ' +
+      'Read it in <a href="books.html?hexagram=' + m.king_wen + '">the Books</a> or ' +
+      '<a href="/hexagram/' + m.king_wen + '">/hexagram/' + m.king_wen + '</a>.';
+  }
+
+  document.getElementById('numMode').querySelectorAll('button').forEach(b => b.onclick = () => { numMode = b.dataset.m; render(); });
+
+  function render() {
+    renderPosRow(); renderBitRow();
+    renderTriGrid(); renderTriDetail();
+    renderNumMode(); renderMatrix(); renderHexDetail();
+  }
+  render();
+})();
+</script>
+</body>
+</html>
