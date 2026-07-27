@@ -67,6 +67,7 @@
       <button data-m="yarrow" title="6:1/16 · 7:5/16 · 8:7/16 · 9:3/16">Yarrow distribution</button>
     </span>
     <button class="cast-btn" id="cast">Cast six lines</button>
+    <span id="langbar"></span>
   </div>
   <p class="note" style="text-align:center" id="method-note">Three coins per line: 6 old yin ⅛ · 7 young yang ⅜ · 8 young yin ⅜ · 9 old yang ⅛.</p>
 
@@ -85,9 +86,12 @@
   hexagrams across the centuries in <a href="books.html">the Books</a>, or see why this space has exactly
   64 places — one bit, then three, then six, then those 64 laid around the zodiac as Human Design's gates —
   in <a href="binary-ladder.html">the Binary Ladder</a>.
-  Texts: this repo's public-domain book-grammars.
+  Texts: this repo's public-domain book-grammars. English, where a book has it, is James
+  Legge's (Sacred Books of the East vol. XVI, 1882/1899) — public domain, and a Victorian
+  Scot's reading, not a neutral window.
 </footer>
 
+<script src="language.js"></script>
 <script>
 (async function () {
   const BOOKS = [
@@ -139,19 +143,43 @@
       '<div class="note">' + esc(item.subcategory || '') + '</div>';
   }
 
-  function lineTexts(item, wanted) {
-    // sections['爻辞 · Lines (original)'] is markdown, one line per 爻, bottom-first
-    const blob = item.sections['爻辞 · Lines (original)'] || '';
-    const rows = blob.split('\n');
-    return wanted.map(k => rows[k - 1]).filter(Boolean);
+  const LINES_KEY = '爻辞 · Lines (original)';
+  const JUDGMENT_KEY = '卦辞 · Judgment (original)';
+  const TAG = { zh: '原文', en: 'English · Legge' };
+
+  /* One .block, in whichever language(s) the switch is set to. `pick` narrows a whole
+     section down to the rows actually wanted — the moving lines — and is applied to each
+     language separately, which works because a sections_i18n block mirrors the canonical
+     one row for row (GRAMMAR_FORMAT.md, "Languages"). */
+  function block(item, key, heading, pick) {
+    const parts = Lang.passages(item, key).map(p => {
+      const rows = pick ? pick(p.text || '') : [p.text || ''];
+      const body = rows.filter(Boolean).map(md).join('</p><p>');
+      if (!body) return '';
+      return (p.tagged ? '<span class="lang-tag">' + TAG[p.lang] + '</span>' : '') + '<p>' + body + '</p>';
+    }).join('');
+    if (!parts) return '';
+    return '<div class="block"><h4>' + heading + '</h4>' +
+      (Lang.missing(item) ? '<p class="lang-note">' + Lang.note + '</p>' : '') + parts + '</div>';
   }
+
+  // sections[LINES_KEY] is markdown, one row per 爻, bottom-first — in every language.
+  const rowsFor = wanted => text => wanted.map(k => text.split('\n')[k - 1]);
+
+  let last = null;   // the cast on the table, so the language switch can redraw it
 
   document.getElementById('cast').onclick = () => {
     const casts = Array.from({ length: 6 }, castLine);           // bottom → top
     const primaryBin = casts.map(c => (c % 2 === 1 ? '1' : '0')).join('');   // 7,9 yang
     const resultBin = casts.map(c => c === 6 ? '1' : c === 9 ? '0' : (c % 2 === 1 ? '1' : '0')).join('');
     const moving = casts.map((c, i) => (c === 6 || c === 9) ? i + 1 : null).filter(Boolean);
-    const A = byBin[primaryBin], B = byBin[resultBin];
+    last = { A: byBin[primaryBin], B: byBin[resultBin], moving };
+    renderCast();
+  };
+
+  function renderCast() {
+    if (!last) return;
+    const { A, B, moving } = last;
 
     document.getElementById('table').hidden = false;
     hexCard(document.getElementById('primary'), A, '本卦 · primary', moving);
@@ -159,37 +187,40 @@
       ? '→<small>' + moving.length + ' moving line' + (moving.length > 1 ? 's' : '') + '</small>'
       : '·<small>no movement</small>';
     hexCard(document.getElementById('resulting'), B, '之卦 · becomes', []);
-    if (!moving.length) document.getElementById('resulting').style.opacity = .45;
-    else document.getElementById('resulting').style.opacity = 1;
+    document.getElementById('resulting').style.opacity = moving.length ? 1 : .45;
 
+    const books = kw => 'books.html?hexagram=' + kw + '&lang=' + Lang.get();
     let html = '<h3>' + esc(A.name) + ' — the judgment</h3>' +
-      '<div class="block"><h4>卦辞 (original)</h4><p>' + md(A.sections['卦辞 · Judgment (original)']) + '</p></div>';
+      block(A, JUDGMENT_KEY, '卦辞 · the judgment');
 
     if (moving.length) {
       const all = moving.length === 6 && (A.metadata.king_wen === 1 || A.metadata.king_wen === 2);
       html += '<h3>The path — the moving lines speak</h3>';
       if (all) {
-        const blob = A.sections['爻辞 · Lines (original)'].split('\n');
-        html += '<div class="block"><h4>All six lines move — the seventh text</h4><p>' + md(blob[6] || '') + '</p>' +
-          '<p class="note">Hexagrams 1 and 2 alone carry a text for exactly this cast (用九 / 用六).</p></div>';
+        html += block(A, LINES_KEY, 'All six lines move — the seventh text', rowsFor([7])) +
+          '<p class="note">Hexagrams 1 and 2 alone carry a text for exactly this cast (用九 / 用六).</p>';
       } else {
-        html += '<div class="block"><h4>爻辞 of the moving line' + (moving.length > 1 ? 's' : '') + ' (original)</h4><p>' +
-          lineTexts(A, moving).map(md).join('</p><p>') + '</p></div>';
+        html += block(A, LINES_KEY,
+          '爻辞 of the moving line' + (moving.length > 1 ? 's' : ''), rowsFor(moving));
         const tw = tenWings(A.metadata.king_wen);
         if (tw && tw.sections['小象 · Small Images (per line)']) {
-          const rows = tw.sections['小象 · Small Images (per line)'].split('\n');
-          const picks = moving.map(k => rows[k - 1]).filter(Boolean);
-          if (picks.length) html += '<div class="block"><h4>小象 on those lines (Ten Wings)</h4><p>' + picks.map(md).join('</p><p>') + '</p></div>';
+          html += block(tw, '小象 · Small Images (per line)', '小象 on those lines (Ten Wings)', rowsFor(moving));
         }
       }
       html += '<h3>' + esc(B.name) + ' — where it arrives</h3>' +
-        '<div class="block"><h4>卦辞 (original)</h4><p>' + md(B.sections['卦辞 · Judgment (original)']) + '</p>' +
-        '<p class="note">Open it in <a href="books.html?hexagram=' + B.metadata.king_wen + '">the Books</a> to read it across the centuries — or the primary, <a href="books.html?hexagram=' + A.metadata.king_wen + '">here</a>.</p></div>';
+        block(B, JUDGMENT_KEY, '卦辞 · the judgment') +
+        '<p class="note">Open it in <a href="' + books(B.metadata.king_wen) + '">the Books</a> to read it ' +
+        'across the centuries — or the primary, <a href="' + books(A.metadata.king_wen) + '">here</a>.</p>';
     } else {
-      html += '<p class="note">No moving lines: the reading rests in the primary hexagram. Read it across time in <a href="books.html?hexagram=' + A.metadata.king_wen + '">the Books</a>.</p>';
+      html += '<p class="note">No moving lines: the reading rests in the primary hexagram. Read it ' +
+        'across time in <a href="' + books(A.metadata.king_wen) + '">the Books</a>.</p>';
     }
     document.getElementById('readpane').innerHTML = html;
-  };
+  }
+
+  // Switching language redraws the cast that is already on the table — the reader does not
+  // lose their reading to read it in the other language.
+  Lang.mount(document.getElementById('langbar'), renderCast);
 })();
 </script>
 </body>

@@ -43,6 +43,8 @@
   .rail button.on{background:var(--gold,#9a7322);border-color:var(--gold,#9a7322);color:#fff}
   .rail .era{font-size:.72rem;opacity:.75;display:block}
 
+  .langrow{margin:0 0 14px}
+
   .hexhead{display:flex;align-items:center;gap:14px;margin:0 0 6px}
   .hexhead .glyph{font-size:3.2rem;line-height:1}
   .hexhead h2{margin:0;font-size:1.4rem}
@@ -72,6 +74,7 @@
   </aside>
   <section>
     <div class="rail" id="rail"></div>
+    <div class="langrow"><span id="langbar"></span></div>
     <div id="reading"></div>
   </section>
 </div>
@@ -82,8 +85,11 @@
   Why this matrix has 8 rows and 8 columns — one bit, then three, then six, and then the same 64 bent onto
   a circle — is walked in <a href="binary-ladder.html">the Binary Ladder</a>.
   Architecture: <a href="https://github.com/PlayfulProcess/Recursive-iching/blob/main/docs/TIME-AND-SPACE.md">TIME-AND-SPACE.md</a>.
+  English, where a book has it, is James Legge's (Sacred Books of the East vol. XVI,
+  1882/1899) — public domain, and a Victorian Scot's reading, not a neutral window.
 </footer>
 
+<script src="language.js"></script>
 <script>
 (async function () {
   const BOOKS = [
@@ -163,7 +169,7 @@
       const flipped = bin.slice(); flipped[i] = flipped[i] === '1' ? '0' : '1';
       const kw = byBin[flipped.join('')];
       const nb = byKw[kw];
-      html += '<a href="?hexagram=' + kw + '&books=' + [...active].join(',') + '" data-kw="' + kw + '">' +
+      html += '<a href="?hexagram=' + kw + '&books=' + [...active].join(',') + '&lang=' + Lang.get() + '" data-kw="' + kw + '">' +
         nb.metadata.unicode + ' ' + kw + ' <small>line ' + (i + 1) + '</small></a>';
     }
     html += '</div>';
@@ -182,14 +188,25 @@
       const bi = bookItem(b.slug, current);
       html += '<article class="book"><h3>' + esc(b.label) + '</h3><p class="era">' + esc(b.era) + '</p>';
       if (!bi) { html += '<p class="missing">This book has no text for this hexagram.</p></article>'; continue; }
-      for (const [sec, text] of Object.entries(bi.sections)) {
+      // The reader asked for English and this book has none: say so once, here, rather
+      // than let the original quietly stand in for a translation section by section.
+      if (Lang.missing(bi)) html += '<p class="lang-note">' + esc(Lang.note) + '</p>';
+      for (const sec of Object.keys(bi.sections)) {
         // 'Research note': provenance lives in the grammar; keep the reading clean.
         // The rest are the English-labeled aliases the canonical-format alignment added so the
         // grammars render in recursive.eco's card viewer — they repeat, word for word, the
         // bilingual originals above (卦辞·/爻辞·/彖传·…). Showing both prints every text twice.
         // Same list as HIDDEN_SECTIONS in app/hexagram/[kw]/page.tsx — keep them in step.
         if (HIDDEN_SECTIONS.has(sec)) continue;
-        html += '<h4>' + esc(sec) + '</h4><p>' + text.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/&(?!amp;)/g,'&amp;') + '</p>';
+        html += '<h4>' + esc(sec) + '</h4>';
+        // One section, one or two languages — language.js decides which, from the
+        // sections_i18n convention (GRAMMAR_FORMAT.md, "Languages").
+        for (const p of Lang.passages(bi, sec)) {
+          if (!p.text) continue;
+          html += (p.tagged ? '<span class="lang-tag">' + (p.lang === 'en' ? 'English · Legge' : '原文') + '</span>' : '') +
+            '<p' + (p.lang === 'en' ? ' class="lang-en"' : '') + '>' +
+            p.text.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/&(?!amp;)/g,'&amp;') + '</p>';
+        }
       }
       html += '</article>';
     }
@@ -197,10 +214,15 @@
   }
 
   function update() {
-    history.replaceState(null, '', '?hexagram=' + current + '&books=' + [...active].join(','));
+    history.replaceState(null, '', '?hexagram=' + current + '&books=' + [...active].join(',') +
+      '&lang=' + Lang.get());
     renderMatrix(); renderRail(); renderNeighbors(); renderReading();
   }
   function go(kw) { current = kw; update(); }
+
+  // The switch redraws the reading in place; the neighbor links pick the language up
+  // from the URL that update() rewrites.
+  Lang.mount(document.getElementById('langbar'), update);
 
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') go(current === 64 ? 1 : current + 1);
