@@ -4,15 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Binary Ladder — Recursive I Ching</title>
-<meta name="description" content="One bit, then three, then six: yin/yang, the eight trigrams, and the sixty-four hexagrams as a dimensional ladder — with the real Leibniz history and a clearly-labeled modern 'trace' analogy from consciousness research.">
+<meta name="description" content="One bit, then three, then six, then sixty-four on a circle: yin/yang, the eight trigrams, the hexagrams, and the Human Design mandala as a dimensional ladder — with the real Leibniz history and a clearly-labeled modern 'trace' analogy from consciousness research.">
 <link rel="stylesheet" href="../theme.css">
 <style>
   /* binary-ladder.html — the dimensional ladder (docs/TIME-AND-SPACE.md's "binary/Fuxi
      order" made explicit and walkable). Level 1: one bit, yin/yang. Level 2: three bits,
      the eight trigrams, 2x4. Level 3: six bits, the sixty-four hexagrams, 8x8 — Fu Xi's
      native coordinates (row = lower trigram, column = upper trigram), with a toggle to
-     see the King Wen number as a permutation laid over the same grid. Static, no build
-     step; fetches ../grammars/zhouyi/grammar.json, same convention as books.html. */
+     see the King Wen number as a permutation laid over the same grid. Level 4: the same 64
+     bent onto a circle — the Human Design mandala (Ra Uru Hu, 1987), described and credited,
+     not endorsed; its gate order is verified and sourced in docs/HUMAN-DESIGN-TRACE.md.
+     Static, no build step, no dependencies; fetches ../grammars/zhouyi/grammar.json, same
+     convention as books.html. */
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg,#faf8f3);color:var(--ink,#2b2620);font-family:Georgia,'Times New Roman',serif;line-height:1.6}
   header{padding:22px 18px 6px;text-align:center}
@@ -77,12 +80,39 @@
   .matrix button:hover{background:var(--panel2,#faf8f3);border-color:var(--gold,#9a7322)}
   .matrix button.row-hi,.matrix button.col-hi{background:var(--chip,#faf3e6);border-color:var(--gold,#9a7322)}
   .matrix button.both-hi{background:var(--gold,#9a7322);color:#fff}
+  .matrix button.sel-hex{outline:2px solid var(--gold,#9a7322);outline-offset:-1px}
+  .matrix button.anti-hex{outline:2px dashed var(--gold,#9a7322);outline-offset:-1px}
   .matrix button .g{display:block;font-size:1.15rem}
   .matrix-note{font-size:.78rem;color:var(--mut,#7a7060);margin:8px 2px 0}
   .hex-detail{margin-top:14px;background:var(--panel2,#faf8f3);border:1px solid var(--line-soft,#e3dccc);border-radius:12px;
     padding:12px 16px;font-size:.9rem;min-height:1.4em}
   .hex-detail .glyph{font-size:2rem;vertical-align:middle;margin-right:8px}
   .hex-detail a{color:var(--gold,#9a7322)}
+
+  /* ---- Level 4: the Human Design mandala (64 gates on a circle) ---- */
+  /* The wheel is one SVG, no dependencies. Unlike the matrix above it is never allowed to
+     overflow: a circle you have to pan sideways stops being a circle, so it scales all the
+     way down to the column (a 375px phone gives it ~286px) and the gate numbers grow a
+     point on small screens to stay readable at that size. */
+  .wheel-wrap{overflow-x:auto}
+  .wheel-wrap svg{display:block;margin:0 auto;width:100%;max-width:560px;height:auto}
+  @media(max-width:640px){.wheel .glab{font-size:14px}.wheel .zlab{font-size:17px}}
+  .wheel .zsec{fill:var(--panel2,#faf8f3);stroke:var(--line-soft,#e3dccc);stroke-width:1}
+  .wheel .zsec.alt{fill:var(--surface,#fff)}
+  .wheel .zlab{fill:var(--mut,#7a7060);font-size:15px;text-anchor:middle;dominant-baseline:middle}
+  .wheel .gsec{fill:var(--surface,#fff);stroke:var(--line-soft,#e3dccc);stroke-width:1;cursor:pointer;
+    transition:fill .12s}
+  .wheel .gsec:hover{fill:var(--panel2,#faf8f3)}
+  .wheel .gsec.tri-hi{fill:var(--chip,#faf3e6)}
+  .wheel .gsec.anti{fill:var(--chip,#faf3e6);stroke:var(--gold,#9a7322);stroke-dasharray:3 3}
+  .wheel .gsec.sel{fill:var(--gold,#9a7322);stroke:var(--gold,#9a7322)}
+  .wheel .glab{fill:var(--ink,#2b2620);font-size:12px;text-anchor:middle;dominant-baseline:middle;
+    pointer-events:none;font-variant-numeric:tabular-nums}
+  .wheel .glab.on{fill:#fff}
+  .wheel .axis{stroke:var(--gold,#9a7322);stroke-width:1;stroke-dasharray:4 4}
+  .wheel .cglyph{fill:var(--ink,#2b2620);font-size:54px;text-anchor:middle;dominant-baseline:middle}
+  .wheel .ctext{fill:var(--mut,#7a7060);font-size:12px;text-anchor:middle;dominant-baseline:middle}
+  .wheel-legend{font-size:.78rem;color:var(--mut,#7a7060);margin:8px 2px 0}
 
   /* ---- explainer ---- */
   .explainer h3{margin:18px 0 6px;font-size:1rem;color:var(--gold,#9a7322)}
@@ -114,8 +144,9 @@
 <body>
 <header>
   <h1>The Binary <span class="gold">Ladder</span></h1>
-  <p>One bit becomes three becomes six. Yin and yang, then the eight trigrams, then the sixty-four hexagrams —
-     each smaller world is what you see of the larger one when you can only observe a few of its lines.
+  <p>One bit becomes three becomes six — and then, in a system built four decades ago, sixty-four arcs of a
+     circle. Yin and yang, the eight trigrams, the sixty-four hexagrams, the Human Design mandala: each smaller
+     world is what you see of the larger one when you can only observe a few of its lines.
      Read to know yourself, not to be told your fate — relate to the hexagram, never obey it.</p>
 </header>
 
@@ -153,6 +184,7 @@
       <span class="method" id="numMode">
         <button data-m="fuxi" class="on" title="the 6-bit vector read as a binary numeral, bottom line = most-significant digit (Shao Yong's bottom-up doubling method)">Fu Xi order (binary 0–63)</button>
         <button data-m="kw" title="the traditional received sequence">King Wen number</button>
+        <button data-m="hd" title="position around the Human Design mandala, counting from Gate 41 at 2° Aquarius — see Level 4">Mandala slot</button>
       </span>
     </div>
     <div class="matrix-wrap"><div class="matrix" id="matrix"></div></div>
@@ -160,6 +192,23 @@
        select one in Level 2 and its row (as lower trigram) and column (as upper trigram) light up — every hexagram
        that shares those three lines with it, the rest of the six lines left free.</p>
     <div class="hex-detail" id="hex-detail">Click a cell to open the hexagram (both numbers, its binary vector, and its two trigrams).</div>
+  </section>
+
+  <!-- LEVEL 4 -->
+  <section class="level" id="level4">
+    <h2><span class="n">Level 4</span> — The same sixty-four, bent onto a circle: the Human Design mandala</h2>
+    <p class="lede">Human Design — a modern system, synthesised by Ra Uru Hu in 1987 out of the <i>I Ching</i>,
+       astrology, Kabbalah and the chakras — calls the hexagrams <b>gates</b>, keeps their King Wen numbers
+       exactly, and gives each one 5°37′30″ of the zodiac (360° ÷ 64). Click any gate here to light up its cell
+       in the matrix above, or any cell up there to find it down here. The dashed line points at the gate 180°
+       away — always this one's exact opposite, all six lines flipped.</p>
+    <div class="wheel-wrap"><svg class="wheel" id="wheel" viewBox="0 0 480 480" role="img"
+      aria-label="The 64 I Ching hexagrams arranged as Human Design gates around the zodiac"></svg></div>
+    <p class="wheel-legend">Outer ring: the twelve zodiac signs, 30° each, 0° Aries at the top and longitude
+       increasing clockwise (printed mandalas vary in orientation; nothing depends on it). Inner ring: the 64
+       gates in mandala order, beginning with Gate 41 at 2°00′ Aquarius. Sources and the verification behind
+       this order are in <a href="https://github.com/PlayfulProcess/Recursive-iching/blob/main/docs/HUMAN-DESIGN-TRACE.md">docs/HUMAN-DESIGN-TRACE.md</a>.</p>
+    <div class="hex-detail" id="wheel-detail">Click a gate on the wheel, or a cell in the matrix above.</div>
   </section>
 
   <!-- EXPLAINER -->
@@ -217,6 +266,38 @@
        scatter across the same fixed grid: same 64 objects, same 64 positions, just a different one-to-one
        relabeling. That relabeling — a bijection from one ordering onto another — is what a mathematician means
        by a <i>permutation</i>, and this is a clean, honest place to see one.</p>
+    <p>The third toggle, <b>Mandala slot</b>, adds a third such relabeling — position around Level 4's circle,
+       counting from Gate 41. Three orderings of one set of 64 objects, each a permutation of the others: a
+       counting order (Fu Xi), a meaning order (King Wen), and a positional order (the mandala). The objects
+       never move; only the labels do.</p>
+
+    <span class="badge">Documented, modern</span>
+    <h3>Human Design: whose system this is, and what its wheel order actually is</h3>
+    <p>Level 4 draws a modern system faithfully, without adopting it. <b>Human Design</b> was originated by
+       Alan Robert Krakower, who took the name <b>Ra Uru Hu</b> and published the system in 1992 after an
+       experience in January 1987 on Ibiza he described as an eight-day encounter with a "Voice." It is a
+       single-author synthesis of the <i>I Ching</i>, Western astrology, the Kabbalistic Tree of Life and the
+       chakra system; Wikipedia classifies it as pseudoscience. It is roughly forty years old, it does not
+       claim to be ancient, and this page makes no claim about whether any of it works. What it does have —
+       and the only reason it appears here — is an interesting piece of combinatorics.</p>
+    <p>Human Design keeps the King Wen <em>numbers</em> exactly (its Gate <i>n</i> is hexagram <i>n</i>) but
+       discards the King Wen <em>sequence</em>, giving each gate 5°37′30″ of the ecliptic in a different order
+       beginning with Gate 41 at 2°00′ Aquarius. Practitioner sources often say the wheel "follows the Fu Xi
+       sequence." That is half right, and the precise version is prettier: walking forward from Gate 2 (all
+       yin, 13°15′ Taurus), the next thirty-two gates <em>are</em> the Fu Xi binary count 0, 1, 2 … 31 — then
+       the wheel jumps to Gate 1 (all yang, 13°15′ Scorpio) and counts back down 63 … 32. The consequence,
+       true for all thirty-two pairs without exception: <b>the gate directly opposite any gate is its exact
+       binary complement</b>, every line flipped — which is the dashed axis Level 4 draws. Human Design calls
+       those pairs programming partners; a Sun and its Earth always form one.</p>
+    <p>So the mandala is not an arbitrary shuffle. Complementation already partitions the 64 hexagrams into
+       32 opposite pairs — a structure the circle can hold — and this ordering is an arrangement that respects
+       it. That much is checkable arithmetic, and it was checked here against three independent sources for
+       the gate order (two published degree tables and an open-source chart library) before this level shipped.
+       The working, the sources, and what was deliberately left unclaimed are in
+       <a href="https://github.com/PlayfulProcess/Recursive-iching/blob/main/docs/HUMAN-DESIGN-TRACE.md">docs/HUMAN-DESIGN-TRACE.md</a>. What is <em>not</em> derivable
+       from the hexagrams: the nine centres and thirty-six channels of the body graph. Only three of those
+       thirty-six gate pairings are binary complements and the rest show no pattern at all — that layer is
+       added, not hidden inside the <i>I Ching</i>.</p>
 
     <span class="badge speculative">Modern analogy — not ancient doctrine</span>
     <h3>"Trace": a teaching analogy borrowed from current consciousness research</h3>
@@ -236,6 +317,24 @@
        well-defined object), using ordinary bit vectors instead of his Markov chains. It's offered here as a
        thinking tool for noticing that structure, in keeping with this project's own stance: a mirror for
        understanding, never a claim about how reality actually works.</p>
+    <p>Level 4 is that same move once more, one rung further out. A Human Design chart is a much larger
+       labelled object: not 64 states but which of 64 arcs <em>and</em> which sixth of that arc and which finer
+       subdivision again, for each of thirteen celestial bodies, at each of two moments, plus a nine-node graph
+       laid over the result. Forget every one of those coordinates except "which of the 64 arcs" and you land
+       back on exactly the bare hexagram — the same 64 objects the other three levels are built from. That is a
+       real projection, and it is the honest content of the phrase <b>the I Ching as a trace of Human Design</b>:
+       the hexagram is what survives of the mandala when the only thing an observer can see is which arc they
+       are in.</p>
+    <p><b>And here is the inversion that keeps it honest.</b> This ladder <em>ascends</em> — one bit, three,
+       six, then the wheel — but the history <em>descends</em>. Human Design was assembled in 1987 out of the
+       <i>I Ching</i>, so the larger structure is the younger one; the hexagrams did not come from it, it came
+       from them. Three more places the analogy gives out: a trace is defined on a Markov chain and the mandala
+       is a static labelling, not a dynamics (for a genuine transition matrix over these 64 states, use this
+       repo's <a href="caster.html">Caster</a> and the real casting probabilities); Hoffman's trace chain is
+       <em>unique</em> given a set of observable states, while "forget the degrees" is just one projection among
+       many; and the added layers are additions, not hidden depth — the body graph is not secretly inside the
+       hexagrams. Take Level 4 as a picture of what restriction feels like, not as a claim that either system
+       is true, and least of all as a claim that the older book is a shadow of the newer one.</p>
 
     <p class="sources">Sources: Leibniz's 1703 paper (<a href="https://www.leibniz-translations.com/binary.htm">English translation</a>) ·
       <a href="https://archive.swarthmore.edu/leibniz-bouvet/">Leibniz–Bouvet correspondence</a> (Swarthmore, letters H &amp; I) ·
@@ -244,7 +343,14 @@
       Hoffman &amp; Prakash, <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2014.00577/full">"Objects of Consciousness"</a> (2014, peer-reviewed) ·
       <a href="https://sciety.org/articles/activity/10.20944/preprints202410.1305.v1">"Traces of Consciousness"</a> (2024 preprint — not confirmed peer-reviewed) ·
       <a href="https://qri.org/blog/reflections-on-fusions-of-consciousness">an independent, sympathetic-but-critical review</a> ·
-      <a href="https://traceinstitute.org/research/">Trace Institute</a>.</p>
+      <a href="https://traceinstitute.org/research/">Trace Institute</a>.<br>
+      Level 4: <a href="https://en.wikipedia.org/wiki/Human_Design">Human Design</a> (Wikipedia — origin, components, classification) ·
+      <a href="https://jovianarchive.com/blogs/human-design-basics/the-i-ching-the-genetic-code-and-the-architecture-of-human-design">Jovian Archive</a> (the 5°37′30″ per hexagram figure) ·
+      <a href="https://bonniesorsby.com/human-design-gates-by-degree/">gate/degree table</a> ·
+      <a href="https://www.barneyandflow.com/gate-zodiac-degrees">a second gate/degree table</a> ·
+      <a href="https://github.com/CReizner/SharpAstrology.HumanDesign">an open-source chart library</a> (the arithmetic that settles the order) ·
+      <a href="https://genekeys.com/docs/programming-partners/">programming partners</a> (opposite gates are line-opposites) ·
+      full working in <a href="https://github.com/PlayfulProcess/Recursive-iching/blob/main/docs/HUMAN-DESIGN-TRACE.md">docs/HUMAN-DESIGN-TRACE.md</a>.</p>
   </section>
 
 </main>
@@ -263,6 +369,26 @@
     ['乾','☰','qián','Heaven'], ['兑','☱','duì','Lake'], ['离','☲','lí','Fire'], ['震','☳','zhèn','Thunder'],
     ['巽','☴','xùn','Wind'], ['坎','☵','kǎn','Water'], ['艮','☶','gèn','Mountain'], ['坤','☷','kūn','Earth'],
   ];
+  // The Human Design mandala order: the 64 gates as they sit around the ecliptic, starting
+  // with Gate 41 at 2°00′ Aquarius, each gate 360/64 = 5.625° = 5°37′30″ wide. Gate n is
+  // King Wen hexagram n (the numbering is kept; the *sequence* is not). Verified this
+  // session against three independent sources that agree on the exact cyclic order — two
+  // published gate/degree tables and, decisively, an open-source chart library whose
+  // arithmetic is floor((longitude − 3.875°) / 5.625°) over an enum listing the gates in
+  // wheel order. Provenance, the degree table, and the two source typos found are recorded
+  // in docs/HUMAN-DESIGN-TRACE.md. Do not edit this array without re-verifying it there.
+  const WHEEL = [41,19,13,49,30,55,37,63,22,36,25,17,21,51,42,3,27,24,2,23,8,20,16,35,
+                 45,12,15,52,39,53,62,56,31,33,7,4,29,59,40,64,47,6,46,18,48,57,32,50,
+                 28,44,1,43,14,34,9,5,26,11,10,58,38,54,61,60];
+  const WHEEL_START = 302;      // ecliptic longitude of Gate 41's cusp: 2°00′ Aquarius
+  const GATE_ARC = 360 / 64;    // 5.625°
+  const SLOT = {};              // king wen number -> 0-based mandala slot
+  WHEEL.forEach((kw, i) => { SLOT[kw] = i; });
+  // U+FE0E (variation selector-15) after each sign keeps Chrome from swapping the glyph
+  // for a colour emoji, which read as purple stickers against the parchment palette.
+  const ZODIAC = ['♈︎ Aries','♉︎ Taurus','♊︎ Gemini','♋︎ Cancer','♌︎ Leo','♍︎ Virgo',
+                  '♎︎ Libra','♏︎ Scorpio','♐︎ Sagittarius','♑︎ Capricorn','♒︎ Aquarius','♓︎ Pisces'];
+
   const norm = t => ({'離':'离','兌':'兑'}[t] || t);
   const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 
@@ -387,10 +513,16 @@
       for (const [upperCh] of TRI) {
         const it = byPair[lowerCh + '|' + upperCh];
         const kw = it.metadata.king_wen;
-        const n = numMode === 'fuxi' ? fuxiDecimal(it.metadata.binary_bottom_first) : kw;
+        const n = numMode === 'fuxi' ? fuxiDecimal(it.metadata.binary_bottom_first)
+                : numMode === 'hd' ? SLOT[kw] + 1
+                : kw;
         const rowHi = selTri === lowerCh, colHi = selTri === upperCh;
         let cls = 'lab-btn';
         if (rowHi && colHi) cls = 'both-hi'; else if (rowHi) cls = 'row-hi'; else if (colHi) cls = 'col-hi';
+        // wheel -> matrix: the gate picked on Level 4's circle is ringed here, its
+        // 180°-opposite gate ringed faintly, so the two views always agree.
+        if (selHex === kw) cls += ' sel-hex';
+        else if (selHex !== null && WHEEL[(SLOT[selHex] + 32) % 64] === kw) cls += ' anti-hex';
         html += '<button data-kw="' + kw + '" class="' + cls + '" title="' + esc(it.name) + '">' +
           '<span class="g">' + it.metadata.unicode + '</span>' + n + '</button>';
       }
@@ -415,12 +547,102 @@
       '<a href="/hexagram/' + m.king_wen + '">/hexagram/' + m.king_wen + '</a>.';
   }
 
+  // ============ LEVEL 4 — the Human Design mandala ============
+  // Pure SVG, drawn from WHEEL above. Screen convention: 0° Aries at twelve o'clock,
+  // ecliptic longitude increasing clockwise. Printed Rave mandalas differ in orientation
+  // and nothing here depends on it — the claim being made is the *order*, not the pose.
+  const CX = 240, CY = 240;
+  const pt = (r, lon) => {
+    const a = (lon - 90) * Math.PI / 180;
+    return [(CX + r * Math.cos(a)).toFixed(2), (CY + r * Math.sin(a)).toFixed(2)];
+  };
+  function sector(r0, r1, lon0, lon1) {
+    const [ax, ay] = pt(r1, lon0), [bx, by] = pt(r1, lon1);
+    const [cx2, cy2] = pt(r0, lon1), [dx, dy] = pt(r0, lon0);
+    const big = (lon1 - lon0) > 180 ? 1 : 0;
+    return 'M' + ax + ' ' + ay + 'A' + r1 + ' ' + r1 + ' 0 ' + big + ' 1 ' + bx + ' ' + by +
+           'L' + cx2 + ' ' + cy2 + 'A' + r0 + ' ' + r0 + ' 0 ' + big + ' 0 ' + dx + ' ' + dy + 'Z';
+  }
+
+  function renderWheel() {
+    const svg = document.getElementById('wheel');
+    let h = '';
+    // outer ring — the twelve signs
+    for (let s = 0; s < 12; s++) {
+      const l0 = s * 30, l1 = l0 + 30;
+      h += '<path class="zsec' + (s % 2 ? ' alt' : '') + '" d="' + sector(202, 228, l0, l1) + '"></path>';
+      const [lx, ly] = pt(215, l0 + 15);
+      h += '<text class="zlab" x="' + lx + '" y="' + ly + '">' + ZODIAC[s].split(' ')[0] + '</text>';
+    }
+    // inner ring — the sixty-four gates
+    const antipode = selHex === null ? null : WHEEL[(SLOT[selHex] + 32) % 64];
+    for (let i = 0; i < 64; i++) {
+      const kw = WHEEL[i];
+      const l0 = (WHEEL_START + i * GATE_ARC) % 360, l1 = l0 + GATE_ARC;
+      const it = byKw[kw], m = it.metadata;
+      let cls = 'gsec';
+      if (selHex === kw) cls += ' sel';
+      else if (antipode === kw) cls += ' anti';
+      else if (selTri && (norm(m.trigram_lower) === selTri || norm(m.trigram_upper) === selTri)) cls += ' tri-hi';
+      h += '<path class="' + cls + '" data-kw="' + kw + '" d="' + sector(152, 200, l0, l1) + '">' +
+           '<title>' + m.unicode + ' Gate ' + kw + ' — ' + esc(it.name) + '</title></path>';
+      const [tx, ty] = pt(176, l0 + GATE_ARC / 2);
+      h += '<text class="glab' + (selHex === kw ? ' on' : '') + '" x="' + tx + '" y="' + ty + '">' + kw + '</text>';
+    }
+    // the opposition axis, plus the selected hexagram at the centre
+    if (selHex !== null) {
+      const mid = (WHEEL_START + SLOT[selHex] * GATE_ARC + GATE_ARC / 2) % 360;
+      const [x1, y1] = pt(148, mid), [x2, y2] = pt(148, mid + 180);
+      h += '<line class="axis" x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '"></line>';
+      h += '<text class="cglyph" x="' + CX + '" y="' + (CY - 12) + '">' + byKw[selHex].metadata.unicode + '</text>';
+      h += '<text class="ctext" x="' + CX + '" y="' + (CY + 34) + '">Gate ' + selHex + ' · opposite ' + antipode + '</text>';
+    } else {
+      h += '<text class="ctext" x="' + CX + '" y="' + CY + '">64 gates · 5°37′30″ each</text>';
+    }
+    svg.innerHTML = h;
+    svg.querySelectorAll('path[data-kw]').forEach(p => p.onclick = () => {
+      const kw = parseInt(p.dataset.kw, 10);
+      selHex = (selHex === kw) ? null : kw;
+      render();
+    });
+  }
+
+  function degLabel(lon) {
+    const l = ((lon % 360) + 360) % 360;
+    const sign = ZODIAC[Math.floor(l / 30)], within = l % 30;
+    // gate cusps land on exact half-minutes (5.625° steps), so seconds are shown when
+    // they are non-zero rather than rounded away — 18°52′30″, never a fudged 18°53′.
+    const d = Math.floor(within);
+    const mTotal = (within - d) * 60, mm = Math.floor(mTotal + 1e-9);
+    const ss = Math.round((mTotal - mm) * 60);
+    return d + '°' + String(mm).padStart(2, '0') + '′' + (ss ? String(ss).padStart(2, '0') + '″' : '') +
+      ' ' + sign.split(' ')[1];
+  }
+
+  function renderWheelDetail() {
+    const el = document.getElementById('wheel-detail');
+    if (selHex === null) {
+      el.textContent = 'Click a gate on the wheel, or a cell in the matrix above.';
+      return;
+    }
+    const i = SLOT[selHex], m = byKw[selHex].metadata;
+    const anti = WHEEL[(i + 32) % 64], am = byKw[anti].metadata;
+    el.innerHTML = '<span class="glyph">' + m.unicode + '</span>' +
+      '<b>Gate ' + selHex + '</b> — King Wen hexagram ' + selHex + ', mandala slot ' + (i + 1) + ' of 64, ' +
+      'beginning ' + degLabel(WHEEL_START + i * GATE_ARC) + ' and running 5°37′30″ to ' +
+      degLabel(WHEEL_START + (i + 1) * GATE_ARC) + '. Lines <span style="font-variant-numeric:tabular-nums">' +
+      m.binary_bottom_first + '</span> (bottom first). Directly opposite: ' +
+      '<b>Gate ' + anti + '</b> <span class="glyph" style="font-size:1.3rem">' + am.unicode + '</span> ' +
+      '<span style="font-variant-numeric:tabular-nums">' + am.binary_bottom_first + '</span> — every line flipped.';
+  }
+
   document.getElementById('numMode').querySelectorAll('button').forEach(b => b.onclick = () => { numMode = b.dataset.m; render(); });
 
   function render() {
     renderPosRow(); renderBitRow();
     renderTriGrid(); renderTriDetail();
     renderNumMode(); renderMatrix(); renderHexDetail();
+    renderWheel(); renderWheelDetail();
   }
   render();
 })();
