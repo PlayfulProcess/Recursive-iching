@@ -48,6 +48,10 @@ The hexagram picker should offer the space's own structures, not an arbitrary gr
 - **Binary/Fuxi order** — from `metadata.binary_bottom_first`, the ordering Leibniz saw. Walked explicitly,
   bit by bit, in `public/viewers/binary-ladder.html` (yin/yang → trigrams → hexagrams, King Wen shown as a
   permutation over the same grid).
+- **Mandala order** — a third ordering of the same 64: the positions Human Design (Ra Uru Hu, 1987) gives
+  the hexagrams around the ecliptic, 5°37′30″ each. Drawn as Level 4 of `binary-ladder.html`; sources,
+  verification and limits in [`HUMAN-DESIGN-TRACE.md`](HUMAN-DESIGN-TRACE.md). Not stored in any grammar —
+  it is a modern overlay, and the viewer keeps it as a hardcoded, sourced array rather than data.
 - **One-line neighbors** — each hexagram touches six others by changing a single line;
   this is how a *reading* moves through the space (changing lines), so the viewer should
   eventually move that way too.
