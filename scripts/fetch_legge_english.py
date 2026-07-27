@@ -196,12 +196,15 @@ def parse(page: str, n: int, typos: list | None = None, unterminated: list | Non
     # A passage not ending in sentence punctuation is the signature of a statement cut off
     # at a printed page break whose continuation was missed. The Wikisource cross-check
     # only reaches hexagrams 1-31, so this sweep covers the other half of the book. It
-    # reports rather than fails: the one hit (41.2) was checked against the 1882 printing
-    # itself and is a full stop the etext dropped, not a lost clause. Nothing is silently
-    # rewritten — the text stays exactly as transcribed and the flag travels with it.
-    for label, passage in [("judgment", judgment)] + [(f"line {i}", t) for i, t in sorted(lines.items())]:
-        if not passage.rstrip().endswith((".", "!", "?", ".)", "!)", "?)", ".'", "!'")):
-            (unterminated if unterminated is not None else []).append({"king_wen": n, "passage": label, "ends": passage[-60:]})
+    # reports rather than fails, because the one hit it produces (41.2) turned out on
+    # inspection of the 1882 printing to be a full stop the etext dropped rather than a
+    # lost clause — see ETEXT_FIXES. The report is what sent someone to look.
+    ENDINGS = (".", "!", "?", ".)", "!)", "?)", ".'", "!'")
+    if unterminated is not None:
+        passages = [("judgment", judgment)] + [(f"line {i}", t) for i, t in sorted(lines.items())]
+        for label, passage in passages:
+            if not passage.rstrip().endswith(ENDINGS):
+                unterminated.append({"king_wen": n, "passage": label, "ends": passage[-60:]})
 
     return {
         "king_wen": n,
