@@ -89,6 +89,9 @@ Every entry in `items[]` follows this shape:
     "Section Label": "markdown content",
     "Another Section": "more content"
   },
+  "sections_i18n": {                 // OPTIONAL — translations, see "Languages" below
+    "en": { /* same keys as `sections` */ }
+  },
   "keywords": ["string"],            // OPTIONAL — search tags for this item
   "composite_of": ["id-1", "id-2"],  // PRESENT ONLY ON COMPOSITE ITEMS — see below
   "metadata": { /* free-form */ },   // OPTIONAL — see "Metadata fields"
@@ -519,6 +522,86 @@ the original width so Commons serves a real thumbnail rather than refusing to up
 
 **An honest gap beats a wrong picture.** If a grammar has no image whose licence you have
 personally verified, leave it without one and say so in `docs/IMAGES.md`.
+
+---
+
+## Languages — a Recursive I Ching extension
+
+> **Repo-local addition (2026-07-27).** A family convention for books that exist in more
+> than one language. Enforced by `check.py`.
+
+An item's **`sections` is canonical**: it is the text in the language the book is actually
+in — for the Zhouyi and the Ten Wings, Chinese. Translations live *beside* it in an
+optional per-item **`sections_i18n`**, keyed by language code. The canonical text is never
+replaced, moved, or wrapped; a grammar with no translations is unchanged by this
+convention, and every existing viewer keeps working because `sections` still means what it
+always meant.
+
+```jsonc
+{
+  "id": "hexagram-01-qian",
+  "sections": {
+    "卦辞 · Judgment (original)": "元亨利贞。",
+    "爻辞 · Lines (original)": "**初九** — 潜龙，勿用。\n…"
+  },
+  "sections_i18n": {
+    "en": {
+      "卦辞 · Judgment (original)": "Khien (represents) what is great and originating…",
+      "爻辞 · Lines (original)": "**Line 1** — In the first (or lowest) NINE, undivided…"
+    }
+  }
+}
+```
+
+**The keys mirror, exactly.** Every language block carries the *same set of keys* as that
+item's canonical `sections` — no more, no fewer, none of them empty. The key names stay in
+their canonical form (`卦辞 · Judgment (original)`) inside the English block too, because
+the key identifies the **slot**, not the label. Two things follow, and they are the whole
+point:
+
+- a viewer can swap languages section for section without knowing anything about the
+  particular book, and
+- the half-translated book — reader switches to English, four sections have it, two
+  silently fall back, and nothing says which is which — becomes a build failure instead of
+  a reading experience.
+
+A book may have no translations. It may not have patchy ones.
+
+**Say where a translation came from.** Same principle as image provenance: a grammar whose
+items use `sections_i18n` carries a root-level `_i18n` block naming the canonical language
+and, for every language present, who translated it and on what basis it is free to be here.
+
+```jsonc
+"_i18n": {
+  "canonical_language": "zh-Hans",       // REQUIRED — what `sections` is written in
+  "canonical_note": "…",                 // optional prose for a human reader
+  "languages": [
+    {
+      "lang": "en",                                    // REQUIRED
+      "translator": "James Legge (1815–1897)",         // REQUIRED
+      "year": "1882 (2nd ed. 1899)",                   // REQUIRED
+      "source": "Where this transcription came from",  // REQUIRED
+      "source_url": "https://…",                       // REQUIRED
+      "pd_basis": "Why this translation is public domain",   // REQUIRED
+      "coverage": "Exactly how much of the book it covers",  // REQUIRED
+      "not_included": "…", "verified": "…", "retrieved_on": "2026-07-27"   // optional
+    }
+  ]
+}
+```
+
+`coverage` is required because partial coverage is legitimate and silence about it is not:
+if a translation only reaches the judgments, that sentence is where a reader finds out.
+
+**Public domain applies to translations too, and a translation is its own work.** A
+translator's copyright is separate from the original's — an ancient text can be free while
+a 1950 rendering of it is not. Wilhelm–Baynes is the standing example in this repo: the
+1924 German original is public domain, the 1950 English translation is not, and it stays
+out until it is. `pd_basis` is where you show the term has actually run.
+
+**There is no `"zh"` block in this repo's books.** Chinese is what `sections` already is;
+a language block that duplicates the canonical text would double the file to say nothing.
+Viewers read `_i18n.canonical_language` to label it.
 
 ---
 

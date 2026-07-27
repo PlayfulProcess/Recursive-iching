@@ -22,6 +22,11 @@ export interface HexagramItem {
   subcategory?: string;
   sort_order: number;
   sections: Record<string, string>;
+  /** Translations beside the canonical `sections`, keyed by language code, each block
+   *  mirroring the canonical key set exactly (GRAMMAR_FORMAT.md, "Languages"). The Zhouyi
+   *  carries `en` — James Legge, 1882/1899, public domain. The static viewers read this;
+   *  the app routes do not yet (see ICHING.md, "Viewers"). */
+  sections_i18n?: Record<string, Record<string, string>>;
   metadata: {
     king_wen: number;
     name_traditional: string;

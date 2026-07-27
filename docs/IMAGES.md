@@ -93,9 +93,12 @@ All URLs below were fetched on **2026-07-26**: each file page returned HTTP 200,
 
 - **Bagua compass of Fu Xi** — James Legge, 1882, *Sacred Books of the East* vol. XVI,
   Plate II fig. 1. File page: https://commons.wikimedia.org/wiki/File:Bagua_compass_Fuxi_(SBE_vol_16,_1882).png
-  · PD basis: Legge d. 1897, published 1882 (PD-old, PD-US). Kept in reserve for the
-  Legge translation layer when it lands (see [`ICHING.md`](../ICHING.md) — the English
-  slots are deliberately empty until then).
+  · PD basis: Legge d. 1897, published 1882 (PD-old, PD-US). Was held for "the Legge
+  translation layer when it lands"; it landed 2026-07-27, but as a language layer inside
+  the Zhouyi grammar rather than a grammar of its own (see
+  [`docs/TIME-AND-SPACE.md`](TIME-AND-SPACE.md#a-translation-is-not-a-rung-on-the-time-rail)),
+  so there is no new cover to put it on. Still verified, still unused — a plate from the
+  same volume the English comes from, if a page ever wants it.
 
 ---
 

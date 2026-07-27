@@ -11,8 +11,12 @@ Sources & licensing (the whole point of this script's design):
     used ONLY for structural facts: traditional-character names, pinyin, Unicode glyph.
     Its Wilhelm-Baynes ENGLISH prose (1950) is NOT public domain (the 1924 German
     original is; the Baynes translation is not until ~2046) and is deliberately not read.
-  - English translation slots are left EMPTY on purpose — to be filled from a
-    public-domain rendering (Legge 1899) or the builder's own translation.
+  - research/sources/raw/legge-yi-king-text.json (built by scripts/fetch_legge_english.py)
+    carries James Legge's English of the same ancient text — Sacred Books of the East vol.
+    XVI, translator d. 1897, published 1882/1899: public domain, and the rendering this
+    repo has always named as the one that could honestly fill the English slots. It goes
+    in as `sections_i18n.en` beside the canonical Chinese, never over it.
+    Still excluded: Wilhelm-Baynes (1950), which is not public domain.
 
 The grammars are generated — never hand-edit grammars/zhouyi/grammar.json; edit the
 sources or this script, then re-run:  python scripts/build_zhouyi_grammar.py
@@ -72,6 +76,91 @@ def add_canonical_sections(items):
             s.setdefault(f"Line {i}", ln)
 
 
+# The 7th paragraph of hexagrams 1 and 2 is not a line — it is 用九 / 用六, the text for a
+# cast in which every line moves. Legge's own words for what it reads off.
+SEVENTH = {1: "The use of the number nine", 2: "The use of the number six"}
+
+
+def add_english(items, legge):
+    """Attach James Legge's English as `sections_i18n.en` on every hexagram.
+
+    THE CONVENTION (GRAMMAR_FORMAT.md, "Languages"): an item's `sections` stays the
+    canonical text — here the Chinese — and every block under `sections_i18n` mirrors its
+    key set exactly, same keys in the same order. A viewer can therefore swap languages
+    section for section without knowing anything about this particular book, and a missing
+    key is a bug the gate catches rather than a hole a reader discovers.
+
+    That is why the English block repeats the 卦辞/爻辞 key names rather than inventing
+    English ones: the key is the *slot*, not the label."""
+    by_kw = {h["king_wen"]: h for h in legge["hexagrams"]}
+    for it in items:
+        kw = it["metadata"]["king_wen"]
+        h = by_kw[kw]
+        labels = [f"Line {i}" for i in range(1, 7)]
+        if len(h["lines"]) == 7:
+            labels.append(SEVENTH[kw])
+        lines_md = "\n".join(f"**{lab}** — {txt}" for lab, txt in zip(labels, h["lines"]))
+
+        en = {}
+        for key in it["sections"]:                      # canonical order, mirrored
+            if key == "卦辞 · Judgment (original)":
+                en[key] = h["judgment"]
+            elif key == "爻辞 · Lines (original)":
+                en[key] = lines_md
+            elif key == "Research note":
+                en[key] = it["sections"][key]           # already English
+            elif key == "Judgment":
+                en[key] = h["judgment"]
+            elif key.startswith("Line "):
+                en[key] = f"**{key}** — {h['lines'][int(key.split()[1]) - 1]}"
+            else:
+                raise SystemExit(
+                    f"hexagram {kw}: section '{key}' has no English counterpart — "
+                    f"add one here rather than shipping a language block with a hole in it"
+                )
+        it["sections_i18n"] = {"en": en}
+
+
+def i18n_block(legge):
+    """Root-level provenance for every language in `sections_i18n` — who translated it,
+    when, from where, and on what basis it is free. check.py requires all of it."""
+    return {
+        "canonical_language": "zh-Hans",
+        "canonical_note": (
+            "Each item's `sections` is the canonical text: the Zhouyi in simplified Chinese. "
+            "`sections_i18n` holds translations beside it, never over it — a language block "
+            "mirrors the canonical key set exactly. There is no 'zh' block because Chinese "
+            "is what `sections` already is."
+        ),
+        "languages": [
+            {
+                "lang": "en",
+                "name": "English",
+                "translator": "James Legge (1815–1897)",
+                "year": "1882 (2nd ed. 1899)",
+                "work": "The Yî King, Sacred Books of the East vol. XVI (Oxford: Clarendon Press)",
+                "source": legge["_transcription_source"],
+                "source_url": legge["_transcription_source_url"],
+                "pd_basis": legge["_pd_basis"],
+                "retrieved_on": legge["_fetched_on"],
+                "coverage": (
+                    "Complete for this book: all 64 judgments (卦辞) and all 386 line statements "
+                    "(爻辞), including the 用九/用六 paragraph of hexagrams 1 and 2."
+                ),
+                "not_included": legge["_not_taken"],
+                "verified": (
+                    "Every hexagram matched to its King Wen number by the six-bit figure on the "
+                    "source page; 210 passages across hexagrams 1–31 cross-checked word for word "
+                    "against English Wikisource's independently proofread transcription of the "
+                    "1882 first edition, with no divergence. "
+                    "See scripts/fetch_legge_english.py."
+                ),
+                "built_by": "scripts/fetch_legge_english.py → scripts/build_zhouyi_grammar.py",
+            },
+        ],
+    }
+
+
 def main():
     oi = json.loads((RAW / "open-iching-iching.json").read_text(encoding="utf-8"))
     wd_raw = (RAW / "wilhelm-dataset.js").read_text(encoding="utf-8")
@@ -113,8 +202,9 @@ def main():
                     "stratum of the Book of Changes, a diviner's manual centuries before the Ten "
                     "Wings made it a philosophical classic. Transcription here is in simplified "
                     "characters [@open-iching]; a traditional-character pass is welcome. English "
-                    "translation intentionally pending — to be added from a public-domain "
-                    "rendering (Legge 1899) or the builder's own."
+                    "is James Legge's (Sacred Books of the East vol. XVI, 1882/1899 — public "
+                    "domain), carried beside the Chinese as sections_i18n.en, not over it; it is "
+                    "a Victorian Scot's reading of a Bronze Age manual, and reads like one."
                 ),
             },
             "metadata": {
@@ -141,6 +231,11 @@ def main():
     if fixed: print(f"applied {fixed} correction(s) from corrections.json")
     add_canonical_sections(items)
 
+    # English last: sections_i18n mirrors whatever key set the canonical sections ended up
+    # with, so it has to be built after corrections and after the canonical aliases.
+    legge = json.loads((RAW / "legge-yi-king-text.json").read_text(encoding="utf-8"))
+    add_english(items, legge)
+
     grammar = {
         "name": "周易 — The Zhouyi (original text)",
         "description": (
@@ -148,9 +243,9 @@ def main():
             "original language: each hexagram's 卦辞 (judgment) and 爻辞 (line statements), with "
             "structural metadata (King Wen number, trigrams, pinyin, Unicode). The oldest layer "
             "only, presented as what it historically was: a working diviner's manual of the "
-            "Western Zhou, before the Ten Wings made it a classic. English translation slots are "
-            "deliberately empty pending a public-domain rendering. Read to know yourself, not to "
-            "be told your fate; relate to the hexagram, never obey it."
+            "Western Zhou, before the Ten Wings made it a classic. James Legge's public-domain "
+            "English (1882/1899) travels beside the Chinese rather than replacing it. Read to "
+            "know yourself, not to be told your fate; relate to the hexagram, never obey it."
         ),
         "grammar_type": "iching",
         # Cover: a page of the book itself, not a mood photograph. See
@@ -174,6 +269,7 @@ def main():
                 "why_this_image": "The Zhouyi grammar is the core text; the apt picture is the text as an actual printed book of its own tradition — the oldest surviving print layer, not a modern photograph of an unrelated volume.",
             },
         ],
+        "_i18n": i18n_block(legge),
         "items": items,
         "_generated": True,
         "_do_not_hand_edit": True,
@@ -188,6 +284,8 @@ def main():
                  "note": "Transcription source for the simplified-character text (卦辞/爻辞). Only the ancient public-domain text was taken; credited with thanks."},
                 {"name": "adamblvck/iching-wilhelm-dataset (MIT)", "date": "fetched 2026-07-16",
                  "note": "Structural facts only: traditional names, pinyin, Unicode glyphs. Its Wilhelm-Baynes English prose (1950, not public domain) was deliberately not used."},
+                {"name": "James Legge, The Yî King (Sacred Books of the East vol. XVI)", "date": "1882; 2nd ed. 1899",
+                 "note": "The English in sections_i18n.en. Translator d. 1897 and published well before 1930: public domain. Transcription from sacred-texts.com/ich/, cross-checked against English Wikisource's proofread transcription of the 1882 edition. Legge's footnotes and commentary were not taken."},
             ],
         },
     }

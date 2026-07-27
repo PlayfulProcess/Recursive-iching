@@ -49,3 +49,7 @@ Thumbs.db
 
 # Reference/archive documents
 z.ignore/
+
+# Python
+__pycache__/
+*.pyc

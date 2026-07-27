@@ -64,12 +64,35 @@ The hexagram picker should offer the space's own structures, not an arbitrary gr
 | `ten-wings` | Warring States–Han | Classical Chinese | ✅ built (64/64; source lacks hexagram 32's 彖 — flagged) |
 | `wang-bi` | 226–249 CE | Classical Chinese | planned — needs a PD transcription source |
 | `zhu-xi` (周易本義) | 12th c. | Classical Chinese | planned — same |
-| `legge-1899` | 1882/1899 | English (PD) | planned — needs a clean digital source (network-blocked this session) |
+| ~~`legge-1899`~~ | 1882/1899 | English (PD) | ✅ shipped 2026-07-27 — but **not as a book**: see below |
 | `wilhelm-1924` | 1924 | German (PD in US since 2020) | planned — the German original only; the 1950 Baynes English stays out until ~2046 |
 | `builder` | 2026– | English/Portuguese | the builder's own translation, hexagram by hexagram |
 
 Rules for adding a book: public-domain text only, transcription source credited in
 `_grammar_commons`, same item ids, `book_period` set, gate (`check.py`) green.
+
+### A translation is not a rung on the time rail
+
+This table used to list `legge-1899` as a book. When it came to build it (2026-07-27) that
+turned out to be the wrong shape, and the distinction is worth keeping:
+
+- **Wang Bi and Zhu Xi are books.** They say *different things* about the same hexagram.
+  They belong on the time axis, because reading them beside the Zhouyi is reading two
+  centuries argue.
+- **Legge is a translation.** He says the *same thing* in another language. Giving him his
+  own row would have put "元亨利贞。" and "what is great and originating, penetrating,
+  advantageous, correct and firm" side by side as though they were two witnesses, when they
+  are one witness and its echo — and it would have made the English a book a reader could
+  select *instead of* the Chinese, which is exactly the relationship this repo does not
+  want.
+
+So Legge lives inside the Zhouyi grammar as `sections_i18n.en` (the convention:
+[`../GRAMMAR_FORMAT.md`](../GRAMMAR_FORMAT.md#languages--a-recursive-i-ching-extension)),
+and the viewers grew a **language** switch rather than another rail button. The rule that
+falls out: *a new voice gets a book; a new language gets a `sections_i18n` block.*
+
+Legge's Appendixes I–VI — his English of the Ten Wings — are the same kind of thing and
+belong in `ten-wings`'s `sections_i18n.en`. Not yet done.
 
 ## The viewer (first build shipped Jul 16 2026: public/viewers/books.html + caster.html; binary-ladder.html added Jul 26 2026)
 

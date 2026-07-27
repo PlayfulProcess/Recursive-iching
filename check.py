@@ -25,6 +25,11 @@ VALID_TYPES = {
 
 PROVENANCE_FIELDS = ("url", "title", "creator", "date", "file_page", "pd_basis")
 
+# Translation provenance (GRAMMAR_FORMAT.md, "Languages"). Same principle as the image
+# rule: a translation whose translator, date, source and public-domain basis are not
+# written down is not usable here, however good it reads.
+I18N_FIELDS = ("lang", "translator", "year", "source", "source_url", "pd_basis", "coverage")
+
 
 def image_urls(g: dict) -> list[str]:
     """Every image URL a grammar points at, in declaration order, deduped."""
@@ -68,6 +73,77 @@ def check_images(path: Path, g: dict) -> list[str]:
     return errs
 
 
+def check_languages(path: Path, g: dict) -> list[str]:
+    """`sections_i18n` must mirror `sections`, and every language must say where it came
+    from.
+
+    A half-translated book is the failure mode worth engineering against: the reader
+    switches to English, four sections have it, two silently fall back, and nothing tells
+    them which is which. So a language block present on an item must carry the *same set of
+    keys* as that item's canonical sections — no more, no fewer, none of them empty. A book
+    is free to have no translation at all; it is not free to have a patchy one."""
+    errs = []
+    used: set[str] = set()
+    for it in g.get("items") or []:
+        i18n = it.get("sections_i18n")
+        if i18n is None:
+            continue
+        who = it.get("id") or it.get("name") or "?"
+        if not isinstance(i18n, dict):
+            errs.append(f"{path}: item {who} 'sections_i18n' must be an object keyed by language")
+            continue
+        canonical = set(it.get("sections") or {})
+        for lang, block in i18n.items():
+            used.add(lang)
+            if not isinstance(block, dict):
+                errs.append(f"{path}: item {who} sections_i18n['{lang}'] must be an object of sections")
+                continue
+            missing = sorted(canonical - set(block))
+            extra = sorted(set(block) - canonical)
+            if missing:
+                errs.append(
+                    f"{path}: item {who} sections_i18n['{lang}'] is missing {missing} — an i18n "
+                    f"block must mirror the canonical section keys, or the reader gets a silent gap"
+                )
+            if extra:
+                errs.append(
+                    f"{path}: item {who} sections_i18n['{lang}'] has {extra}, which the canonical "
+                    f"sections do not — add the section to `sections` first"
+                )
+            blank = sorted(k for k, v in block.items() if not str(v).strip())
+            if blank:
+                errs.append(f"{path}: item {who} sections_i18n['{lang}'] is empty at {blank}")
+
+    meta = g.get("_i18n") or {}
+    if used and not meta:
+        errs.append(
+            f"{path}: items carry sections_i18n for {sorted(used)} but the grammar has no '_i18n' "
+            f"block — record canonical_language and, per language, {list(I18N_FIELDS)}"
+        )
+    if not meta:
+        return errs
+    if not meta.get("canonical_language"):
+        errs.append(f"{path}: '_i18n' must name the 'canonical_language' that `sections` is written in")
+    declared = {}
+    for entry in meta.get("languages") or []:
+        if not isinstance(entry, dict):
+            errs.append(f"{path}: every _i18n.languages entry must be an object")
+            continue
+        gaps = [f for f in I18N_FIELDS if not entry.get(f)]
+        if gaps:
+            errs.append(
+                f"{path}: _i18n language '{entry.get('lang') or '?'}' is missing {gaps} — an "
+                f"unattributed translation is worse than none (see GRAMMAR_FORMAT.md, 'Languages')"
+            )
+        if entry.get("lang"):
+            declared[entry["lang"]] = entry
+    for lang in sorted(used - set(declared)):
+        errs.append(f"{path}: items use sections_i18n['{lang}'] with no _i18n.languages entry for it")
+    for lang in sorted(set(declared) - used):
+        errs.append(f"{path}: _i18n declares '{lang}', which no item translates")
+    return errs
+
+
 def check(path: Path) -> list[str]:
     errs = []
     try:
@@ -99,6 +175,7 @@ def check(path: Path) -> list[str]:
         if "video_id" in meta:
             errs.append(f"{path}: item {it.get('id')} uses metadata.video_id — rename to youtube_video_id")
     errs += check_images(path, g)
+    errs += check_languages(path, g)
     return errs
 
 
