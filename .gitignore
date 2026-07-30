@@ -53,3 +53,8 @@ z.ignore/
 # Python
 __pycache__/
 *.pyc
+
+# Cross-check scratch: the 1 MB full text of the 1882 printing that
+# scripts/fetch_legge_wings.py --crosscheck downloads from archive.org. Re-fetchable in
+# one command, and this repo carries the verified result rather than the reference copy.
+research/sources/raw/.cache-*
