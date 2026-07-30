@@ -61,7 +61,7 @@ The hexagram picker should offer the space's own structures, not an arbitrary gr
 | Book (grammar slug) | Period | Language | Status |
 |---|---|---|---|
 | `zhouyi` | Western Zhou, c. 9th c. BCE | Classical Chinese | ✅ built (64/64) |
-| `ten-wings` | Warring States–Han | Classical Chinese | ✅ built (64/64; source lacks hexagram 32's 彖 — flagged) |
+| `ten-wings` | Warring States–Han | Classical Chinese (+ Legge's English) | ✅ built (64/64; hexagram 32's 彖 filled from corrections.json) |
 | `wang-bi` | 226–249 CE | Classical Chinese | planned — needs a PD transcription source |
 | `zhu-xi` (周易本義) | 12th c. | Classical Chinese | planned — same |
 | ~~`legge-1899`~~ | 1882/1899 | English (PD) | ✅ shipped 2026-07-27 — but **not as a book**: see below |
@@ -91,8 +91,12 @@ So Legge lives inside the Zhouyi grammar as `sections_i18n.en` (the convention:
 and the viewers grew a **language** switch rather than another rail button. The rule that
 falls out: *a new voice gets a book; a new language gets a `sections_i18n` block.*
 
-Legge's Appendixes I–VI — his English of the Ten Wings — are the same kind of thing and
-belong in `ten-wings`'s `sections_i18n.en`. Not yet done.
+Legge's Appendixes — his English of the Ten Wings — are the same kind of thing and belong
+in `ten-wings`'s `sections_i18n.en`. Done 2026-07-30 for the per-hexagram ones: Appendix I
+(彖传), II (大象 + 小象), IV (文言, hexagrams 1–2) and VI (序卦). The remaining three —
+Appendix III (繫辞), V (说卦), VII (杂卦) — are held up by shape rather than by licence:
+they speak about the book, not about a hexagram, so a per-hexagram grammar has no slot for
+them. They need items of their own, and that is the open question, not the translation.
 
 ## The viewer (first build shipped Jul 16 2026: public/viewers/books.html + caster.html; binary-ladder.html added Jul 26 2026)
 

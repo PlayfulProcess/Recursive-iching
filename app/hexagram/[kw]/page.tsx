@@ -140,9 +140,9 @@ export default async function HexagramPage({ params, searchParams }: {
           <p className="text-xs text-gray-400">
             Texts are public domain; provenance lives in each grammar&apos;s <code>_grammar_commons</code>{" "}
             (<a className="underline" href="https://github.com/PlayfulProcess/Recursive-iching">source</a>).
-            The Zhouyi also carries James Legge&apos;s public-domain English (1882/1899) in{" "}
-            <code>sections_i18n</code>; the language switch that reads it lives in the static
-            viewers for now.
+            The Zhouyi and the Ten Wings both carry James Legge&apos;s public-domain English
+            (1882/1899) in <code>sections_i18n</code>; the language switch that reads it lives
+            in the static viewers for now.
           </p>
         </section>
       </div>

@@ -8,7 +8,8 @@
  * The default is 中文, which is the behaviour the viewers had before this existed: the
  * original text is what the reader is offered unless they ask for otherwise. English is
  * James Legge's (1882/1899, public domain) — a Victorian Scot's reading of a Bronze Age
- * manual, offered beside the text rather than in place of it.
+ * manual, offered beside the text rather than in place of it. Both books now have it: the
+ * Zhouyi since 2026-07-27, the Ten Wings (his Appendixes I, II, IV and VI) since 07-30.
  *
  * One file rather than a copy per viewer, so the two cannot drift apart.
  */
@@ -105,7 +106,12 @@
   }
 
   /* True when the reader asked for English and this book has none — the viewer should say
-     so once, quietly, rather than let the fallback pass for a translation. */
+     so once, quietly, rather than let the fallback pass for a translation.
+
+     As of 2026-07-30 neither of the books the readers show trips this: the Zhouyi and the
+     Ten Wings both carry Legge. It stays for the books still on the rail (Wang Bi, Zhu Xi,
+     Wilhelm's German), because the moment one lands is the moment a silent fallback would
+     start reading like a translation. */
   function missing(item) {
     return mode !== 'zh' && !english(item);
   }
