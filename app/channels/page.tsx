@@ -133,7 +133,7 @@ export default function ChannelsPage() {
               <Link href={c.href} className="font-semibold text-gray-800 hover:text-amber-700">Read here →</Link>
               {ids[c.slug] && publicNow.has(c.slug) ? (
                 <a className="ml-auto font-semibold text-violet-700 hover:text-violet-500"
-                  href={`https://flow.recursive.eco/?deckId=${ids[c.slug]}`} target="_blank" rel="noopener noreferrer">
+                  href={`https://flow.recursive.eco/g/${ids[c.slug]}?view=reading`} target="_blank" rel="noopener noreferrer">
                   recursive.eco ↗
                 </a>
               ) : (
